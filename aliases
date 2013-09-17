@@ -1,0 +1,47 @@
+# Easier navigation: .., ..., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~"
+alias -- -="cd -"
+
+# Shortcuts
+alias d="cd ~/Desktop"
+alias db="cd ~/Dropbox"
+alias dl="cd ~/Downloads"
+alias doc="cd ~/Documents"
+alias df="cd ~/dotfiles"
+alias cl="clear"
+alias p="python"
+
+# Sourcing
+alias so="source"
+# Source the .profile
+alias sop="source ~/.profile"
+
+# programs
+alias mvim='open -a "MacVim"'
+
+# Always use color when ls-ing
+alias ls='ls -GFh'
+# List all files in long format
+alias l="ls -l"
+# Long format and hidden files
+alias la="ls -al"
+# List only directories
+alias lsd='ls -l | grep "^d"'
+
+# `cat` with beautiful colors. requires Pygments installed.
+# if not already installed: sudo easy_install Pygments
+alias cat='pygmentize -O style=monokai -f console256 -g'
+
+# git root
+alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
+
+# Get file size
+alias fs="stat -f \"%z bytes\""
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"

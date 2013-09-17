@@ -1,0 +1,35 @@
+[user]
+	name = Steve SanPietro
+	email = sanpietro.steve@gmail.com
+[core]
+	editor = vim
+#	autocrlf = true
+	excludesfile = ~/.gitignore_global
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
+[alias]
+	last = log -1 HEAD
+	logg = log --pretty=format:\"%h - %an, %ar : %s\"
+	unstage = reset HEAD --
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	rb = rebase
+    sm = submodule
+[color]
+	ui = true
+[diff]
+	tool = diffmerge
+[merge]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge $LOCAL $REMOTE
+[mergetool "diffmerge"]
+	cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
+	trustExitCode = true
+#If you don't want git to create the .orig files
+#[mergetool]
+#	keepBackup = false

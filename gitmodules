@@ -1,0 +1,39 @@
+[submodule ".vim/bundle/mru"]
+	path = .vim/bundle/mru
+	url = https://github.com/vim-scripts/mru.vim
+[submodule ".vim/bundle/scroll-colors"]
+	path = .vim/bundle/scroll-colors
+	url = https://github.com/vim-scripts/ScrollColors
+[submodule ".vim/bundle/genutils"]
+	path = .vim/bundle/genutils
+	url = https://github.com/vim-scripts/genutils
+[submodule ".vim/bundle/increment"]
+	path = .vim/bundle/increment
+	url = https://github.com/vim-scripts/increment.vim--Avadhanula
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule ".vim/bundle/tlib"]
+	path = .vim/bundle/tlib
+	url = https://github.com/tomtom/tlib_vim
+[submodule ".vim/bundle/viki_vim"]
+	path = .vim/bundle/viki_vim
+	url = https://github.com/tomtom/viki_vim
+[submodule ".vim/bundle/vim-addon-manager"]
+	path = .vim/bundle/vim-addon-manager
+	url = https://github.com/MarcWeber/vim-addon-manager
+[submodule ".vim/bundle/vim-compiler-python"]
+	path = .vim/bundle/vim-compiler-python
+	url = https://github.com/tlvince/vim-compiler-python
+[submodule ".vim/bundle/vim-easymotion"]
+	path = .vim/bundle/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion
+[submodule ".vim/bundle/vim-markdown"]
+	path = .vim/bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule ".vim/bundle/xptemplate"]
+	path = .vim/bundle/xptemplate
+	url = https://github.com/drmingdrmer/xptemplate

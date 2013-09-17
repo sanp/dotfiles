@@ -1,0 +1,5 @@
+# This file marks types for git to ignore when staging/comitting/etc
+
+# Any temporary files which vim generates
+*~
+*.swp
