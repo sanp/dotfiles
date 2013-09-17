@@ -11,7 +11,7 @@ olddir=~/dotfiles_old             # old dotfiles backup directory
 
 # files and folders which should start with a dot when symlinked
 # list of dot files to symlink in homedir
-dot_files="aliases profile gitconfig gitignore-global gitk gitmodules vim_mru_files viminfo vimrc"
+dot_files="aliases profile gitconfig gitignore-global gitk vim_mru_files viminfo vimrc"
 # list of dot folders to symlink in homedir
 dot_folders="vim"
 # all files/folders which start with a dot
