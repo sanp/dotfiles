@@ -3,7 +3,7 @@ This is my dotfiles directory.
 You may first need to install homebrew.
 
 Installation:
-    
+
 CD into home directory, clone the repo.  Make the bash script executable
 and then run it to symlink all dotfiles into your home directory.
 
@@ -13,8 +13,8 @@ and then run it to symlink all dotfiles into your home directory.
     chmod +x makesymlinks.sh
     ./makesymlinks.sh
 
-Switch to the .vim directory, and fetch submodules:
+Fetch vim submodules
 
-    cd ~/.vim
+    cd ~/dotfiles
     git submodule init
     git submodule update
