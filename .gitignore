@@ -1,0 +1,7 @@
+*.swp
+*~
+.CFUserTextEncoding
+.DS_Store
+.Rapp.history
+.bash_history
+.sh_history
