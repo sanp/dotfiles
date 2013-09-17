@@ -22,7 +22,7 @@ Fetch vim submodules.
 For some reason, the increment plugin for vim uses dos line endings, even if
 downloaded to a mac.  Use dos2unix to convert line endings to unix.
 
-    cd vim/bundle/increment
+    cd vim/bundle/increment/plugin
     dos2unix increment.vim
 
 Restart your terminal and vim.
