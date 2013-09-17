@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/xptemplate"]
 	path = .vim/bundle/xptemplate
 	url = https://github.com/drmingdrmer/xptemplate
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
