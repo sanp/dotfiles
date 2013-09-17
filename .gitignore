@@ -5,3 +5,5 @@
 .Rapp.history
 .bash_history
 .sh_history
+# The contents of this file change every time vim is opened, so ignore them
+vim_mru_files/*
