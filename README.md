@@ -15,6 +15,6 @@ and then run it to symlink all dotfiles into your home directory.
 
 Switch to the .vim directory, and fetch submodules:
 
-    cd ~
+    cd ~/.vim
     git submodule init
     git submodule update
