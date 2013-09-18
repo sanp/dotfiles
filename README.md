@@ -1,28 +1,29 @@
-This is my dotfiles directory.
+# Sanp's dotfiles
 
-You may first need to install homebrew and dos2unix.
+This is my dotfiles directory. It's a pretty standard one.
 
-Installation:
+## Installation
 
-CD into home directory, clone the repo.  Make the bash script executable
-and then run it to symlink all dotfiles into your home directory.
+Clone the repository into your home folder. Then, make the install script
+executable and run it.
 
-    cd ~
-    git clone https://github.com/sanp/dotfiles.git
-    cd dotfiles
-    chmod +x makesymlinks.sh
-    ./makesymlinks.sh
+```bash
+cd ~
+git clone https://github.com/sanp/dotfiles.git
+chmod +x install.sh
+./install.sh
+```
 
-Fetch vim submodules.
+Restart your terminal and vim. If all went well, you should now have access to
+all of the settings.
 
-    cd ~/dotfiles
-    git submodule init
-    git submodule update
+## Uninstalling
 
-For some reason, the increment plugin for vim uses dos line endings, even if
-downloaded to a mac.  Use dos2unix to convert line endings to unix.
+Go into the `~/dotfiles` folder, make the uninstall script executable, and run
+it.
 
-    cd vim/bundle/increment/plugin
-    dos2unix increment.vim
-
-Restart your terminal and vim.
+```bash
+cd ~/dotfiles
+chmod +x uninstall.sh
+./uninstall.sh
+```
