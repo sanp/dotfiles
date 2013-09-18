@@ -5,6 +5,9 @@
 # next, create symlinks in home folder, then fetch vim packages.
 ############################################################################
 
+# Execute script as root user
+sudo echo "Installation will now begin."
+
 cd ~
 
 # Install packages needed for this dotfiles configuration -- if they're already
@@ -19,7 +22,7 @@ brew install -U python
 # Exuberant ctags
 brew install ctags-exuberant
 # Pygments -- for nice colors in the terminal
-sudo easy_install Pygments
+easy_install Pygments
 # dos2unix
 brew install dos2unix
 
