@@ -4,12 +4,13 @@ This is my dotfiles directory. It's a pretty standard one.
 
 ## Installation
 
-Clone the repository into your home folder. Then, make the install script
-executable and run it.
+Clone the repository into your home folder. Then, go into the dotfiles folder, 
+make the install script executable, and run it.
 
 ```bash
 cd ~
 git clone https://github.com/sanp/dotfiles.git
+cd ~/dotfiles
 chmod +x install.sh
 ./install.sh
 ```
