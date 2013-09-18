@@ -16,6 +16,8 @@ cd ~
 
 # Homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+# Git -- ensure that git is up to date, and includes gitk, etc
+brew install git
 # Python - Macs come with python already, but this will install the latest 
 # (2.x) version
 brew install -U python

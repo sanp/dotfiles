@@ -12,6 +12,7 @@ alias db="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias doc="cd ~/Documents"
 alias df="cd ~/dotfiles"
+alias ref="cd ~/Documents/Reference"
 alias cl="clear"
 alias p="python"
 
