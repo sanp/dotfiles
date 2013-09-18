@@ -38,7 +38,7 @@ if has('unix') || has('mac')
     let $VIM = "~/.vim"
 endif
 
-" Make vim behave like windows
+" Make windows keyboard mappings work with vim -- good for Macs too
 so $VIM/source/mswin.vim
 so $VIM/source/vimrc_example.vim
 behave mswin
@@ -48,7 +48,7 @@ filetype plugin on
 filetype indent on
 filetype on
 
-" " Set default working directory
+" " Set default working directory -- I don't like this
 " cd ~/desktop
 
 " Keep backup files all in one directory -- remove clutter
@@ -111,6 +111,15 @@ set nowildmenu
 " Set filetype to vb when a .vb file is read
 autocmd BufNewFile,BufRead *.vb set ft=vb
 
+" Set the global default shell to be the bash shell
+let g:is_bash=1
+
+" NOTE: This is a company setting for my job.
+" Special filetype for Expert Systems Cogito Studio taxonomy input files: set
+" the tabs to hard tabs rather than soft tabs, otherwise Cogito Studio will not
+" be able to read the files
+autocmd BufNewFile,BufRead *.cog.txt set noexpandtab
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => b. Display
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -122,6 +131,7 @@ if has('win32') || has('win64')
         set lines=40 columns=115
     endif
 else
+    " Don't change window size/pos in terminal!
     if has("gui_running")
         winpos 445 123
         set lines=48 columns=115
@@ -159,10 +169,10 @@ set softtabstop=4
 set expandtab               " Spaces instead of tabs
 set smarttab
 
-" Indenting rules for python
+" Indenting rules for python and ruby
 autocmd Filetype py setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype python setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-autocmd FileType ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => e. Status line
@@ -172,7 +182,8 @@ autocmd FileType ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 set laststatus=2                                " Show statusline always
 set statusline=
 set statusline+=%-3.3n\                         " buffer number
-set statusline+=%f\                             " filename
+set statusline+=%f\                             " file path and name
+" set statusline+=%t\                           " filename without path
 set statusline+=%h%m%r%w                        " status flags
 set statusline+=\[%{strlen(&ft)?&ft:'none'}]    " file type
 set statusline+=%=                              " right align remainder
@@ -205,7 +216,6 @@ nnoremap <silent> ,D :cd ~/Desktop <CR>
 
 " Other useful mappings
 nnoremap <silent> ,V :cd $VIM<CR>
-nnoremap <silent> ,F :cd $VIM\vimfiles<CR>
 
 " To save, ctrl-s.
 nnoremap <silent> <c-s> :w<CR>
@@ -240,7 +250,8 @@ nnoremap <silent> <F3> a<C-R>=strftime("%Y %b %d %a %I:%M %p")<CR><Esc>
 inoremap <silent> <F3> <C-R>=strftime("%Y %b %d %a %I:%M %p")<CR>
 
 " Press <F4> to automatically update the 'LastUpdated' line of any
-" file to the current date and time.
+" file to the current date and time. -- This is useful is you include a
+" header in your files which indicates when the file was last updated.
 " NOTE: Use nmap here, not nnoremap, because you need to call the <F3>
 " datestamp generator mapping from this mapping
 nmap <silent> <F4> gg/LastUpdated<CR>f wd$<F3>
@@ -259,20 +270,10 @@ nnoremap <silent> <leader>t V>
 nnoremap <silent> ,t V<
 
 " Map <F5> to open the current file (html) in a Chrome browser window
-nnoremap <silent> <F5> :update<Bar>silent !start "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "file://%:p"<CR>
-" nnoremap <silent> <F5> :update<Bar>silent !start "/Applications/Google Chrome.app" "file://%:p"<CR>
+nnoremap <silent> <F5> :update<Bar>silent !start "/Applications/Google Chrome.app" "file://%:p"<CR>
 
 " Edit the vimrc file
-" On a mac, I keep my vimrc in the $MYVIMRC file, but on a windows, I no longer
-" keep my vimrc settings in $MYVIMRC -- this is so that on a windows, my vimrc
-" can be in my vimfiles folder, so that I can use git for version control of
-" that folder.  Therefore, map ,ev to edit my actual vimrc settings, not
-" $MYVIMRC
-if has('win32') || has('win64')
-    nnoremap <silent> ,ev :e $VIM/vimfiles/vimrc<CR>
-else
-    nnoremap <silent> ,ev :e $MYVIMRC<CR>
-endif
+nnoremap <silent> ,ev :e $MYVIMRC<CR>
 
 " Source the vimrc file:
 " Use silent! here to avoid getting an error that the functions
@@ -400,23 +401,14 @@ function CloseNERDTree()
    endif
 endfunction
 
-" Source the commenting script Danny and I made
-" This maps several functions for commenting out portions of
-" code.
-if has('win32') || has('win64')
-    so $VIM/vimfiles/my_functions/commenting.vim
-else
-    so $VIM/my_functions/commenting.vim
-endif
-
-" Source the FormatQuery() function I wrote -- this formats
-" SocialSense queries by adding line breaks and indentation
-" to unformatted queries
-if has('win32') || has('win64')
-    so $VIM/vimfiles/my_functions/FormatQuery.vim
-else
-    so $VIM/my_functions/FormatQuery.vim
-endif
+" Source all scripts that are in the my_functions directory -- some I wrote,
+" some others wrote.
+" Includes: Commenting script for commenting/uncommenting portions of code
+" FormatQuery script for proper indentation of SocialSense queries (for Networked Insights)
+" RemoveDiacritics script for removing diacritical markings from text
+for file in split(globpath($VIM, 'my_functions/*.vim'), '\n')
+  exe 'source' file
+endfor
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => i. Plugins
@@ -487,7 +479,7 @@ autocmd BufNewFile,BufRead *.py compiler python
 " To disable the annoying mapping from _ to ->
 " let vimrplugin_assign = 0
 " Instead, map the < to <-
-let vimrplugin_assign_map = "<"
+let vimrplugin_assign_map = "`"
 
 """""""""""""""""""""""""
 " MRU
