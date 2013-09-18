@@ -9,7 +9,7 @@
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
 
-source ./files_and_folders.sh
+source ./files_and_folders.sh     # file containing names of files/folders to be symlinked
 
 ##########
 
