@@ -1,5 +1,4 @@
-" Lang1 -- higher priority so will override default python snippits
-XPTemplate priority=lang1
+XPTemplate priority=personal
 
 
 let s:f = g:XPTfuncs()
@@ -167,10 +166,6 @@ fun! s:f.python_find_func( default )
     
 endfunction
 
-fun! s:f.GetTimestamp()
-    return strftime("%Y %b %d %a %I:%M %p")
-endfunction
-
 " ================================= Snippets ===================================
 
 
@@ -197,14 +192,19 @@ XSET arg*|post=ExpandInsideEdge( ',$SPop', '' )
 
 XPT python " #!$PYTHON_EXC
 XSET encoding=Echo(&fenc != '' ? &fenc : &enc)
-#!`$PYTHON_EXC^ -tt
-# coding: utf-8
+#!`$PYTHON_EXC^
+# coding: `encoding^
 
 ..XPT
 
 XPT shebang alias=python
-
 XPT sb alias=python
+
+XPT python2 " shebang for python2.x programs -- default is for 3.x
+#!/usr/bin/env python2
+# coding: utf-8
+
+XPT p2 alias=python2
 
 
 XPT p " pass
@@ -218,10 +218,10 @@ self.
 XPT filehead " file description
 `$PYTHON_DOC_MARK^
 
-File        : `file()^
-Author      : `$author^
-Contact     : `$email^
-Created     : `date()^
+File    : `file()^
+Author  : `$author^
+Contact : `$email^
+Date    : `date()^
 
 Description : `desc^
 
@@ -231,10 +231,8 @@ Description : `desc^
 
 XPT fh alias=filehead
 
-
 XPT docstring " docstring
-`$PYTHON_DOC_MARK^ `docstring^ `$PYTHON_DOC_MARK^
-`cursor^
+`$PYTHON_DOC_MARK^ `cursor^ `$PYTHON_DOC_MARK^
 
 XPT ds alias=docstring
 
@@ -302,10 +300,6 @@ finally:
 
 
 XPT class " class .. : def __init__ ...
-class `ClassName^:
-    `pass^
-
-XPT iclass " class .. : def __init__ ... (with parens -- for inheritance)
 class `ClassName^`$SPfun^(`$SParg`object`$SParg^):
     `pass^
 
@@ -315,32 +309,15 @@ XSET arg*|post=ExpandInsideEdge( ',$SPop', '' )
 def __init__`$SPfun^(`$SParg^self`,$SPop`arg*^`$SParg^):
     `cursor^
 
-XPT str " def __str__
-XSET arg*|post=ExpandInsideEdge( ',$SPop', '' )
-def __str__`$SPfun^(self):
-    `cursor^
-
-XPT repr " def __repr__
-XSET arg*|post=ExpandInsideEdge( ',$SPop', '' )
-def __repr__`$SPfun^(self):
-    `cursor^
-
 
 " TODO guess method name for example __init__
 XPT super " super\( Clz, self ).
 super(`$SParg^`clz^python_find_class('Me')^,`$SPop^self`$SParg^).`method^python_find_func('what')^(`:_args:^)
 
 
-XPT mainif " if __name__ == __main__...cursor
-if __name__`$SPop^==`$SPop^"__main__":
-    `cursor^
-
-" Boilerplate version of ifmain where main() is the default method to run
-XPT ifmain " if __name__ == __main__...main
+XPT ifmain " if __name__ == __main__
 if __name__`$SPop^==`$SPop^"__main__":
     main()
-
-XPT ifm alias=ifmain
 
 XPT with " with .. as .. :
 with `opener^` as `name?^:
@@ -359,7 +336,7 @@ XPT fromfuture " from __future__ import ..
 from __future__ import `name^
 
 
-XPT strr wrap=s " str\( .. )
+XPT str wrap=s " str\( .. )
 str(`$SParg^`s^`$SParg^)
 
 

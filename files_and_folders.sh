@@ -3,7 +3,7 @@
 
 # files and folders which should start with a dot when symlinked
 # list of dot files to symlink in homedir
-dot_files="aliases profile gitconfig gitignore-global gitk vim_mru_files viminfo vimrc Rprofile"
+dot_files="aliases profile gitconfig gitignore-global gitk viminfo vimrc Rprofile"
 # list of dot folders to symlink in homedir
 dot_folders="vim"
 # all files/folders which start with a dot

@@ -27,7 +27,11 @@ function uninstall {
 
     # Delete the dotfiles
     cd ~
-    rm -rf $dotfiles
+    rm -r $dotfiles
+
+    # Delete the .vim_mru_files file in the home folder
+    cd ~
+    rm -r .vim_mru_file
 
     echo "Uninstall successful."
 
