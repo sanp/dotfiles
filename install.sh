@@ -49,9 +49,4 @@ echo "Vim submodules updated."
 cd ~/dotfiles/vim/bundle/increment/plugin
 dos2unix increment.vim
 
-# Create the vim_mru_files file in the home folder -- this is the file that the
-# MRU plugin in vim uses to store history info.
-cd ~
-touch .vim_mru_files
-
 echo "Done! Restart your terminal and vim."
