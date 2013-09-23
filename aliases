@@ -32,6 +32,10 @@ alias l="ls -l"
 alias la="ls -al"
 # List only directories
 alias lsd='ls -l | grep "^d"'
+# Grep -- example usage: 'lg txt' short for 'ls grep | txt'
+alias lg='ls | grep'
+# Grep long version 
+alias llg='ls -al | grep'
 
 # `cat` with beautiful colors. requires Pygments installed.
 # if not already installed: sudo easy_install Pygments
