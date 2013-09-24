@@ -454,7 +454,7 @@ function SetLargeWindow()
     else
         " Don't change window size/pos in terminal!
         if has("gui_running")
-            winpos 147 22
+            winpos 80 22
             set lines=57 columns=160
         endif
     endif
