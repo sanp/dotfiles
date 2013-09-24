@@ -7,13 +7,13 @@
 "
 " Sections:
 "   -> a. General
-"   -> b. Display
-"   -> c. Colors and Fonts
-"   -> d. Text, tab, and indent related
-"   -> e. Status line
-"   -> f. Mappings and abbreviations 
-"   -> g. Spell checking
-"   -> h. Helper functions
+"   -> b. Colors and Fonts
+"   -> c. Text, tab, and indent related
+"   -> d. Status line
+"   -> e. Mappings and abbreviations 
+"   -> f. Spell checking
+"   -> g. Helper functions
+"   -> h. Display
 "   -> i. plugins
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -121,25 +121,7 @@ let g:is_bash=1
 autocmd BufNewFile,BufRead *.cog.txt set noexpandtab
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => b. Display
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Set starting window position and size
-if has('win32') || has('win64')
-    if has("gui_running")
-        winpos 1000 100
-        set lines=40 columns=115
-    endif
-else
-    " Don't change window size/pos in terminal!
-    if has("gui_running")
-        winpos 445 123
-        set lines=48 columns=115
-    endif
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => c. Colors and Fonts
+" => b. Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set color
@@ -158,7 +140,7 @@ elseif has('unix')
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => d. Text, tab, and indent related
+" => c. Text, tab, and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Default indentation rule
@@ -175,7 +157,7 @@ autocmd Filetype python setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => e. Status line
+" => d. Status line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Status line settings
@@ -192,12 +174,16 @@ set statusline+=%-14(%l,%c%V%)                  " line, character
 set statusline+=%<%P                            " file position
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => f. Mappings and abbreviations
+" => e. Mappings and abbreviations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set local leader to the _ character to avoid clashes between global
 " and ft plugins
 let maplocalleader = "-"
+
+" <C-e> scrolls up one line at a time. Default maps <C-y> to move screen down
+" one line. <C-d> is a better mapping -- less hand movement
+nnoremap <silent> <C-s> <C-y>
 
 " maps ,e to open file with the current working directory already
 " filled in so you have to specify only the filename
@@ -216,10 +202,6 @@ nnoremap <silent> ,D :cd ~/Desktop <CR>
 
 " Other useful mappings
 nnoremap <silent> ,V :cd $VIM<CR>
-
-" To save, ctrl-s.
-nnoremap <silent> <c-s> :w<CR>
-inoremap <silent> <c-s> <Esc>:w<CR>a
 
 " Defines abbreviations for tab commands
 ca <silent> tn tabnew
@@ -318,8 +300,29 @@ nnoremap ,a ggVG
 " Go down half of one page when at bottom
 nnoremap \r <c-f><c-u>G
 
+" Change window size to a few default options
+" 1 goes back to default setting used when new vim window is opened
+nnoremap <silent> ,1 :call SetSmallWindow()<CR>
+" 2 medium size
+nnoremap <silent> ,2 :call SetMediumWindow()<CR>
+" 3 large size
+nnoremap <silent> ,3 :call SetLargeWindow()<CR>
+" 0 maximize screen
+nnoremap <silent> ,0 :call SetMaxWindow()<CR>
+
+" Most recently used files
+nnoremap <silent> ,m :MRU<CR>
+" Open last opened file -- can't use nnoremap, must use nmap here
+" -- i guess this is because <CR> is mapped to something in MRU code
+nmap <silent> ,l :MRU<CR><CR>
+
+" Make search results centered on screen so you don't have to move your eyes to
+" look for results
+nnoremap n nzz
+nnoremap N Nzz
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => g. Spell checking
+" => f. Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Pressing <leader>ss will toggle and untoggle spell checking
@@ -331,14 +334,8 @@ noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>s? z=
 
-" Most recently used files
-nnoremap <silent> ,m :MRU<CR>
-" Open last opened file -- can't use nnoremap, must use nmap here
-" -- i guess this is because <CR> is mapped to something in MRU code
-nmap <silent> ,l :MRU<CR><CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => h. Helper functions
+" => g. Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " The following function calculates the length in characters of the 
@@ -409,6 +406,84 @@ endfunction
 for file in split(globpath($VIM, 'my_functions/*.vim'), '\n')
   exe 'source' file
 endfor
+
+" Functions to set window positions and sizes
+" Not really sure what the numbers should be for windows OS -- if I ever use a
+" windows machine again, maybe I'll adjust them.  I think they should be 
+" different than Mac, though.
+
+" Small size
+function SetSmallWindow()
+    if has('win32') || has('win64')
+        if has("gui_running")
+            winpos 1000 100
+            set lines=40 columns=115
+        endif
+    else
+        " Don't change window size/pos in terminal!
+        if has("gui_running")
+            winpos 445 123
+            set lines=48 columns=115
+        endif
+    endif
+endfunction
+
+" Medium size
+function SetMediumWindow()
+    if has('win32') || has('win64')
+        if has("gui_running")
+            winpos 1000 100
+            set lines=50 columns=140
+        endif
+    else
+        " Don't change window size/pos in terminal!
+        if has("gui_running")
+            winpos 147 22
+            set lines=57 columns=143
+        endif
+    endif
+endfunction
+
+" Large size
+function SetLargeWindow()
+    if has('win32') || has('win64')
+        if has("gui_running")
+            winpos 1000 100
+            set lines=50 columns=160
+        endif
+    else
+        " Don't change window size/pos in terminal!
+        if has("gui_running")
+            winpos 147 22
+            set lines=57 columns=160
+        endif
+    endif
+endfunction
+
+" Maxmimum size - no need for winpos since the window will take up the whole
+" screen
+function SetMaxWindow()
+    if has('win32') || has('win64')
+        if has("gui_running")
+            set lines=500 columns=500
+        endif
+    else
+        " Don't change window size/pos in terminal!
+        if has("gui_running")
+            set lines=500 columns=500
+        endif
+    endif
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => h. Display
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" This has to appear below the functions to be called at startup
+
+" Set starting window position and size
+" See functions below in functions section for details
+call SetSmallWindow()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => i. Plugins

@@ -52,24 +52,11 @@ vmap <S-Insert>		<C-V>
 " Use CTRL-Q to do what CTRL-V used to do
 noremap <C-Q>		<C-V>
 
-" Use CTRL-S for saving, also in Insert mode
-noremap <C-S>		:update<CR>
-vnoremap <C-S>		<C-C>:update<CR>
-inoremap <C-S>		<C-O>:update<CR>
-
 " For CTRL-V to work autoselect must be off.
 " On Unix we have two selections, autoselect can be used.
 if !has("unix")
   set guioptions-=a
 endif
-
-" CTRL-Z is Undo; not in cmdline though
-noremap <C-Z> u
-inoremap <C-Z> <C-O>u
-
-" CTRL-Y is Redo (although not repeat); not in cmdline though
-noremap <C-Y> <C-R>
-inoremap <C-Y> <C-O><C-R>
 
 " Alt-Space is System menu
 if has("gui")
