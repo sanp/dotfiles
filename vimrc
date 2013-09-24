@@ -125,18 +125,8 @@ autocmd BufNewFile,BufRead *.cog.txt set noexpandtab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set starting window position and size
-if has('win32') || has('win64')
-    if has("gui_running")
-        winpos 1000 100
-        set lines=40 columns=115
-    endif
-else
-    " Don't change window size/pos in terminal!
-    if has("gui_running")
-        winpos 445 123
-        set lines=48 columns=115
-    endif
-endif
+" See functions below in functions section for details
+:call SetSmallWindow()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => c. Colors and Fonts
@@ -318,6 +308,14 @@ nnoremap ,a ggVG
 " Go down half of one page when at bottom
 nnoremap \r <c-f><c-u>G
 
+" Change window size to a few default options
+" 1 goes back to default setting used when new vim window is opened
+nnoremap <silent> ,1 :call SetSmallWindow()<CR>
+" 2 medium size
+nnoremap <silent> ,2 :call SetMediumWindow()<CR>
+" 3 maximize screen
+nnoremap <silent> ,3 :call SetLargeWindow()<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => g. Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -409,6 +407,58 @@ endfunction
 for file in split(globpath($VIM, 'my_functions/*.vim'), '\n')
   exe 'source' file
 endfor
+
+" Functions to set window positions and sizes
+" Not really sure what the numbers should be for windows OS -- if I ever use a
+" windows machine again, maybe I'll adjust them.  I think they should be 
+" different than Mac, though.
+
+" Small size
+function SetSmallWindow()
+    if has('win32') || has('win64')
+        if has("gui_running")
+            winpos 1000 100
+            set lines=40 columns=115
+        endif
+    else
+        " Don't change window size/pos in terminal!
+        if has("gui_running")
+            winpos 445 123
+            set lines=48 columns=115
+        endif
+    endif
+endfunction
+
+" Medium size
+function SetMediumWindow()
+    if has('win32') || has('win64')
+        if has("gui_running")
+            winpos 1000 100
+            set lines=50 columns=140
+        endif
+    else
+        " Don't change window size/pos in terminal!
+        if has("gui_running")
+            winpos 147 22
+            set lines=57 columns=143
+        endif
+    endif
+endfunction
+
+" Large size - no need for winpos since the window will take up the whole 
+" screen
+function SetLargeWindow()
+    if has('win32') || has('win64')
+        if has("gui_running")
+            set lines=500 columns=500
+        endif
+    else
+        " Don't change window size/pos in terminal!
+        if has("gui_running")
+            set lines=500 columns=500
+        endif
+    endif
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => i. Plugins

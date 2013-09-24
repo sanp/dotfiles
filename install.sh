@@ -27,6 +27,8 @@ brew install ctags-exuberant
 easy_install Pygments
 # dos2unix
 brew install dos2unix
+# tmux
+brew install tmux
 
 echo "All packages now installed."
 
