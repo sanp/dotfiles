@@ -1,3 +1,5 @@
+" Author: Steve SanPietro
+"
 " This function formats a query according to the rules of
 " Social Sense -- used for work with Networked Insights 
 " query writing
@@ -5,10 +7,13 @@
 function! FormatQuery()
     silent! set textwidth=60
     silent! normal gggqG
+    silent! %s/:\s*(/:(/g
+    silent! %s/:\s*\[/:[/g
     silent! %s/\ze\<\w*\>:/+--++/g
     silent! %s/\ze[+ -](/\r
     silent! %s/(/(\r/g
     silent! %s/)/\r)\r/g
+    silent! %s/^.*\zs\ze[+-]+--++.*$/\r/g        " Test line
     silent! %s/^\s*$//g
     silent! v/./d
     silent! %s/^\s*//g
@@ -19,6 +24,7 @@ function! FormatQuery()
     " have to add and then remove a semicolon
     " from end of each line
     silent! %s/\ze$/;/g
+    silent! set textwidth=60
     silent! normal gg=G
     silent! %s/\zs;\ze$//g
     silent! %s/{/(/g

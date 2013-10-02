@@ -24,6 +24,9 @@ alias sop="source ~/.profile"
 # programs
 alias mvim='open -a "MacVim"'
 
+# Postgres database connection
+alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U adhoc'
+
 # Always use color when ls-ing
 alias ls='ls -GFh'
 # List all files in long format

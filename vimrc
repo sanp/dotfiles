@@ -182,8 +182,24 @@ set statusline+=%<%P                            " file position
 let maplocalleader = "-"
 
 " <C-e> scrolls up one line at a time. Default maps <C-y> to move screen down
-" one line. <C-d> is a better mapping -- less hand movement
+" one line. <C-s> is a better mapping -- less hand movement
 nnoremap <silent> <C-s> <C-y>
+
+" Fast window resizing with plus/minus keys if more than one window is open
+" Technically not the plus key -- equal key -- because it's too much work to hit
+" the shift key
+if bufwinnr(1)
+  " Resize vertically
+  noremap <silent> + <C-W>+
+  noremap <silent> - <C-W>-
+  noremap <silent> \+ 5<C-W>+
+  noremap <silent> \- 5<C-W>-
+  " Resize horizontally
+  noremap <silent> <C-p> <C-W>>
+  noremap <silent> <C-o> <C-W><
+"   noremap <silent> <C-p> 5<C-W>>
+"   noremap <silent> <C-o> 5<C-W><
+endif
 
 " maps ,e to open file with the current working directory already
 " filled in so you have to specify only the filename
@@ -195,13 +211,13 @@ nnoremap <silent> ,cd :cd %:p:h <CR>
 " Maps ,R to set the working directory to the R workspace directory:
 " useful for editing .R files with vim. Must remember to change
 " this line if ever update or change the R working directory.
-nnoremap <silent> ,R :cd ~/Documents/R <CR> 
+nnoremap <silent> ,R :cd ~/Documents/R<CR>:pwd<CR>
 
 " ,D to set the working directory to the desktop
-nnoremap <silent> ,D :cd ~/Desktop <CR> 
+nnoremap <silent> ,D :cd ~/Desktop <CR>:pwd<CR>
 
 " Other useful mappings
-nnoremap <silent> ,V :cd $VIM<CR>
+nnoremap <silent> ,V :cd $VIM<CR>:pwd<CR>
 
 " Defines abbreviations for tab commands
 ca <silent> tn tabnew
@@ -251,8 +267,10 @@ noremap <silent> ,,N :call CloseNERDTree()<CR>
 nnoremap <silent> <leader>t V>
 nnoremap <silent> ,t V<
 
-" Map <F5> to open the current file (html) in a Chrome browser window
-nnoremap <silent> <F5> :update<Bar>silent !start "/Applications/Google Chrome.app" "file://%:p"<CR>
+" Open the current HTML file in a web browser
+nnoremap <silent> ,hf :exe 'silent !open -a Firefox %'<CR>
+nnoremap <silent> ,hc :exe 'silent !open -a "Google Chrome" %'<CR>
+nnoremap <silent> ,hs :exe 'silent !open -a Safari %'<CR>
 
 " Edit the vimrc file
 nnoremap <silent> ,ev :e $MYVIMRC<CR>
@@ -279,7 +297,7 @@ nnoremap <silent> ,j :bn<CR>
 nnoremap <silent> ,d :bd<CR>
 
 " Opposite of J -- split line into two at current cursor position
-nnoremap <silent> ,s i<CR><ESC>
+nnoremap <silent> ,ss i<CR><ESC>
 
 " Copy the full absolute path only into the system clipboard
 nnoremap <silent> ,yp :let @" = expand("%:p:h")<CR>
@@ -320,6 +338,9 @@ nmap <silent> ,l :MRU<CR><CR>
 " look for results
 nnoremap n nzz
 nnoremap N Nzz
+
+" Select current line without selecting line break / new line like with V
+nnoremap ,cc 0v$
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => f. Spell checking
