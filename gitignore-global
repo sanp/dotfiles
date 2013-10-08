@@ -3,3 +3,6 @@
 # Any temporary files which vim generates
 *~
 *.swp
+
+# Stupid files that mac automatically generates everywhere
+.DS_Store

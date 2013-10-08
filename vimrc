@@ -341,6 +341,9 @@ nnoremap N Nzz
 
 " Select current line without selecting line break / new line like with V
 nnoremap ,cc 0v$
+" Select from cursor to end of current line without selecting line break / new
+" line like with V
+nnoremap ,ce v$
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => f. Spell checking

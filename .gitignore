@@ -5,5 +5,5 @@
 .Rapp.history
 .bash_history
 .sh_history
-vim/bundle/**/*
 vim_mru_files
+.vim_mru_files
