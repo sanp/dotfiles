@@ -190,15 +190,15 @@ nnoremap <silent> <C-s> <C-y>
 " the shift key
 if bufwinnr(1)
   " Resize vertically
-  noremap <silent> + <C-W>+
-  noremap <silent> - <C-W>-
-  noremap <silent> \+ 5<C-W>+
-  noremap <silent> \- 5<C-W>-
+  noremap <silent> ,= <C-W>+
+  noremap <silent> ,- <C-W>-
+  noremap <silent> ,,= 5<C-W>+
+  noremap <silent> ,,- 5<C-W>-
   " Resize horizontally
-  noremap <silent> <C-p> <C-W>>
-  noremap <silent> <C-o> <C-W><
-"   noremap <silent> <C-p> 5<C-W>>
-"   noremap <silent> <C-o> 5<C-W><
+  noremap <silent> ,o <C-W>>
+  noremap <silent> ,i <C-W><
+  noremap <silent> ,,o 5<C-W>>
+  noremap <silent> ,,i 5<C-W><
 endif
 
 " maps ,e to open file with the current working directory already
@@ -344,6 +344,11 @@ nnoremap ,cc 0v$
 " Select from cursor to end of current line without selecting line break / new
 " line like with V
 nnoremap ,ce v$
+
+" For pasting to work correctly in the terminal, set paste before each paste,
+" and turn it off after
+" Toggle paste mode and display whether paste or nopaste
+nnoremap <silent> ,p :set invpaste<CR>:set paste?<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => f. Spell checking
