@@ -345,6 +345,11 @@ nnoremap ,cc 0v$
 " line like with V
 nnoremap ,ce v$
 
+" For pasting to work correctly in the terminal, set paste before each paste,
+" and turn it off after
+" Toggle paste mode and display whether paste or nopaste
+nnoremap <silent> ,p :set invpaste<CR>:set paste?<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => f. Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
