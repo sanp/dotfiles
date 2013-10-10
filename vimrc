@@ -182,7 +182,7 @@ set statusline+=%<%P                            " file position
 let maplocalleader = "-"
 
 " <C-e> scrolls up one line at a time. Default maps <C-y> to move screen down
-" one line. <C-s> is a better mapping -- less hand movement
+" one line. <C-s> is a better mapping -- less hand movement. <C-y> still works.
 nnoremap <silent> <C-s> <C-y>
 
 " Fast window resizing with plus/minus keys if more than one window is open
