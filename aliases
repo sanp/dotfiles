@@ -39,6 +39,14 @@ alias lsd='ls -l | grep "^d"'
 alias lg='ls | grep'
 # Grep long version 
 alias llg='ls -al | grep'
+# List tmux sessions
+alias tls='tmux ls'
+# Start a new tmux session
+alias tns='tmux new -s'
+# Attach a tmux session
+alias ta='tmux attach -t'
+# Kill a tmux session
+alias tk='tmux kill-session -t'
 
 # `cat` with beautiful colors. requires Pygments installed.
 # if not already installed: sudo easy_install Pygments
