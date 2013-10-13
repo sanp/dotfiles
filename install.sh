@@ -48,6 +48,11 @@ git submodule init
 git submodule update
 echo "Vim submodules updated."
 
+# Create the file which will store vim history, for vim MRU (most recently used)
+# plugin
+cd ~
+touch .vim_mru_files
+
 # For some reason, the increment plugin for vim uses dos line endings, even if
 # downloaded to a Mac.  Use dos2unix to convert line endings to unix.
 cd ~/dotfiles/vim/bundle/increment/plugin
