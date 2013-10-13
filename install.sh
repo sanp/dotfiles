@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ############################################################################
-# This script installs the dotfiles.  First, install all dependent packages,
-# next, create symlinks in home folder, then fetch vim packages.
+# This script installs the dotfiles.  First, installs all dependent packages,
+# next, creates symlinks in home folder, finally fetches vim packages.
 ############################################################################
 
 # Execute script as root user
@@ -18,6 +18,8 @@ cd ~
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 # Git -- ensure that git is up to date, and includes gitk, etc
 brew install git
+# Git completion and shell completion via homebrew
+brew install bash-completion
 # Python - Macs come with python already, but this will install the latest 
 # (2.x) version
 brew install -U python
