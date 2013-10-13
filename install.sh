@@ -52,6 +52,9 @@ echo "Vim submodules updated."
 # plugin
 cd ~
 touch .vim_mru_files
+# To avoid getting an error the first time vim is opened, add a file to the vim 
+# recent file history
+echo '~/.profile' >> ~/.vim_mru_files
 
 # For some reason, the increment plugin for vim uses dos line endings, even if
 # downloaded to a Mac.  Use dos2unix to convert line endings to unix.
