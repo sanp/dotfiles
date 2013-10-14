@@ -56,9 +56,4 @@ touch .vim_mru_files
 # recent file history
 echo '~/.profile' >> ~/.vim_mru_files
 
-# For some reason, the increment plugin for vim uses dos line endings, even if
-# downloaded to a Mac.  Use dos2unix to convert line endings to unix.
-cd ~/dotfiles/vim/bundle/increment/plugin
-dos2unix increment.vim
-
 echo "Done! Restart your terminal and vim."

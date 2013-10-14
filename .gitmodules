@@ -43,3 +43,6 @@
 [submodule "vim/bundle/screen"]
 	path = vim/bundle/screen
 	url = https://github.com/ervandew/screen.git
+[submodule "vim/bundle/increment"]
+	path = vim/bundle/increment
+	url = https://github.com/sanp/increment.vim--Avadhanula.git
