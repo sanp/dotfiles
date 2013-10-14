@@ -1,48 +1,39 @@
 [submodule "vim/bundle/mru"]
 	path = vim/bundle/mru
-	url = https://github.com/vim-scripts/mru.vim
+	url = https://github.com/vim-scripts/mru.vim.git
 [submodule "vim/bundle/scroll-colors"]
 	path = vim/bundle/scroll-colors
-	url = https://github.com/vim-scripts/ScrollColors
+	url = https://github.com/vim-scripts/ScrollColors.git
 [submodule "vim/bundle/genutils"]
 	path = vim/bundle/genutils
-	url = https://github.com/vim-scripts/genutils
-[submodule "vim/bundle/increment"]
-	path = vim/bundle/increment
-	url = https://github.com/vim-scripts/increment.vim--Avadhanula
+	url = https://github.com/vim-scripts/genutils.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/tlib"]
 	path = vim/bundle/tlib
-	url = https://github.com/tomtom/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
 [submodule "vim/bundle/viki"]
 	path = vim/bundle/viki
-	url = https://github.com/tomtom/viki_vim
+	url = https://github.com/tomtom/viki_vim.git
 [submodule "vim/bundle/vim-addon-manager"]
 	path = vim/bundle/vim-addon-manager
-	url = https://github.com/MarcWeber/vim-addon-manager
+	url = https://github.com/MarcWeber/vim-addon-manager.git
 [submodule "vim/bundle/vim-compiler-python"]
 	path = vim/bundle/vim-compiler-python
-	url = https://github.com/tlvince/vim-compiler-python
+	url = https://github.com/tlvince/vim-compiler-python.git
 [submodule "vim/bundle/easymotion"]
 	path = vim/bundle/easymotion
-	url = https://github.com/Lokaltog/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
-	url = https://github.com/tpope/vim-surround
+	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/xptemplate"]
 	path = vim/bundle/xptemplate
-	url = https://github.com/drmingdrmer/xptemplate
+	url = https://github.com/drmingdrmer/xptemplate.git
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
-[submodule "vim/bundle/vim-r"]
-	path = vim/bundle/vim-r
-	url = https://github.com/vim-scripts/Vim-R-plugin.git
-[submodule "vim/bundle/screen"]
-	path = vim/bundle/screen
-	url = https://github.com/ervandew/screen.git
