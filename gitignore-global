@@ -6,3 +6,4 @@
 
 # Stupid files that mac automatically generates everywhere
 .DS_Store
+*/**/.DS_Store

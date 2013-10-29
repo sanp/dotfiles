@@ -5,4 +5,4 @@
 .Rapp.history
 .bash_history
 .sh_history
-tags
+vim/bundle/**/doc/tags
