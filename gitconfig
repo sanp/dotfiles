@@ -19,6 +19,8 @@
 	br = branch
 	rb = rebase
     sm = submodule
+    lf = ls-files
+    lfo = ls-files -o --exclude-per-directory=.gitignore
 [color]
 	ui = true
 [diff]
