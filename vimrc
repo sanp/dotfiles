@@ -297,7 +297,7 @@ nnoremap <silent> ,j :bn<CR>
 nnoremap <silent> ,d :bd<CR>
 
 " Opposite of J -- split line into two at current cursor position
-nnoremap <silent> ,ss i<CR><ESC>
+nnoremap <silent> ,sl i<CR><ESC>
 
 " Copy the full absolute path only into the system clipboard
 nnoremap <silent> ,yp :let @" = expand("%:p:h")<CR>
@@ -621,3 +621,29 @@ let g:xptemplate_brace_complete = '([{'
 " Set global variables in xpt:
 " author, email = personal variables.  SParg sets spaces between brackets (disabled)
 let g:xptemplate_vars = '$author=Steve SanPietro&$email=sanpietro.steve@gmail.com&SParg='
+
+"""""""""""""""""""""""""
+" ScreenShell
+"""""""""""""""""""""""""
+
+" Open up a terminal to run code through
+
+nnoremap <silent> ,sh :ScreenShell<CR>
+" No carriage return here -- so that you can enter a command for the terminal to
+" execute before hitting enter -- e.g.: :ScreenShell python
+nnoremap <silent> ,sc :ScreenShell
+nnoremap <silent> ,sp :ScreenShell python<CR>
+
+" Send lines of code from buffer to the terminal
+
+" Send one line to the shell 
+nnoremap <silent> ,sl V:ScreenSend<CR>
+" Send one line to the shell -- j at end to also go down one line -- useful for
+" stepping through entire selections of code
+nnoremap <silent> ,sd V:ScreenSend<CR>j
+" Send selection (or entire buffer, if no selection highlighted) to the shell
+nnoremap <silent> ,ss :ScreenSend<CR>
+vnoremap <silent> ,ss :ScreenSend<CR>
+
+" Quit the GNU screen
+nnoremap <silent> ,sq :ScreenQuit<CR>

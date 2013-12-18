@@ -26,6 +26,8 @@ alias mvim='open -a "MacVim"'
 
 # Postgres database connection
 alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U adhoc'
+# Socialsense database connection
+alias socialsense='psql -h postgres2.colo.networkedinsights.com -d socialsense -U nireader'
 
 # Always use color when ls-ing
 alias ls='ls -GFh'
