@@ -65,6 +65,24 @@ public static void main(`$SParg^String[] args`$SParg^)`$BRfun^{
     `cursor^
 }
 
+XPT classmain " public class... public static void main...
+public class `className^ {
+    public static void main(`$SParg^String[] args`$SParg^)`$BRfun^{
+        `cursor^
+    }
+}
+
+XPT cm alias=classmain
+
+XPT publicclass " public class...
+public class `className^ {
+
+    `cursor^
+
+}
+
+XPT pc alias=publicclass
+
 
 XPT enum " public enum { .. }
 `public^ enum `enumName^
