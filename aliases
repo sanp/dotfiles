@@ -37,6 +37,8 @@ alias l="ls -l"
 alias la="ls -al"
 # List only directories
 alias lsd='ls -l | grep "^d"'
+# List all files, folders, and subfolders and files
+alias lr='ls -R'
 # Grep -- example usage: 'lg txt' short for 'ls grep | txt'
 alias lg='ls | grep'
 # Grep long version 

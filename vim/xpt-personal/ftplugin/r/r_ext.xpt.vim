@@ -42,7 +42,7 @@ XPT head " #! /usr/bin/env/Rscript
 
 " My additional snippets
 
-XPT header " Name ... Author ... Created ... LastUpdated ... Description
+XPT filehead " Name ... Author ... Created ... LastUpdated ... Description
 #########################################################
 # Name: `codeName^
 # Author: `$author^ 
@@ -54,6 +54,8 @@ XPT header " Name ... Author ... Created ... LastUpdated ... Description
 #########################################################
 
 `cursor^
+
+XPT fh alias=filehead
 
 XPT read " read: csv, txt, etc
 XSET fc=$filechoose
