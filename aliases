@@ -24,8 +24,10 @@ alias sop="source ~/.profile"
 # programs
 alias mvim='open -a "MacVim"'
 
-# Postgres database connection
-alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U adhoc'
+# Postgres shortcuts for NI databases
+# Adhoc database connection (ssanpietro user has permission to create schemas)
+alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U ssanpietro'
+# alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U adhoc'
 # Socialsense database connection
 alias socialsense='psql -h postgres2.colo.networkedinsights.com -d socialsense -U nireader'
 
