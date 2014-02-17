@@ -71,3 +71,10 @@ normal_colours=$'\e[m'
 
 # Customize the terminal prompt by setting the PS1 value
 PS1="\[$green\]\u@\h:\w\[$magenta\]\$git_branch\[$green\]\\$\[$normal_colours\] "
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+### Virtualenvwrapper settings
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
