@@ -31,6 +31,8 @@ easy_install Pygments
 brew install dos2unix
 # tmux
 brew install tmux
+# Tree - for viewing file directory structures
+brew install tree
 
 echo "All packages now installed."
 
