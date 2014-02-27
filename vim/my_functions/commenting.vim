@@ -70,7 +70,7 @@ function! CommentEachLineNoWhitespace() range
     let comment_close = '\*\/'
     execute ":" . a:firstline . "," . a:lastline . 's/^\(.*\)$/'
         \ . comment_open . '\1' . comment_close . '/'
-  elseif &filetype == "html" || &filetype == "xml" || &filetype == "xsd" || &filetype == "xslt"
+  elseif &filetype == "html" || &filetype == "htmldjango" || &filetype == "xml" || &filetype == "xsd" || &filetype == "xslt"
     let comment_open = '<!--'
     let comment_close = '-->'
     execute ":" . a:firstline . "," . a:lastline . 's/^\(.*\)$/'
@@ -96,7 +96,7 @@ function! CommentEachLineOneWhitespace() range
     let comment_close = '\*\/'
     execute ":" . a:firstline . "," . a:lastline . 's/^\(.*\)$/'
         \ . comment_open . ' ' . '\1' . ' ' . comment_close . '/'
-  elseif &filetype == "html" || &filetype == "xml" || &filetype == "xsd" || &filetype == "xslt"
+  elseif &filetype == "html" || &filetype == "htmldjango" || &filetype == "xml" || &filetype == "xsd" || &filetype == "xslt"
     let comment_open = '<!--'
     let comment_close = '-->'
     execute ":" . a:firstline . "," . a:lastline . 's/^\(.*\)$/'
@@ -144,7 +144,7 @@ function! UncommentEachLine() range
         endif
       endif
     endfor
-  elseif &filetype == "html" || &filetype == "xml" || &filetype == "xsd" || &filetype == "xslt"
+  elseif &filetype == "html" || &filetype == "htmldjango" || &filetype == "xml" || &filetype == "xsd" || &filetype == "xslt"
     for i in range(a:firstline, a:lastline)
       let comment_open = '<!--'
       let comment_close = '-->'
@@ -215,7 +215,7 @@ endfunction
 " filetype.
 function! CommentBlockWrap() range
   " Add more language-specific comment styles if you need them
-  if &filetype == "html" || &filetype == "xml" || &filetype == "xsd" || &filetype == "xslt"
+  if &filetype == "html" || &filetype == "htmldjango" || &filetype == "xml" || &filetype == "xsd" || &filetype == "xslt"
     let comment_open = '<!--'
     let comment_close = '-->'
     " Indent commented code since there is no other
@@ -254,7 +254,7 @@ endfunction
 " This function uncomments wrapped comment blocks.
 function! UncommentWrappedBlock() range
   " Add more language-specific comment styles if you need them
-  if &filetype == "html" || &filetype == "xml" || &filetype == "xsd" || &filetype == "xslt"
+  if &filetype == "html" || &filetype == "htmldjango" || &filetype == "xml" || &filetype == "xsd" || &filetype == "xslt"
     " NOTE: if the 'comment_middle' variable in CommentBlockWrap()
     " function has changed to something other than a
     " soft tab stop, this must be changed as well.
