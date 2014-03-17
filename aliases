@@ -71,3 +71,7 @@ alias fs="stat -f \"%z bytes\""
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# If terminal takes a long time to load, delete the *.asl log files and it will
+# be much snappier again: http://forums.macrumors.com/showthread.php?t=987949
+alias cllogs="sudo rm -f /private/var/log/asl/*.asl"

@@ -78,3 +78,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 ### Virtualenvwrapper settings
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
+
+### SVN settings
+export SVN_EDITOR=vim
