@@ -60,7 +60,10 @@ alias llv='ls -al $WORKON_HOME'
 
 # `cat` with beautiful colors. requires Pygments installed.
 # if not already installed: sudo easy_install Pygments
-alias cat='pygmentize -O style=monokai -f console256 -g'
+# Use ccat rather than remapping cat because pygmentize only works on single
+# files. Still want ability to merge multiple files using 'cat' which you can't
+# do with pygmentize
+alias ccat='pygmentize -O style=monokai -f console256 -g'
 
 # git root
 alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
