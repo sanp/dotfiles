@@ -31,6 +31,21 @@ alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U adhoc'
 # Socialsense database connection
 alias socialsense='psql -h postgres2.colo.networkedinsights.com -d socialsense -U nireader'
 
+# Start and stop the pentaho server, etc
+function call_pentaho {
+    # action should be either start, stop, restart, status
+    action=$1
+    # Just in case -- sometimes starting the ba server alone isn't enough, you
+    # must also start postgresql
+    if [ "$action" == "start" ] || [ "$action" == "restart" ] ; then
+        /Applications/pentaho/ctlscript.sh start postgresql
+    elif [ "$action" == "status" ] ; then
+        /Applications/pentaho/ctlscript.sh status postgresql
+    fi
+    /Applications/pentaho/ctlscript.sh $action baserver
+}
+alias puc='call_pentaho'
+
 # Always use color when ls-ing
 alias ls='ls -GFh'
 # List all files in long format
@@ -52,7 +67,7 @@ alias tns='tmux new -s'
 # Attach a tmux session
 alias ta='tmux attach -t'
 # Kill a tmux session
-alias tk='tmux kill-session -t'
+alias tk='tmux kill-session'
 # virtualenvwrapper -- show all virtual environments
 alias lv='ls $WORKON_HOME'
 # virtualenvwrapper - long version
