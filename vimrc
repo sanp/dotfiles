@@ -647,3 +647,22 @@ vnoremap <silent> ,ss :ScreenSend<CR>
 
 " Quit the GNU screen
 nnoremap <silent> ,sq :ScreenQuit<CR>
+
+"""""""""""""""""""""""""
+" Vim-LaTeX
+"""""""""""""""""""""""""
+
+" Compiling multiple times
+let g:Tex_MultipleCompileFormats = 'dvi,pdf'
+
+" Make <leader>lv work to open document in pdf viewer
+let g:tex_flavor='latex'
+let g:Tex_TreatMacViewerAsUNIX = 1
+let g:Tex_ExecuteUNIXViewerInForeground = 1
+let g:Tex_ViewRule_ps = 'open -a Preview'
+let g:Tex_ViewRule_pdf = 'open -a Preview'
+let g:Tex_ViewRule_dvi = 'open -a Preview'
+
+" Compile and view changes in tex doc all at once
+" Use nmap rather than nnoremap in order to call mapped keys inside of call
+nmap <leader>lt <leader>ll<leader>lv

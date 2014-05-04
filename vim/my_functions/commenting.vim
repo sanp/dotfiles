@@ -83,6 +83,8 @@ function! CommentEachLineNoWhitespace() range
       let comment_string = '"'
     elseif &filetype == "sql"
       let comment_string = "--"
+    elseif &filetype == "tex"
+      let comment_string = '%'
     else
       let comment_string = '#'
     endif
@@ -109,6 +111,8 @@ function! CommentEachLineOneWhitespace() range
       let comment_string = '"'
     elseif &filetype == "sql"
       let comment_string = "--"
+    elseif &filetype == "tex"
+      let comment_string = '%'
     else
       let comment_string = '#'
     endif
@@ -173,6 +177,8 @@ function! UncommentEachLine() range
       let comment_string = '"'
     elseif &filetype == "sql"
       let comment_string = "--"
+    elseif &filetype == "tex"
+      let comment_string = '%'
     else
       let comment_string = '#'
     endif
