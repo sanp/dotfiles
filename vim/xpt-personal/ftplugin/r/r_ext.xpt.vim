@@ -64,3 +64,7 @@ XSET fc=$filechoose
 XPT write " write: csv, txt, etc
 XSET fc=$filechoose
 write.`csv^(`d^, `fc^`, row.names=`F^)
+
+XPT ddply " ddply\(data...by_group...summarise...columns...)
+`sumtab^ <- ddply(`d^, c(`args*^), summarise, 
+                   `cursor^)

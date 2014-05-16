@@ -3,7 +3,6 @@
 " Title: My VIMRC File
 " Author: Steve SanPietro
 " Created: 2013 Apr 27 Sat 10:21 AM
-" LastUpdated: 2013 Jul 05 Fri 01:41 AM
 "
 " Sections:
 "   -> a. General
@@ -114,11 +113,6 @@ autocmd BufNewFile,BufRead *.vb set ft=vb
 " Set the global default shell to be the bash shell
 let g:is_bash=1
 
-" NOTE: This is a company setting for my job.
-" Special filetype for Expert Systems Cogito Studio taxonomy input files: set
-" the tabs to hard tabs rather than soft tabs, otherwise Cogito Studio will not
-" be able to read the files
-autocmd BufNewFile,BufRead *.cog.txt set noexpandtab
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => b. Colors and Fonts
