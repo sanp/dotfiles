@@ -149,6 +149,7 @@ set smarttab
 autocmd Filetype py setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype python setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype r setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => d. Status line
@@ -576,8 +577,8 @@ autocmd BufNewFile,BufRead *.py compiler python
 
 " To disable the annoying mapping from _ to ->
 " let vimrplugin_assign = 0
-" Instead, map the < to <-
-let vimrplugin_assign_map = "`"
+" Instead, map the ; to <-
+let vimrplugin_assign_map = ";"
 
 """""""""""""""""""""""""
 " MRU
