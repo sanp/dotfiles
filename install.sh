@@ -33,6 +33,15 @@ brew install dos2unix
 brew install tmux
 # Tree - for viewing file directory structures
 brew install tree
+# Pygmentize - for beautiful colors in the terminal
+easy_install Pygments
+# Pip - python package manager
+easy_install pip
+# Virtualenv and virtualenvwrapper - for partitioning environments for python/django projects
+pip install virtualenv
+pip install virtualenvwrapper
+# Make a directory to keep the virtual environments in
+mkdir -p ~/.virtualenvs
 
 echo "All packages now installed."
 

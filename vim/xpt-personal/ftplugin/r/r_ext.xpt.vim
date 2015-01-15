@@ -11,7 +11,7 @@ XPTinclude
 XPTvar $filechoose file.choose()
 
 fun! s:f.GetTimestamp()
-    return strftime("%Y-%m-%d %a %I:%M %p")
+    return strftime("%Y %b %d")
 endfunction
 
 " My edits  to the default R snippits -- changed some spacing and bracket
@@ -42,12 +42,11 @@ XPT head " #! /usr/bin/env/Rscript
 
 " My additional snippets
 
-XPT filehead " Name ... Author ... Created ... LastUpdated ... Description
+XPT filehead " Name ... Author ... Created ... Description
 #########################################################
 # Name: `codeName^
 # Author: `$author^ 
 # Created: `GetTimestamp()^
-# LastUpdated: `GetTimestamp()^
 #
 # Description: `desc^
 #
@@ -59,7 +58,7 @@ XPT fh alias=filehead
 
 XPT read " read: csv, txt, etc
 XSET fc=$filechoose
-``d` = ^read.`csv^(`fc^`, header=`T^)
+``d` <- ^read.`csv^(`fc^`, header=`T^)
 
 XPT write " write: csv, txt, etc
 XSET fc=$filechoose

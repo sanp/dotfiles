@@ -25,7 +25,7 @@ alias sop="source ~/.profile"
 alias mvim='open -a "MacVim"'
 
 # Postgres shortcuts for NI databases
-# Adhoc database connection (ssanpietro user has permission to create schemas)
+# Adhoc database connections (ssanpietro user has permission to create schemas)
 alias sanpadhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U ssanpietro'
 alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U adhoc'
 # Socialsense database connection
@@ -102,3 +102,38 @@ alias cllogs="sudo rm -f /private/var/log/asl/*.asl"
 alias lsports='lsof -i -P | grep -i "listen"'
 # Kill port number <PID>
 alias killport='kill -9'
+
+###
+# Centro database access aliases
+###
+
+# ################
+# Burnham DB Access Aliases #
+# ################
+alias bdms='psql -h 10.0.0.98 -d dm_staging -U dm_staging'
+
+# ################
+# Legacy DB Access Aliases #
+# ################
+# Production
+alias edwtransis='psql -h etl.transis.net -d dw_transis -U dw'
+alias epd='psql -h etl.transis.net -d dw_production -U dw_production'
+alias eph='psql -h etl.transis.net -d hibernate_production -U hibernate_production'
+alias epq='psql -h etl.transis.net -d quartz_production -U quartz_production'
+
+# Staging
+alias smmsstage='psql -h staging-db -d mms_staging -U dw'
+alias esd='psql -h etl-db.transis.net -d dw_staging -U dw_staging'
+alias esh='psql -h etl-db.transis.net -d hibernate_staging -U hibernate_staging'
+alias esq='psql -h etl-db.transis.net -d quartz_staging -U quartz_staging'
+
+# Test
+alias etd='psql -h etl-db.transis.net -d dw_test -U dw_test'
+alias eth='psql -h etl-db.transis.net -d hibernate_test -U hibernate_test'
+alias etq='psql -h etl-db.transis.net -d quartz_test -U quartz_test'
+
+# Development
+alias ldwmms='psql -h localhost -d dw_transis -U dw'
+alias ldd='psql -h localhost -d dw_development -U dw_development'
+alias ldh='psql -h localhost -d hibernate_development -U hibernate_development'
+alias ldq='psql -h localhost -d quartz_development -U quartz_development'

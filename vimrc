@@ -133,6 +133,10 @@ elseif has('unix')
     let &guifont="Monospace 10"
 endif
 
+" " Get tmux to work well with the system clipboard. See: 
+" " https://coderwall.com/p/j9wnfw
+" set clipboard=unnamed
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => c. Text, tab, and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -343,20 +347,32 @@ nnoremap ,ce v$
 " For pasting to work correctly in the terminal, set paste before each paste,
 " and turn it off after
 " Toggle paste mode and display whether paste or nopaste
-nnoremap <silent> ,p :set invpaste<CR>:set paste?<CR>
+verbose nnoremap <silent> ,p :set invpaste<CR>:set paste?<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => f. Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Pressing <leader>ss will toggle and untoggle spell checking
-noremap <leader>ss :setlocal spell!<cr>
+noremap <leader>ss :setlocal spell!<CR>
 
 " Shortcuts using <leader>
 noremap <leader>sn ]s
 noremap <leader>sp [s
 noremap <leader>sa zg
 noremap <leader>s? z=
+
+" For long strings (e.g. docstrings) vim sometimes loses its place and the
+" syntax highlighting breaks -- because vim only looks back so many lines to
+" determine the syntax highlighting. Use this command to tell vim to look from
+" start of doc for highlighting. (Don't make this the default behavior for
+" performance reasons.)
+noremap <leader>fs :syntax sync fromstart<CR>
+
+" Hard wraps all lines longer than 80 characters without affecting lines shorter
+" than 80 characters. Equivalent to doing gqq on every line that is longer than
+" 80 characters.
+nnoremap ,ga :g/^/norm gqq<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => g. Helper functions
@@ -446,7 +462,10 @@ function SetSmallWindow()
     else
         " Don't change window size/pos in terminal!
         if has("gui_running")
-            winpos 445 123
+"             " For 13-inch screens
+"             winpos 445 123
+            " For 15-inch screens
+            winpos 600 225
             set lines=48 columns=115
         endif
     endif
@@ -462,8 +481,12 @@ function SetMediumWindow()
     else
         " Don't change window size/pos in terminal!
         if has("gui_running")
-            winpos 147 22
-            set lines=57 columns=143
+"             " For 13-inch screens
+"             winpos 147 22
+"             set lines=57 columns=143
+            " For 15-inch screens
+            winpos 140 20
+            set lines=60 columns=150
         endif
     endif
 endfunction

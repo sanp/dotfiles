@@ -9,6 +9,9 @@ export CLICOLOR=1
 # See http://geoff.greer.fm/lscolors/ to test out different colors
 export LSCOLORS=GxFxBxDxCxegedabagacad
 
+# Ruby path addition
+export PATH="$HOME/.rbenv/bin:$PATH"
+
 # MacPorts seems not as good as Homebrew, so I'm not using it.  Add the
 # following to PATH if you are using it.
 # # MacPorts Installer addition on 2013-06-08_at_15:29:31: adding an appropriate PATH variable for use with MacPorts.
@@ -81,3 +84,11 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 ### SVN settings
 export SVN_EDITOR=vim
+
+### Java Settings
+export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+
+# ### Ruby rbenv settings
+# # Add ruby init to shell to enable shims autocompletion
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
