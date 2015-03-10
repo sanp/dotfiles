@@ -24,6 +24,10 @@ alias sop="source ~/.profile"
 # programs
 alias mvim='open -a "MacVim"'
 
+# Start psql
+alias start_psql='pg_ctl -D /usr/local/var/postgres -l logfile start'
+alias stop_psql='pg_ctl -D /usr/local/var/postgres -l logfile stop'
+
 # Postgres shortcuts for NI databases
 # Adhoc database connections (ssanpietro user has permission to create schemas)
 alias sanpadhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U ssanpietro'
