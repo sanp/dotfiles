@@ -141,3 +141,9 @@ alias ldwmms='psql -h localhost -d dw_transis -U dw'
 alias ldd='psql -h localhost -d dw_development -U dw_development'
 alias ldh='psql -h localhost -d hibernate_development -U hibernate_development'
 alias ldq='psql -h localhost -d quartz_development -U quartz_development'
+
+# Centro SSH aliases
+alias setl='ssh pentaho@pdi01.staging.bi.transis.net'
+alias sbi='ssh pentaho@web01.staging.bi.transis.net'
+alias petl='ssh pentaho@pdi01.bi.transis.net' 
+alias pbi='ssh pentaho@web01.bi.transis.net'
