@@ -92,3 +92,10 @@ export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 # # Add ruby init to shell to enable shims autocompletion
 # export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
+
+### Put Pentaho spoon and report designer scripts in path
+# Note: BC of bug in pentaho 3.x, still need to cd into data-integration
+# directory in order to run spoon.sh script -- hopefully this will be fixed in
+# 5.x, but for not, no use putting data-integration directory in path...
+# export PATH="$PATH:~/Vendor/data-integration"
+export PATH="$PATH:~/PRD/report-designer"

@@ -4,7 +4,7 @@
 [core]
 	editor = vim
 #	autocrlf = true
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/steven.sanpietro/.gitignore_global
 [credential]
 	helper = osxkeychain
 [push]
