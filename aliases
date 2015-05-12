@@ -68,14 +68,8 @@ alias lr='ls -R'
 alias lg='ls | grep'
 # Grep long version 
 alias llg='ls -al | grep'
-# List tmux sessions
-alias tls='tmux ls'
-# Start a new tmux session
-alias tns='tmux new -s'
-# Attach a tmux session
-alias ta='tmux attach -t'
-# Kill a tmux session
-alias tk='tmux kill-session'
+# Grep history
+alias hg='history | grep'
 # virtualenvwrapper -- show all virtual environments
 alias lv='ls $WORKON_HOME'
 # virtualenvwrapper - long version
@@ -145,5 +139,65 @@ alias ldq='psql -h localhost -d quartz_development -U quartz_development'
 # Centro SSH aliases
 alias setl='ssh pentaho@pdi01.staging.bi.transis.net'
 alias sbi='ssh pentaho@web01.staging.bi.transis.net'
-alias petl='ssh pentaho@pdi01.bi.transis.net' 
+alias petl='ssh pentaho@pdi01.bi.transis.net'
 alias pbi='ssh pentaho@web01.bi.transis.net'
+alias warehouse='ssh pentaho@warehouse.transis.net'
+
+# Start/stop the psql server
+alias psql_start='pg_ctl -D /usr/local/var/postgres -l logfile start'
+alias psql_stop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
+
+# Adhoc NI DB
+alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U nireader'
+
+##
+# Tmux
+##
+
+# Tab completion for tmux sessions.
+# Quickly open new tmux sessions in your projects dir.
+# https://gist.github.com/ryandotsmith/1396797
+#  
+# Setup:
+# Source this code in your bash shell.
+# Update the code_dir var with the root directory of your source code.
+#  
+# Usage:
+#  
+# Use the tab to open an existing session.
+# $ ta [TAB]
+# 
+# Arguments that are passed to ta will be used to create a new session.
+# ta will open a new tmux session and set the default path to the found dir. 
+# $ ta payments
+# $ pwd
+# /code_dir/payments 
+ta()
+{
+  local session_name="$1"
+  tmux attach-session -t "$session_name"
+  if [ $? -ne 0 ]; then
+    local code_dir="~"
+    local list_of_dirs=( $(find "$code_dir" -name "$session_name" -type d ) )
+    local first_found="${dirs[0]}"
+    cd "$first_found"
+    echo "ta() is creating new tmux session with name=$session_name"
+    tmux new-session -d -s "$session_name"
+    echo "ta() is setting default path with dir=$first_found"
+    tmux set default-path "$first_found"
+    tmux attach-session -t "$session_name"
+  fi
+}
+_ta()
+{
+  COMPREPLY=()
+  local session="${COMP_WORDS[COMP_CWORD]}"
+  COMPREPLY=( $(compgen -W "$(tmux list-sessions 2>/dev/null | awk -F: '{ print $1 }')" -- "$session") )
+}
+complete -F _ta ta
+
+
+# List tmux sessions
+alias tls='tmux ls'
+# Start a new tmux session
+alias tns='tmux new -s'

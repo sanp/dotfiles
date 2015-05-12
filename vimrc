@@ -154,6 +154,7 @@ autocmd Filetype py setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype python setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype r setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => d. Status line
@@ -183,6 +184,22 @@ let maplocalleader = "-"
 " <C-e> scrolls up one line at a time. Default maps <C-y> to move screen down
 " one line. <C-s> is a better mapping -- less hand movement. <C-y> still works.
 nnoremap <silent> <C-s> <C-y>
+
+" Make navigating vim panes the same as moving around tmux panes -- my tmux
+" prefix is <C-a>
+unmap <C-a>
+" Moving
+nnoremap <silent> <C-a>h :wincmd h<CR>
+nnoremap <silent> <C-a>j :wincmd j<CR>
+nnoremap <silent> <C-a>k :wincmd k<CR>
+nnoremap <silent> <C-a>l :wincmd l<CR>
+" Splits
+nnoremap <C-a><bar> :vsplit<CR>:enew<CR>
+nnoremap <silent> <C-a>- :split<CR>:enew<CR>
+" Open new split panes to right and bottom, which feels more natural than Vim’s
+" default
+set splitbelow
+set splitright
 
 " Fast window resizing with plus/minus keys if more than one window is open
 " Technically not the plus key -- equal key -- because it's too much work to hit
@@ -495,14 +512,14 @@ endfunction
 function SetLargeWindow()
     if has('win32') || has('win64')
         if has("gui_running")
-            winpos 1000 100
-            set lines=50 columns=160
+            winpos 286 100
+            set lines=55 columns=164
         endif
     else
         " Don't change window size/pos in terminal!
         if has("gui_running")
-            winpos 80 22
-            set lines=57 columns=160
+            winpos 275 159
+            set lines=55 columns=164
         endif
     endif
 endfunction
@@ -602,6 +619,9 @@ autocmd BufNewFile,BufRead *.py compiler python
 " let vimrplugin_assign = 0
 " Instead, map the ; to <-
 let vimrplugin_assign_map = ";"
+" Start R in the GUI console, not in terminal/tmux
+let vimrplugin_applescript = 1
+let vimrplugin_screenplugin = 1
 
 """""""""""""""""""""""""
 " MRU
