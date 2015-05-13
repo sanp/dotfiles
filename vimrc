@@ -316,13 +316,13 @@ nnoremap <silent> ,d :bd<CR>
 nnoremap <silent> ,sl i<CR><ESC>
 
 " Copy the full absolute path only into the system clipboard
-nnoremap <silent> ,yp :let @" = expand("%:p:h")<CR>
+nnoremap <silent> ,yp :let @+ = expand("%:p:h")<CR>
 " Copy the file name as well as the full absolute path into the system clipboard
-nnoremap <silent> ,ya :let @" = expand("%:p")<CR>
+nnoremap <silent> ,ya :let @+ = expand("%:p")<CR>
 " Copy current filename with extension to system clipboard
-nnoremap <silent> ,yf :let @" = expand("%:t")<CR>
+nnoremap <silent> ,yf :let @+ = expand("%:t")<CR>
 " Copy current filename without extension to system clipboard
-nnoremap <silent> ,yn :let @" = expand("%:t:r")<CR>
+nnoremap <silent> ,yn :let @+ = expand("%:t:r")<CR>
 
 " Usually, I will store one-off macros I create in the q register.  Often,
 " I want to run the q macro on a the current paragraph block.  Shortcut:
