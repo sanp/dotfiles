@@ -150,6 +150,17 @@ alias psql_stop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
 # Adhoc NI DB
 alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U nireader'
 
+# Integration; for the kids
+alias bimms='psql -h db01.burnham.transis.net -d dw_transis -U dw_transis'
+alias biprocess='psql -h db01.burnham.transis.net -d process_integration -U process_integration'
+alias biexception='psql -h db01.burnham.transis.net -d exception_integration -U exception_integration'
+alias biextract='psql -h db01.burnham.transis.net -d extract_integration -U extract_integration'
+alias bistage='psql -h db01.burnham.transis.net -d stage_integration -U stage_integration'
+alias bidw='psql -h db01.burnham.transis.net -d dw_integration -U dw_integration'
+alias bidm='psql -h db01.burnham.transis.net -d dm_integration -U dm_integration'
+alias bih='psql -h db01.burnham.transis.net -d hibernate_integration -U hibernate_integration'
+alias biq='psql -h db01.burnham.transis.net -d quartz_integration -U quartz_integration'
+
 ##
 # Tmux
 ##

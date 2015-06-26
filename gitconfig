@@ -21,6 +21,7 @@
     sm = submodule
     lf = ls-files
     lfo = ls-files -o --exclude-per-directory=.gitignore
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --name-status
 [color]
 	ui = true
 [diff]
