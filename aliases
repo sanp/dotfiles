@@ -139,9 +139,15 @@ alias ldq='psql -h localhost -d quartz_development -U quartz_development'
 # Centro SSH aliases
 alias setl='ssh pentaho@pdi01.staging.bi.transis.net'
 alias sbi='ssh pentaho@web01.staging.bi.transis.net'
-alias petl='ssh pentaho@pdi01.bi.transis.net'
-alias pbi='ssh pentaho@web01.bi.transis.net'
+alias nsetl='ssh pentaho@pdi01.bi.transis.net'
+alias nsbi='ssh pentaho@web01.bi.transis.net'
 alias warehouse='ssh pentaho@warehouse.transis.net'
+
+# Centro Staging New Hardware
+alias pbi='ssh pentaho@web01.bi.ourcentro.net'  # (pentaho web frontend)
+alias petl='ssh pentaho@pdi01.bi.ourcentro.net' #(Where you get your ETL on)
+alias pdb='ssh bi@db01.bi.ourcentro.net' #(Primary PGSQL server, Cluster master)
+alias psdb='ssh bi@db02.bi.ourcentro.net' #(Secondary PGSQL server, Cluster slave)
 
 # Start/stop the psql server
 alias psql_start='pg_ctl -D /usr/local/var/postgres -l logfile start'
@@ -160,6 +166,10 @@ alias bidw='psql -h db01.burnham.transis.net -d dw_integration -U dw_integration
 alias bidm='psql -h db01.burnham.transis.net -d dm_integration -U dm_integration'
 alias bih='psql -h db01.burnham.transis.net -d hibernate_integration -U hibernate_integration'
 alias biq='psql -h db01.burnham.transis.net -d quartz_integration -U quartz_integration'
+
+# Obsidian Prod and Staging
+alias pobs='psql -h 10.0.0.204 -d obsidian -U obsidian'
+alias sobs='psql -h 10.0.0.206 -d obsidian -U obsidian'
 
 ##
 # Tmux

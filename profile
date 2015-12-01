@@ -99,3 +99,6 @@ export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 # 5.x, but for not, no use putting data-integration directory in path...
 # export PATH="$PATH:~/Vendor/data-integration"
 export PATH="$PATH:~/PRD/report-designer"
+
+# AWS region configuration
+export AWS_REGION='us-east-1'
