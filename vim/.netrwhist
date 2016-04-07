@@ -1,5 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/sanp/Desktop/notes/sample_project'
-let g:netrw_dirhist_2='/Users/sanp/.rvm'
-let g:netrw_dirhist_3='/Users/ssanpietro/Documents/Sites/nimoviez/requirements'
+let g:netrw_dirhist_cnt =0

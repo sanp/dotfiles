@@ -266,6 +266,9 @@ vnoremap <silent> <S-Tab> <gv
 nnoremap <silent> <F3> a<C-R>=strftime("%Y %b %d %a %I:%M %p")<CR><Esc>
 inoremap <silent> <F3> <C-R>=strftime("%Y %b %d %a %I:%M %p")<CR>
 
+" CTRL-G u  break undo sequence, start new change      *i_CTRL-G_u*
+inoremap <CR> <C-g>u<CR>
+
 " Press <F4> to automatically update the 'LastUpdated' line of any
 " file to the current date and time. -- This is useful is you include a
 " header in your files which indicates when the file was last updated.
@@ -495,18 +498,14 @@ endfunction
 function SetMediumWindow()
     if has('win32') || has('win64')
         if has("gui_running")
-            winpos 1000 100
-            set lines=50 columns=140
+            winpos 286 100
+            set lines=55 columns=164
         endif
     else
         " Don't change window size/pos in terminal!
         if has("gui_running")
-"             " For 13-inch screens
-"             winpos 147 22
-"             set lines=57 columns=143
-            " For 15-inch screens
-            winpos 140 20
-            set lines=60 columns=150
+            winpos 275 159
+            set lines=55 columns=164
         endif
     endif
 endfunction
@@ -516,13 +515,13 @@ function SetLargeWindow()
     if has('win32') || has('win64')
         if has("gui_running")
             winpos 286 100
-            set lines=55 columns=164
+            set lines=64 columns=180
         endif
     else
         " Don't change window size/pos in terminal!
         if has("gui_running")
             winpos 275 159
-            set lines=55 columns=164
+            set lines=64 columns=180
         endif
     endif
 endfunction
@@ -541,6 +540,37 @@ function SetMaxWindow()
         endif
     endif
 endfunction
+
+" Make fold text line more readable -- thanks to Scott's vim config:
+" Puts the fold details text at the end of line not beginning, which is the
+" default.
+" https://github.com/ddrscott/dot-config/blob/master/nvim/init.vim
+function! CustomFoldText()
+  "get first non-blank line
+  let fs = v:foldstart
+  while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
+  endwhile
+  if fs > v:foldend
+    let line = getline(v:foldstart)
+  else
+    let line = substitute(getline(fs), '\t', repeat(' ', &tabstop), 'g')
+  endif
+  let w = winwidth(0) - &foldcolumn - (&number || &relativenumber ? 4 : 0)
+  let foldSize = 1 + v:foldend - v:foldstart
+  let foldSizeStr = " " . foldSize . " lines "
+  " let foldLevelStr = repeat(">", v:foldlevel)
+  let foldLevelStr = "" . v:foldlevel
+  let lineCount = line("$")
+  let foldPercentage = printf("[%.1f", (foldSize*1.0)/lineCount*100) . "%] "
+  let expansionString = repeat(" ", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
+  return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
+endfunction
+set foldtext=CustomFoldText()
+" If foldcolumn>0 it creates a gutter that shows +/- for folds
+set foldcolumn=0
+highlight Folded  cterm=underline ctermfg=10 ctermbg=0
+" }}}
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => h. Display
@@ -696,6 +726,15 @@ vnoremap <silent> ,ss :ScreenSend<CR>
 
 " Quit the GNU screen
 nnoremap <silent> ,sq :ScreenQuit<CR>
+
+" ***** Yank without moving cursor!
+" exit visual mode, my=mark y, last visual selection, y, go to mark
+vnoremap y <ESC>mygvy`y
+vnoremap Y <ESC>mygvY`y
+" Use `y and 'y for last yank position.
+nnoremap y myy
+" Same with Y and make Y yank to end of line.
+nnoremap Y myy$
 
 """""""""""""""""""""""""
 " Vim-LaTeX
