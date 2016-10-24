@@ -76,8 +76,8 @@ endfunction
 
 
 
-XPT shebang " #!/usr/bin/env bash
-#!/usr/bin/env bash
+XPT shebang " #!/bin/bash
+#!/bin/bash
 
 ..XPT
 

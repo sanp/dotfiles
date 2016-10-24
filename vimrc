@@ -38,8 +38,8 @@ if has('unix') || has('mac')
 endif
 
 " Make windows keyboard mappings work with vim -- good for Macs too
-so $VIM/source/mswin.vim
-so $VIM/source/vimrc_example.vim
+" so $VIM/source/mswin.vim
+" so $VIM/source/vimrc_example.vim
 behave mswin
 
 " Enable plugins
@@ -137,27 +137,34 @@ endif
 " " https://coderwall.com/p/j9wnfw
 " set clipboard=unnamed
 
+" Set clipboard so that when you yank to a register it doesn't wipe out what's
+" in the unnamed register
+set clipboard=
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => c. Text, tab, and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Default indentation rule
 " set smartindent
-set shiftwidth=4            " 1 tab = 4 spaces
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2            " 1 tab = 2 spaces
+set tabstop=2
+set softtabstop=2
 set expandtab               " Spaces instead of tabs
 set smarttab
 
-" Indenting rules for python and ruby
-autocmd Filetype py setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-autocmd Filetype python setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-autocmd Filetype r setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-autocmd Filetype html setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-autocmd Filetype xhtml setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-autocmd Filetype htmldjango setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" " Indenting rules
+" autocmd Filetype py setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" autocmd Filetype python setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" autocmd Filetype r setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" autocmd Filetype html setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" autocmd Filetype xhtml setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" autocmd Filetype htmldjango setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" autocmd Filetype js setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" autocmd Filetype sh setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => d. Status line
@@ -190,7 +197,7 @@ nnoremap <silent> <C-s> <C-y>
 
 " Make navigating vim panes the same as moving around tmux panes -- my tmux
 " prefix is <C-a>
-unmap <C-a>
+" unmap <C-a>
 " Moving
 nnoremap <silent> <C-a>h :wincmd h<CR>
 nnoremap <silent> <C-a>j :wincmd j<CR>
@@ -644,17 +651,17 @@ nnoremap <silent> tt :TagbarToggle<CR>
 " run the python compiler plugin whenever a python file is opened
 autocmd BufNewFile,BufRead *.py compiler python
 
-"""""""""""""""""""""""""
-" Vim-R
-"""""""""""""""""""""""""
-
-" To disable the annoying mapping from _ to ->
-" let vimrplugin_assign = 0
-" Instead, map the ; to <-
-let vimrplugin_assign_map = ";"
-" Start R in the GUI console, not in terminal/tmux
-let vimrplugin_applescript = 1
-let vimrplugin_screenplugin = 1
+" """""""""""""""""""""""""
+" " Vim-R
+" """""""""""""""""""""""""
+" 
+" " To disable the annoying mapping from _ to ->
+" " let vimrplugin_assign = 0
+" " Instead, map the ; to <-
+" let vimrplugin_assign_map = ";"
+" " Start R in the GUI console, not in terminal/tmux
+" let vimrplugin_applescript = 1
+" let vimrplugin_screenplugin = 1
 
 """""""""""""""""""""""""
 " MRU
@@ -726,15 +733,6 @@ vnoremap <silent> ,ss :ScreenSend<CR>
 
 " Quit the GNU screen
 nnoremap <silent> ,sq :ScreenQuit<CR>
-
-" ***** Yank without moving cursor!
-" exit visual mode, my=mark y, last visual selection, y, go to mark
-vnoremap y <ESC>mygvy`y
-vnoremap Y <ESC>mygvY`y
-" Use `y and 'y for last yank position.
-nnoremap y myy
-" Same with Y and make Y yank to end of line.
-nnoremap Y myy$
 
 """""""""""""""""""""""""
 " Vim-LaTeX

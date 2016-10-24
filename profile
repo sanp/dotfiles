@@ -35,8 +35,6 @@ fi
 # http://docs.python-guide.org/en/latest/starting/install/osx.html
 # Homebrew PATH addition
 export PATH=/usr/local/bin:$PATH
-# Add python scripts library to PATH
-export PATH=/usr/local/share/python:$PATH
 
 source ~/git-completion.bash
 alias gco='git co'
@@ -86,7 +84,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 export SVN_EDITOR=vim
 
 ### Java Settings
-export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+# export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
 
 # ### Ruby rbenv settings
 # # Add ruby init to shell to enable shims autocompletion
@@ -102,3 +100,23 @@ export PATH="$PATH:~/PRD/report-designer"
 
 # AWS region configuration
 export AWS_REGION='us-east-1'
+
+# NVM settings
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+# Diffmerge
+export PATH="$PATH:/Applications/DiffMerge.app/Contents/MacOS"
+
+# # Rbenv
+export PATH="/usr/local/sbin:$PATH"
+eval "$(rbenv init -)"
+
+# Lengthen the amount of time it takes to display the dock after hover:
+# defaults write com.apple.Dock autohide-delay -float 5 && killall Dock
+# To restore defaults:
+# defaults delete com.apple.Dock autohide-delay
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi

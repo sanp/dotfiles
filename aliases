@@ -28,17 +28,6 @@ alias mvim='open -a "MacVim"'
 alias start_psql='pg_ctl -D /usr/local/var/postgres -l logfile start'
 alias stop_psql='pg_ctl -D /usr/local/var/postgres -l logfile stop'
 
-# Postgres shortcuts for NI databases
-# Adhoc database connections (ssanpietro user has permission to create schemas)
-alias sanpadhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U ssanpietro'
-alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U adhoc'
-# Socialsense database connection
-alias socialsense='psql -h postgres2.colo.networkedinsights.com -d socialsense -U nireader'
-# dev3 database connection
-alias dev3='psql -h dev3.colo.networkedinsights.com -d adhoc -U niuser'
-# dev1 database connection
-alias dev1='psql -h dev1.colo.networkedinsights.com -d adhoc -U niuser'
-
 # Start and stop the pentaho server, etc
 function call_pentaho {
     # action should be either start, stop, restart, status
@@ -65,11 +54,11 @@ alias lsd='ls -l | grep "^d"'
 # List all files, folders, and subfolders and files
 alias lr='ls -R'
 # Grep -- example usage: 'lg txt' short for 'ls grep | txt'
-alias lg='ls | grep'
+alias lg='ls | grep -i'
 # Grep long version 
-alias llg='ls -al | grep'
+alias llg='ls -al | grep -i'
 # Grep history
-alias hg='history | grep'
+alias hg='history | grep -i'
 # virtualenvwrapper -- show all virtual environments
 alias lv='ls $WORKON_HOME'
 # virtualenvwrapper - long version
@@ -98,89 +87,18 @@ alias cllogs="sudo rm -f /private/var/log/asl/*.asl"
 
 # List open ports
 alias lsports='lsof -i -P | grep -i "listen"'
-# Kill port number <PID>
-alias killport='kill -9'
 
 ###
 # Centro database access aliases
 ###
 
-# ################
-# Burnham DB Access Aliases #
-# ################
-alias bdms='psql -h 10.0.0.98 -d dm_staging -U dm_staging'
-
-# ################
-# Legacy DB Access Aliases #
-# ################
-# Production
-alias edwtransis='psql -h etl.transis.net -d dw_transis -U dw'
-alias dmp='psql -h etl.transis.net -d dw_production -U dw_production'
-alias dbph='psql -h etl.transis.net -d hibernate_production -U hibernate_production'
-alias dbqp='psql -h etl.transis.net -d quartz_production -U quartz_production'
-# Production Slave db
-alias dmps='psql -h 10.0.2.203 -d dm_production -U dm_production'
-
-# Staging
-alias smmsstage='psql -h staging-db -d mms_staging -U dw'
-alias esd='psql -h etl-db.transis.net -d dw_staging -U dw_staging'
-alias esh='psql -h etl-db.transis.net -d hibernate_staging -U hibernate_staging'
-alias esq='psql -h etl-db.transis.net -d quartz_staging -U quartz_staging'
-
-# Test
-alias etd='psql -h etl-db.transis.net -d dw_test -U dw_test'
-alias eth='psql -h etl-db.transis.net -d hibernate_test -U hibernate_test'
-alias etq='psql -h etl-db.transis.net -d quartz_test -U quartz_test'
-
-# Development
-alias ldwmms='psql -h localhost -d dw_transis -U dw'
-alias ldd='psql -h localhost -d dw_development -U dw_development'
-alias ldh='psql -h localhost -d hibernate_development -U hibernate_development'
-alias ldq='psql -h localhost -d quartz_development -U quartz_development'
-
-# # Centro SSH aliases
-# alias setl='ssh pentaho@pdi01.staging.bi.transis.net'
-# alias sbi='ssh pentaho@web01.staging.bi.transis.net'
-# # alias nsetl='ssh pentaho@pdi01.bi.transis.net'
-# alias nsbi='ssh pentaho@web01.bi.transis.net'
-# alias warehouse='ssh pentaho@warehouse.transis.net'
-
-# Centro Staging New Hardware
-alias pbi='ssh pentaho@web01.bi.ourcentro.net'  # (pentaho web frontend)
-alias petl='ssh pentaho@pdi01.bi.ourcentro.net' #(Where you get your ETL on)
-alias pdb='ssh bi@db01.bi.ourcentro.net' #(Primary PGSQL server, Cluster master)
-alias psdb='ssh bi@db02.bi.ourcentro.net' #(Secondary PGSQL server, Cluster slave)
-
-# New centro ssh aliases
-alias ietl='ssh pentaho@pdi01.integration.bi.ourcentro.net'
-alias ibi='ssh pentaho@web01.integration.bi.ourcentro.net'
-alias setl='ssh pentaho@pdi01.staging.bi.transis.net'
-alias sbi='ssh pentaho@web01.staging.bi.ourcentro.net'
-
 # Start/stop the psql server
+alias psql_status='pg_ctl -D /usr/local/var/postgres -l logfile status'
 alias psql_start='pg_ctl -D /usr/local/var/postgres -l logfile start'
 alias psql_stop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
 
 # Adhoc NI DB
-alias adhoc='psql -h pentahodb3.colo.networkedinsights.com -d adhoc -U nireader'
-
-# # Integration; for the kids
-# alias bimms='psql -h db01.burnham.transis.net -d dw_transis -U dw_transis'
-# alias biprocess='psql -h db01.burnham.transis.net -d process_integration -U process_integration'
-# alias biexception='psql -h db01.burnham.transis.net -d exception_integration -U exception_integration'
-# alias biextract='psql -h db01.burnham.transis.net -d extract_integration -U extract_integration'
-# alias bistage='psql -h db01.burnham.transis.net -d stage_integration -U stage_integration'
-# alias bidw='psql -h db01.burnham.transis.net -d dw_integration -U dw_integration'
-# alias bidm='psql -h db01.burnham.transis.net -d dm_integration -U dm_integration'
-# alias bih='psql -h db01.burnham.transis.net -d hibernate_integration -U hibernate_integration'
-# alias biq='psql -h db01.burnham.transis.net -d quartz_integration -U quartz_integration'
-
-# Obsidian Prod and Staging
-alias pobs='psql -h 10.0.0.204 -d obsidian -U obsidian'
-alias sobs='psql -h 10.0.0.206 -d obsidian -U obsidian'
-
-# Centro Direct DB
-alias cdirect='psql -h tchelle.dev.ourcentro.net -d cmm_production -U pentaho'
+alias adhoc='psql -h pentahodb1.colo.networkedinsights.com -d adhoc -U nireader'
 
 ##
 # Tmux
@@ -235,3 +153,20 @@ alias tls='tmux ls'
 alias tns='tmux new -s'
 # Kill tmux session
 alias tk='tmux kill-session -t'
+
+# Rails
+alias be="bundle exec"
+
+# Pentaho server startup script
+alias pentaho_server="~/Pentaho/server/biserver-ee/server.sh"
+
+
+# Fn to get the pid of whatever input string
+get_pid() {
+  grepstring="$1"
+  echo `ps -fe | grep $grepstring | grep -v grep | tr -s " "|cut -d" " -f2`
+}
+alias gpid="get_pid"
+
+# List all connections in ssh config file
+alias lssh='cat $HOME/.ssh/config | grep Host'
