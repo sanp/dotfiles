@@ -651,17 +651,15 @@ nnoremap <silent> tt :TagbarToggle<CR>
 " run the python compiler plugin whenever a python file is opened
 autocmd BufNewFile,BufRead *.py compiler python
 
-" """""""""""""""""""""""""
-" " Vim-R
-" """""""""""""""""""""""""
-" 
-" " To disable the annoying mapping from _ to ->
-" " let vimrplugin_assign = 0
-" " Instead, map the ; to <-
-" let vimrplugin_assign_map = ";"
-" " Start R in the GUI console, not in terminal/tmux
-" let vimrplugin_applescript = 1
-" let vimrplugin_screenplugin = 1
+"""""""""""""""""""""""""
+" Nvim-R
+"""""""""""""""""""""""""
+
+" Map the ; to <-
+let R_assign_map = ";"
+" Start R in the GUI console, not in terminal/tmux
+let R_in_buffer = 0
+let R_applescript = 1
 
 """""""""""""""""""""""""
 " MRU
