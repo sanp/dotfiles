@@ -67,4 +67,7 @@ touch .vim_mru_files
 # recent file history
 echo '~/.profile' >> ~/.vim_mru_files
 
+# Copy desktop background images to home folder
+cp -r desktop_backgrounds $HOME
+
 echo "Done! Restart your terminal and vim."

@@ -77,7 +77,7 @@ function! CommentEachLineNoWhitespace() range
         \ . comment_open . '\1' . comment_close . '/'
   else
     " For non-wrapping comment.
-    if &filetype == "cpp" || &filetype == "cs" || &filetype == "java" || &filetype == "javascript"
+    if &filetype == "cpp" || &filetype == "cs" || &filetype == "java" || &filetype == "scala"|| &filetype == "javascript"
       let comment_string = '//' 
     elseif &filetype == "vim"
       let comment_string = '"'
@@ -105,7 +105,7 @@ function! CommentEachLineOneWhitespace() range
         \ . comment_open . ' ' . '\1' . ' ' . comment_close . '/'
   else
     " For non-wrapping comment.
-    if &filetype == "cpp" || &filetype == "cs" || &filetype == "java" || &filetype == "javascript"
+    if &filetype == "cpp" || &filetype == "cs" || &filetype == "java" || &filetype == "scala" || &filetype == "javascript"
       let comment_string = '//'
     elseif &filetype == "vim"
       let comment_string = '"'
@@ -171,7 +171,7 @@ function! UncommentEachLine() range
     endfor
   else
     " For non-wrapping comment.
-    if &filetype == "cpp" || &filetype == "cs" || &filetype == "java" || &filetype == "javascript"
+    if &filetype == "cpp" || &filetype == "cs" || &filetype == "java" || &filetype == "scala" || &filetype == "javascript"
       let comment_string = '//'
     elseif &filetype == "vim"
       let comment_string = '"'

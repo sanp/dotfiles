@@ -170,3 +170,7 @@ alias gpid="get_pid"
 
 # List all connections in ssh config file
 alias lssh='cat $HOME/.ssh/config | grep Host'
+
+# Sitescout databases
+alias rentdb1='mysql -h rentdb1.sitescout.com ssdsp'
+alias rentdb2='mysql -h rentdb2.sitescout.com ssdsp'

@@ -80,24 +80,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
-### SVN settings
-export SVN_EDITOR=vim
-
-### Java Settings
-# export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
-
-# ### Ruby rbenv settings
-# # Add ruby init to shell to enable shims autocompletion
-# export PATH="$HOME/.rbenv/bin:$PATH"
-# eval "$(rbenv init -)"
-
-### Put Pentaho spoon and report designer scripts in path
-# Note: BC of bug in pentaho 3.x, still need to cd into data-integration
-# directory in order to run spoon.sh script -- hopefully this will be fixed in
-# 5.x, but for not, no use putting data-integration directory in path...
-# export PATH="$PATH:~/Vendor/data-integration"
-export PATH="$PATH:~/PRD/report-designer"
-
 # AWS region configuration
 export AWS_REGION='us-east-1'
 
@@ -120,3 +102,25 @@ eval "$(rbenv init -)"
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
+
+# Append to bash history file instead of overwriting it in new tmux panes
+shopt -s histappend
+
+# Java
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$PATH:$JAVA_HOME/bin 
+
+# Hadoop
+export HADOOP_HOME=/usr/local/hadoop 
+export HADOOP_MAPRED_HOME=$HADOOP_HOME 
+export HADOOP_COMMON_HOME=$HADOOP_HOME 
+export HADOOP_HDFS_HOME=$HADOOP_HOME 
+export YARN_HOME=$HADOOP_HOME 
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native 
+export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin 
+export HADOOP_INSTALL=$HADOOP_HOME 
+
+# PySpark
+SPARK_VERSION=2.0.2
+export SPARK_HOME=/usr/local/Cellar/apache-spark/$SPARK_VERSION/libexec
+export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH

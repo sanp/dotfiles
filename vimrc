@@ -150,21 +150,23 @@ set clipboard=
 set shiftwidth=2            " 1 tab = 2 spaces
 set tabstop=2
 set softtabstop=2
+set foldnestmax=2
+set foldmethod=indent
 set expandtab               " Spaces instead of tabs
 set smarttab
 
-" " Indenting rules
-" autocmd Filetype py setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-" autocmd Filetype python setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-" autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-" autocmd Filetype r setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-" autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-" autocmd Filetype html setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-" autocmd Filetype xhtml setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-" autocmd Filetype htmldjango setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-" autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-" autocmd Filetype js setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
-" autocmd Filetype sh setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+" Indenting rules
+autocmd Filetype py setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype python setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype r setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype yaml setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype html setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype xhtml setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype htmldjango setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype js setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype sh setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => d. Status line
@@ -187,7 +189,7 @@ set statusline+=%<%P                            " file position
 " => e. Mappings and abbreviations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Set local leader to the _ character to avoid clashes between global
+" Set local leader to the - character to avoid clashes between global
 " and ft plugins
 let maplocalleader = "-"
 
@@ -357,6 +359,12 @@ nnoremap <silent> ,3 :call SetLargeWindow()<CR>
 " 0 maximize screen
 nnoremap <silent> ,0 :call SetMaxWindow()<CR>
 
+" Increase/decrease the width or height of the vim gui window
+nnoremap <silent> \h :set columns+=5<CR>
+nnoremap <silent> \l :set columns-=5<CR>
+nnoremap <silent> \j :set lines+=5<CR>
+nnoremap <silent> \k :set lines-=5<CR>
+
 " Most recently used files
 nnoremap <silent> ,m :MRU<CR>
 " Open last opened file -- can't use nnoremap, must use nmap here
@@ -378,6 +386,15 @@ nnoremap ,ce v$
 " and turn it off after
 " Toggle paste mode and display whether paste or nopaste
 verbose nnoremap <silent> ,p :set invpaste<CR>:set paste?<CR>
+
+" Convert 4 space tabs to 2 space tabs in code
+nnoremap <silent> ,cs :%s/    /  /g<CR>
+
+" TODO: Fix this...
+" Convert CamelCase to under_scores in highlighted block
+vnoremap <silent> \us :s#\(\<\u\l\+\|\l\+\)\(\u\)#\l\1_\l\2#g<CR>
+" Convert under_scores to CamelCase in highlighted block
+vnoremap <silent> \cam :s#\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2#g<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => f. Spell checking
@@ -479,14 +496,13 @@ endfor
 
 " Functions to set window positions and sizes
 " Not really sure what the numbers should be for windows OS -- if I ever use a
-" windows machine again, maybe I'll adjust them.  I think they should be 
-" different than Mac, though.
+" windows machine again, maybe I'll adjust them.
 
 " Small size
 function SetSmallWindow()
     if has('win32') || has('win64')
         if has("gui_running")
-            winpos 1000 100
+            winpos 600 225
             set lines=40 columns=115
         endif
     else
@@ -505,14 +521,14 @@ endfunction
 function SetMediumWindow()
     if has('win32') || has('win64')
         if has("gui_running")
-            winpos 286 100
-            set lines=55 columns=164
+            winpos 617 23
+            set lines=65 columns=115
         endif
     else
         " Don't change window size/pos in terminal!
         if has("gui_running")
-            winpos 275 159
-            set lines=55 columns=164
+            winpos 617 23
+            set lines=65 columns=115
         endif
     endif
 endfunction
@@ -587,7 +603,7 @@ highlight Folded  cterm=underline ctermfg=10 ctermbg=0
 
 " Set starting window position and size
 " See functions below in functions section for details
-call SetSmallWindow()
+call SetMediumWindow()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => i. Plugins
@@ -660,6 +676,8 @@ let R_assign_map = ";"
 " Start R in the GUI console, not in terminal/tmux
 let R_in_buffer = 0
 let R_applescript = 1
+" Start R in vim's working directory
+let R_nvim_wd = 1
 
 """""""""""""""""""""""""
 " MRU
