@@ -671,11 +671,22 @@ autocmd BufNewFile,BufRead *.py compiler python
 " Nvim-R
 """""""""""""""""""""""""
 
+let R_in_buffer = 0
+
 " Map the ; to <-
 let R_assign_map = ";"
+
 " Start R in the GUI console, not in terminal/tmux
-let R_in_buffer = 0
-let R_applescript = 1
+" let R_applescript = 1
+
+" Start R in a new tmux pane rather than a new terminal window
+let R_applescript = 0
+let R_tmux_split = 1
+let R_vsplit = 1  " Split window vertically
+
+" Split to the left, not to the right
+let R_objbr_place = "console,right"
+
 " Start R in vim's working directory
 let R_nvim_wd = 1
 
