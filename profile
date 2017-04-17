@@ -124,3 +124,9 @@ export HADOOP_INSTALL=$HADOOP_HOME
 SPARK_VERSION=2.0.2
 export SPARK_HOME=/usr/local/Cellar/apache-spark/$SPARK_VERSION/libexec
 export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/steven.sanpietro/google-cloud-sdk/path.bash.inc' ]; then source '/Users/steven.sanpietro/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/steven.sanpietro/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/steven.sanpietro/google-cloud-sdk/completion.bash.inc'; fi

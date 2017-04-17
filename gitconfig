@@ -16,12 +16,15 @@
 	st = status
 	co = checkout
 	ci = commit
-	br = branch
+  br = branch
 	rb = rebase
-    sm = submodule
-    lf = ls-files
-    lfo = ls-files -o --exclude-per-directory=.gitignore
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --name-status
+  sm = submodule
+  lf = ls-files
+  lfo = ls-files -o --exclude-per-directory=.gitignore
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --name-status
+  bra = branch --sort=-committerdate
+  brd = branch --sort=committerdate
+  brdate = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short)  -  %(refname:short)'
 [color]
 	ui = true
 [diff]

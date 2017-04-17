@@ -174,3 +174,19 @@ alias lssh='cat $HOME/.ssh/config | grep Host'
 # Sitescout databases
 alias rentdb1='mysql -h rentdb1.sitescout.com ssdsp'
 alias rentdb2='mysql -h rentdb2.sitescout.com ssdsp'
+
+alias vp='vim ${HOME}/.profile'
+
+# Show all processes matching grep string
+show_all() {
+  search_term=$1
+  ps aux | grep $search_term
+}
+
+# Kill all processes matching grep string
+kill_all() {
+  search_term=$1
+  ps aux | grep $search_term | awk '{print $2}' | xargs kill -9
+}
+
+alias bgitk="gitk --simplify-by-decoration --all"

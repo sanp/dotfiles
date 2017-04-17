@@ -133,8 +133,7 @@ elseif has('unix')
     let &guifont="Monospace 10"
 endif
 
-" " Get tmux to work well with the system clipboard. See: 
-" " https://coderwall.com/p/j9wnfw
+" " Set vim to copy to system clipboard by default
 " set clipboard=unnamed
 
 " Set clipboard so that when you yank to a register it doesn't wipe out what's

@@ -1,8 +1,9 @@
-assignInNamespace(
-  "q", 
-  function(save = "no", status = 0, runLast = TRUE) 
-  {
-    .Internal(quit(save, status, runLast))
-  }, 
-  "base"
-)
+if(interactive()){
+    library(colorout)
+        library(setwidth)
+}
+
+# Call this fn to increase the width of the screen in terminal R
+wideScreen <- function(howWide=Sys.getenv("COLUMNS")) {
+  options(width=as.integer(howWide))
+}
