@@ -151,6 +151,7 @@ set tabstop=2
 set softtabstop=2
 set foldnestmax=2
 set foldmethod=indent
+set foldlevelstart=20       " Open folds by default on buffer open
 set expandtab               " Spaces instead of tabs
 set smarttab
 
