@@ -10,6 +10,8 @@ XPTinclude
 
 XPTvar $filechoose file.choose()
 
+XPTvar $R_EXC    /usr/bin/env Rscript
+
 fun! s:f.GetTimestamp()
     return strftime("%Y %b %d")
 endfunction
@@ -67,3 +69,11 @@ write.`csv^(`d^, `fc^`, row.names=`F^)
 XPT ddply " ddply\(data...by_group...summarise...columns...)
 `sumtab^ <- ddply(`d^, c(`args*^), summarise, 
                    `cursor^)
+
+XPT shebang " #!$R_EXC
+XSET encoding=Echo(&fenc != '' ? &fenc : &enc)
+#!`$R_EXC^
+
+..XPT
+
+XPT sb alias=shebang

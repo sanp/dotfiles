@@ -66,6 +66,8 @@ set textwidth=80
 set incsearch
 " This unsets the "last search pattern" by hitting escape
 nnoremap <silent> <ESC> :noh<CR><CR>
+" Highlight all search results
+set hlsearch
 
 " Turn on smartcase -- ignore case when search is in lowercase,
 " but do not ignore when search has uppercase letters in it
@@ -113,6 +115,8 @@ autocmd BufNewFile,BufRead *.vb set ft=vb
 " Set the global default shell to be the bash shell
 let g:is_bash=1
 
+" Disable Ex mode
+nnoremap Q <nop>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => b. Colors and Fonts
@@ -120,7 +124,7 @@ let g:is_bash=1
 
 " Set color
 if has("gui_running")
-    colorscheme mustang
+    colorscheme Mustang
 else
     colorscheme darkblue
 endif
@@ -346,9 +350,6 @@ nnoremap <silent> ,qm vip:norm! @q<CR>
 " Select all lines in visual mode
 nnoremap ,a ggVG
 
-" Go down half of one page when at bottom
-nnoremap \r <c-f><c-u>G
-
 " Change window size to a few default options
 " 1 goes back to default setting used when new vim window is opened
 nnoremap <silent> ,1 :call SetSmallWindow()<CR>
@@ -392,9 +393,18 @@ nnoremap <silent> ,cs :%s/    /  /g<CR>
 
 " TODO: Fix this...
 " Convert CamelCase to under_scores in highlighted block
-vnoremap <silent> \us :s#\(\<\u\l\+\|\l\+\)\(\u\)#\l\1_\l\2#g<CR>
+vnoremap <silent> \us s#\(\<\u\l\+\|\l\+\)\(\u\)#\l\1_\l\2#g<CR>
 " Convert under_scores to CamelCase in highlighted block
 vnoremap <silent> \cam :s#\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2#g<CR>
+
+" Search for the current visually selected text
+vnoremap // y/<C-R>"<CR>
+
+" Find/Replace for the current visually selected text
+vnoremap \rs "hy:%s/<C-r>h//g<left><left>
+
+" Turn off auto line breaks
+nnoremap \bo :set tw=0<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => f. Spell checking
