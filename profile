@@ -83,10 +83,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 # AWS region configuration
 export AWS_REGION='us-east-1'
 
-# NVM settings
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
 # Diffmerge
 export PATH="$PATH:/Applications/DiffMerge.app/Contents/MacOS"
 
@@ -123,7 +119,7 @@ export HADOOP_INSTALL=$HADOOP_HOME
 # PySpark
 SPARK_VERSION=2.0.2
 export SPARK_HOME=/usr/local/Cellar/apache-spark/$SPARK_VERSION/libexec
-export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
+# export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/steven.sanpietro/google-cloud-sdk/path.bash.inc' ]; then source '/Users/steven.sanpietro/google-cloud-sdk/path.bash.inc'; fi

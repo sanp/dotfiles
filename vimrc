@@ -240,11 +240,6 @@ endif
 nnoremap <silent> ,e :e <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> ,cd :cd %:p:h <CR>
 
-" Maps ,R to set the working directory to the R workspace directory:
-" useful for editing .R files with vim. Must remember to change
-" this line if ever update or change the R working directory.
-nnoremap <silent> ,R :cd ~/Documents/R<CR>:pwd<CR>
-
 " ,D to set the working directory to the desktop
 nnoremap <silent> ,D :cd ~/Desktop <CR>:pwd<CR>
 
@@ -281,13 +276,6 @@ inoremap <silent> <F3> <C-R>=strftime("%Y %b %d %a %I:%M %p")<CR>
 
 " CTRL-G u  break undo sequence, start new change      *i_CTRL-G_u*
 inoremap <CR> <C-g>u<CR>
-
-" Press <F4> to automatically update the 'LastUpdated' line of any
-" file to the current date and time. -- This is useful is you include a
-" header in your files which indicates when the file was last updated.
-" NOTE: Use nmap here, not nnoremap, because you need to call the <F3>
-" datestamp generator mapping from this mapping
-nmap <silent> <F4> gg/LastUpdated<CR>f wd$<F3>
 
 " Map ,n and ,N to open and close NERDTree normally
 noremap <silent> ,n :NERDTree<CR>
@@ -331,9 +319,6 @@ nnoremap <silent> ,j :bn<CR>
 " delete currently opened buffer
 nnoremap <silent> ,d :bd<CR>
 
-" Opposite of J -- split line into two at current cursor position
-nnoremap <silent> ,sl i<CR><ESC>
-
 " Copy the full absolute path only into the system clipboard
 nnoremap <silent> ,yp :let @+ = expand("%:p:h")<CR>
 " Copy the file name as well as the full absolute path into the system clipboard
@@ -368,9 +353,6 @@ nnoremap <silent> \k :set lines-=5<CR>
 
 " Most recently used files
 nnoremap <silent> ,m :MRU<CR>
-" Open last opened file -- can't use nnoremap, must use nmap here
-" -- i guess this is because <CR> is mapped to something in MRU code
-nmap <silent> ,l :MRU<CR><CR>
 
 " Make search results centered on screen so you don't have to move your eyes to
 " look for results
@@ -388,14 +370,11 @@ nnoremap ,ce v$
 " Toggle paste mode and display whether paste or nopaste
 verbose nnoremap <silent> ,p :set invpaste<CR>:set paste?<CR>
 
-" Convert 4 space tabs to 2 space tabs in code
-nnoremap <silent> ,cs :%s/    /  /g<CR>
-
-" TODO: Fix this...
-" Convert CamelCase to under_scores in highlighted block
-vnoremap <silent> \us s#\(\<\u\l\+\|\l\+\)\(\u\)#\l\1_\l\2#g<CR>
-" Convert under_scores to CamelCase in highlighted block
-vnoremap <silent> \cam :s#\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2#g<CR>
+" " TODO: Fix this...
+" " Convert CamelCase to under_scores in highlighted block
+" vnoremap <silent> \us s#\(\<\u\l\+\|\l\+\)\(\u\)#\l\1_\l\2#g<CR>
+" " Convert under_scores to CamelCase in highlighted block
+" vnoremap <silent> \cam :s#\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2#g<CR>
 
 " Search for the current visually selected text
 vnoremap // y/<C-R>"<CR>
