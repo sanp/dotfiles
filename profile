@@ -126,3 +126,14 @@ if [ -f '/Users/steven.sanpietro/google-cloud-sdk/path.bash.inc' ]; then source 
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/steven.sanpietro/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/steven.sanpietro/google-cloud-sdk/completion.bash.inc'; fi
+
+# Pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+pyenv virtualenvwrapper
+
+# pyenv-virtualenv will automatically activate and deactivate the virtual
+# environment on entering and leaving directories that contain a .python-version
+# file with a valid virtual environment. See: http://akbaribrahim.com/managing-python-virtual-environments-with-pyenv-virtualenv/
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi

@@ -625,6 +625,15 @@ let g:NERDTreeChDirMode=2
 " Display classes, methods, functions, etc in window
 nnoremap <silent> tt :TagbarToggle<CR> 
 
+let g:tagbar_type_r = {
+    \ 'ctagstype' : 'r',
+    \ 'kinds'     : [
+        \ 'f:Functions',
+        \ 'g:GlobalVariables',
+        \ 'v:FunctionVariables',
+    \ ]
+\ }
+
 """""""""""""""""""""""""
 " Taglist/Exuberant Ctags
 """""""""""""""""""""""""

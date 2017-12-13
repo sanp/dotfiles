@@ -14,7 +14,9 @@ alias doc="cd ~/Documents"
 alias dot="cd ~/dotfiles"
 alias ref="cd ~/Documents/Reference"
 alias cl="clear"
+# alias python="python2"
 alias p="python"
+# alias pip="pip2"
 
 # Sourcing
 alias so="source"
