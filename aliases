@@ -99,9 +99,6 @@ alias psql_status='pg_ctl -D /usr/local/var/postgres -l logfile status'
 alias psql_start='pg_ctl -D /usr/local/var/postgres -l logfile start'
 alias psql_stop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
 
-# Adhoc NI DB
-alias adhoc='psql -h pentahodb1.colo.networkedinsights.com -d adhoc -U nireader'
-
 ##
 # Tmux
 ##
@@ -192,3 +189,9 @@ kill_all() {
 }
 
 alias bgitk="gitk --simplify-by-decoration --all"
+
+# Default `top` command to sort by CPU usage, not MEM
+alias top="top -o cpu"
+
+# Download mp3 audio files from youtube
+alias ytdl-mp3="youtube-dl -x --audio-quality 0 --audio-format mp3"

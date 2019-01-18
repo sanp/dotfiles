@@ -118,6 +118,12 @@ let g:is_bash=1
 " Disable Ex mode
 nnoremap Q <nop>
 
+" " Make sure vim highlights matching parens
+" DoMatchParen
+
+" Don't use two spaces after a period when joining with J or gq. Just use one.
+set nojoinspaces
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => b. Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -382,8 +388,10 @@ vnoremap // y/<C-R>"<CR>
 " Find/Replace for the current visually selected text
 vnoremap \rs "hy:%s/<C-r>h//g<left><left>
 
-" Turn off auto line breaks
-nnoremap \bo :set tw=0<CR>
+" Disable auto line breaks
+nnoremap \bd :set tw=0<CR>
+" Enable auto line breaks
+nnoremap \be :set tw=80<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => f. Spell checking
