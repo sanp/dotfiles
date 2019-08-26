@@ -117,9 +117,9 @@ export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_INSTALL=$HADOOP_HOME 
 
 # PySpark
-SPARK_VERSION=2.0.2
+SPARK_VERSION=2.4.3
 export SPARK_HOME=/usr/local/Cellar/apache-spark/$SPARK_VERSION/libexec
-# export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
+export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/steven.sanpietro/google-cloud-sdk/path.bash.inc' ]; then source '/Users/steven.sanpietro/google-cloud-sdk/path.bash.inc'; fi
@@ -137,3 +137,5 @@ pyenv virtualenvwrapper
 # environment on entering and leaving directories that contain a .python-version
 # file with a valid virtual environment. See: http://akbaribrahim.com/managing-python-virtual-environments-with-pyenv-virtualenv/
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+export TERM=xterm-256color

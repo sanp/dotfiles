@@ -33,12 +33,12 @@
 	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/xptemplate"]
 	path = vim/bundle/xptemplate
-	url = https://github.com/drmingdrmer/xptemplate.git
+  url = https://github.com/vim-scripts/xptemplate.git
 [submodule "vim/bundle/tagbar"]
 	path = vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
-[submodule "vim/bundle/nvim-r"]
-	path = vim/bundle/Nvim-r
+[submodule "vim/bundle/Nvim-R"]
+	path = vim/bundle/Nvim-R
 	url = https://github.com/jalvesaq/Nvim-R.git
 [submodule "vim/bundle/screen"]
 	path = vim/bundle/screen
@@ -46,3 +46,15 @@
 [submodule "vim/bundle/increment"]
 	path = vim/bundle/increment
 	url = https://github.com/sanp/increment.vim--Avadhanula.git
+[submodule "vim/bundle/base16-vim"]
+	path = vim/bundle/base16-vim
+	url = https://github.com/chriskempson/base16-vim.git
+[submodule "vim/bundle/vim-abolish"]
+	path = vim/bundle/vim-abolish
+	url = https://github.com/tpope/vim-abolish.git
+[submodule "vim/bundle/vim-latex"]
+	path = vim/bundle/vim-latex
+	url = https://github.com/vim-latex/vim-latex.git
+[submodule "vim/bundle/vimtlib"]
+	path = vim/bundle/vimtlib
+	url = https://github.com/tomtom/tlib_vim.git

@@ -15,14 +15,11 @@ cd ~
 # already installed. Installing these packages may take a while.
 
 # Homebrew
-ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 # Git -- ensure that git is up to date, and includes gitk, etc
-brew install git
 # Git completion and shell completion via homebrew
 brew install bash-completion
 # Python - Macs come with python already, but this will install the latest 
 # (2.x) version
-brew install -U python
 # Exuberant ctags
 brew install ctags-exuberant
 # Pygments -- for nice colors in the terminal
@@ -33,8 +30,6 @@ brew install dos2unix
 brew install tmux
 # Tree - for viewing file directory structures
 brew install tree
-# Pygmentize - for beautiful colors in the terminal
-easy_install Pygments
 # Pip - python package manager
 easy_install pip
 # Virtualenv and virtualenvwrapper - for partitioning environments for python/django projects
@@ -55,8 +50,8 @@ echo "Symlinks created."
 
 # Fetch the vim submodules
 cd ~/dotfiles
-git submodule init
-git submodule update
+git submodule update --init --recursive
+git submodule sync
 echo "Vim submodules updated."
 
 # Create the file which will store vim history, for vim MRU (most recently used)
