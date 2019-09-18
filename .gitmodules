@@ -52,7 +52,6 @@
 [submodule "vim/bundle/vim-latex"]
   path = vim/bundle/vim-latex
   url = https://github.com/vim-latex/vim-latex.git
-[submodule "vim/bundle/tlib"] 
-  path = vim/bundle/tlib
-  url = https://github.com/tomtom/tlib_vim.git
-
+[submodule "vim/bundle/tlib_vim"] 
+	path = vim/bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
