@@ -73,13 +73,11 @@ echo "Vim submodules updated."
 
 # Create the file which will store vim history, for vim MRU (most recently used)
 # plugin
-cd ~
-touch .vim_mru_files
 # To avoid getting an error the first time vim is opened, add a file to the vim 
 # recent file history
-echo '~/.profile' >> ~/.vim_mru_files
+echo '~/.profile' > ~/.vim_mru_files
 
 # Copy desktop background images to home folder
-cp -r desktop_backgrounds $HOME
+cp -r ~/dotfiles/desktop_backgrounds $HOME
 
 echo "Done! Restart your terminal and vim."
