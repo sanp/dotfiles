@@ -50,12 +50,6 @@ PS1="\[$green\]\u@\h:\w\[$magenta\]\$git_branch\[$green\]\\$\[$normal_colours\] 
 # Diffmerge
 export PATH="$PATH:/Applications/DiffMerge.app/Contents/MacOS"
 
-# It's not possible to completely remove the Dock from macs, but you can hide it
-# and then lengthen the amount of time it takes to display the dock after hover:
-defaults write com.apple.Dock autohide-delay -float 5 && killall Dock
-# To restore defaults:
-# defaults delete com.apple.Dock autohide-delay
-
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi

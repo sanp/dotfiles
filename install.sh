@@ -1,14 +1,18 @@
 #!/bin/bash
 
-############################################################################
-# This script installs the dotfiles.  First, installs all dependent packages,
-# next, creates symlinks in home folder, finally fetches vim packages.
-############################################################################
+################################################################################
+# This script installs the dotfiles.  First, it installs all dependent packages,
+# next, it creates symlinks in home folder, and finally it fetches vim packages.
+################################################################################
+
+set -e
 
 # Execute script as root user
 echo "Installation will now begin."
 
-cd ~
+# It's not possible to completely remove the Dock from macs, but you can hide it
+# and then lengthen the amount of time it takes to display the dock after hover:
+defaults write com.apple.Dock autohide-delay -float 5 && killall Dock
 
 # Install packages needed for this dotfiles configuration -- if they're already
 # installed, they will just spit out a warning saying that the package is
@@ -41,6 +45,12 @@ brew install pyenv
 brew install pyenv-virtualenv
 
 ##
+# Tmux
+##
+brew install tmux
+brew install reattach-to-user-namespace
+
+##
 # Misc
 ##
 # Exuberant ctags
@@ -49,8 +59,6 @@ brew install ctags-exuberant
 sudo easy_install Pygments
 # dos2unix
 brew install dos2unix
-# tmux
-brew install tmux
 # Tree - for viewing file directory structures
 brew install tree
 # Youtube downloader
@@ -58,11 +66,9 @@ brew install youtube-dl
 
 echo "All packages now installed."
 
-# Now install the dotfiles
-cd ~/dotfiles
 # The makesymlinks.sh script creates symlinks to the dotfiles in your home
 # directory
-./makesymlinks.sh
+~/dotfiles/makesymlinks.sh
 echo "Symlinks created."
 
 # Fetch the vim submodules

@@ -6,3 +6,5 @@
 .bash_history
 .sh_history
 vim/bundle/**/doc/tags
+vim/bundle/xptemplate
+viminfo
