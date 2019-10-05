@@ -6,7 +6,7 @@
 ############################################################################
 
 # Execute script as root user
-sudo echo "Installation will now begin."
+echo "Installation will now begin."
 
 cd ~
 
