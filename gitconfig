@@ -1,23 +1,22 @@
 [user]
-	name = Steve SanPietro
-	email = sanpietro.steve@gmail.com
+  name = Steve SanPietro
+  email = sanpietro.steve@gmail.com
 [core]
-	editor = vim
-#	autocrlf = true
-	excludesfile = /Users/steven.sanpietro/.gitignore_global
+  editor = vim
+  excludesfile = ~/.gitignore_global
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 [push]
-	default = simple
+  default = simple
 [alias]
-	last = log -1 HEAD
-	logg = log --pretty=format:\"%h - %an, %ar : %s\"
-	unstage = reset HEAD --
-	st = status
-	co = checkout
-	ci = commit
+  last = log -1 HEAD
+  logg = log --pretty=format:\"%h - %an, %ar : %s\"
+  unstage = reset HEAD --
+  st = status
+  co = checkout
+  ci = commit
   br = branch
-	rb = rebase
+  rb = rebase
   sm = submodule
   lf = ls-files
   lfo = ls-files -o --exclude-per-directory=.gitignore
@@ -26,16 +25,13 @@
   brd = branch --sort=committerdate
   brdate = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short)  -  %(refname:short)'
 [color]
-	ui = true
+  ui = true
 [diff]
-	tool = diffmerge
+  tool = diffmerge
 [merge]
-	tool = diffmerge
+  tool = diffmerge
 [difftool "diffmerge"]
-	cmd = diffmerge $LOCAL $REMOTE
+  cmd = diffmerge $LOCAL $REMOTE
 [mergetool "diffmerge"]
-	cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
-	trustExitCode = true
-#If you don't want git to create the .orig files
-#[mergetool]
-#	keepBackup = false
+  cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
+  trustExitCode = true

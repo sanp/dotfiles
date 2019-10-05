@@ -3,20 +3,14 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias ~="cd ~"
 alias -- -="cd -"
 
 # Shortcuts
 alias d="cd ~/Desktop"
-alias db="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
-alias doc="cd ~/Documents"
 alias dot="cd ~/dotfiles"
-alias ref="cd ~/Documents/Reference"
 alias cl="clear"
-# alias python="python2"
 alias p="python"
-# alias pip="pip2"
 
 # Sourcing
 alias so="source"
@@ -29,21 +23,6 @@ alias mvim='open -a "MacVim"'
 # Start psql
 alias start_psql='pg_ctl -D /usr/local/var/postgres -l logfile start'
 alias stop_psql='pg_ctl -D /usr/local/var/postgres -l logfile stop'
-
-# Start and stop the pentaho server, etc
-function call_pentaho {
-    # action should be either start, stop, restart, status
-    action=$1
-    # Just in case -- sometimes starting the ba server alone isn't enough, you
-    # must also start postgresql
-    if [ "$action" == "start" ] || [ "$action" == "restart" ] ; then
-        /Applications/pentaho/ctlscript.sh start postgresql
-    elif [ "$action" == "status" ] ; then
-        /Applications/pentaho/ctlscript.sh status postgresql
-    fi
-    /Applications/pentaho/ctlscript.sh $action baserver
-}
-alias puc='call_pentaho'
 
 # Always use color when ls-ing
 alias ls='ls -GFh'
@@ -61,10 +40,8 @@ alias lg='ls | grep -i'
 alias llg='ls -al | grep -i'
 # Grep history
 alias hg='history | grep -i'
-# virtualenvwrapper -- show all virtual environments
-alias lv='ls $WORKON_HOME'
-# virtualenvwrapper - long version
-alias llv='ls -al $WORKON_HOME'
+# List all virtual environments
+alias lv='pyenv virtualenvs'
 
 # `cat` with beautiful colors. requires Pygments installed.
 # if not already installed: sudo easy_install Pygments
@@ -73,7 +50,7 @@ alias llv='ls -al $WORKON_HOME'
 # do with pygmentize
 alias ccat='pygmentize -O style=monokai -f console256 -g'
 
-# git root
+# CD into the root of a git repo
 alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
 
 # Get file size
@@ -89,10 +66,6 @@ alias cllogs="sudo rm -f /private/var/log/asl/*.asl"
 
 # List open ports
 alias lsports='lsof -i -P | grep -i "listen"'
-
-###
-# Centro database access aliases
-###
 
 # Start/stop the psql server
 alias psql_status='pg_ctl -D /usr/local/var/postgres -l logfile status'
@@ -145,20 +118,12 @@ _ta()
 }
 complete -F _ta ta
 
-
 # List tmux sessions
 alias tls='tmux ls'
 # Start a new tmux session
 alias tns='tmux new -s'
 # Kill tmux session
 alias tk='tmux kill-session -t'
-
-# Rails
-alias be="bundle exec"
-
-# Pentaho server startup script
-alias pentaho_server="~/Pentaho/server/biserver-ee/server.sh"
-
 
 # Fn to get the pid of whatever input string
 get_pid() {
@@ -170,18 +135,14 @@ alias gpid="get_pid"
 # List all connections in ssh config file
 alias lssh='cat $HOME/.ssh/config | grep Host'
 
-# Sitescout databases
-alias rentdb1='mysql -h rentdb1.sitescout.com ssdsp'
-alias rentdb2='mysql -h rentdb2.sitescout.com ssdsp'
-
-alias vp='vim ${HOME}/.profile'
-
+##
+# PID fns
+##
 # Show all processes matching grep string
 show_all() {
   search_term=$1
   ps aux | grep $search_term
 }
-
 # Kill all processes matching grep string
 kill_all() {
   search_term=$1

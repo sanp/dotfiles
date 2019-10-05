@@ -6,7 +6,7 @@
 ############################################################################
 
 # Execute script as root user
-sudo echo "Installation will now begin."
+sudo su
 
 cd ~
 
@@ -14,29 +14,47 @@ cd ~
 # installed, they will just spit out a warning saying that the package is
 # already installed. Installing these packages may take a while.
 
+##
 # Homebrew
+##
+# Uninstall
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+# Install
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+##
+# Git
+##
 # Git -- ensure that git is up to date, and includes gitk, etc
+brew install git
 # Git completion and shell completion via homebrew
 brew install bash-completion
-# Python - Macs come with python already, but this will install the latest 
-# (2.x) version
+
+##
+# Python
+##
+# Macs come with python, but this will install the latest version
+brew install python
+# Pyenv: python version manager
+brew install pyenv
+# Virtualenv: environment manager
+brew install pyenv-virtualenv
+
+##
+# Misc
+##
 # Exuberant ctags
 brew install ctags-exuberant
 # Pygments -- for nice colors in the terminal
-easy_install Pygments
+sudo easy_install Pygments
 # dos2unix
 brew install dos2unix
 # tmux
 brew install tmux
 # Tree - for viewing file directory structures
 brew install tree
-# Pip - python package manager
-easy_install pip
-# Virtualenv and virtualenvwrapper - for partitioning environments for python/django projects
-pip install virtualenv
-pip install virtualenvwrapper
-# Make a directory to keep the virtual environments in
-mkdir -p ~/.virtualenvs
+# Youtube downloader
+brew install youtube-dl
 
 echo "All packages now installed."
 
@@ -44,7 +62,6 @@ echo "All packages now installed."
 cd ~/dotfiles
 # The makesymlinks.sh script creates symlinks to the dotfiles in your home
 # directory
-chmod +x makesymlinks.sh
 ./makesymlinks.sh
 echo "Symlinks created."
 
