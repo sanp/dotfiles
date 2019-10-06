@@ -44,11 +44,17 @@ alias hg='history | grep -i'
 alias lv='pyenv virtualenvs'
 
 # `cat` with beautiful colors. requires Pygments installed.
-# if not already installed: sudo easy_install Pygments
-# Use ccat rather than remapping cat because pygmentize only works on single
+# Use pcat rather than remapping cat because pygmentize only works on single
 # files. Still want ability to merge multiple files using 'cat' which you can't
 # do with pygmentize
-alias ccat='pygmentize -O style=monokai -f console256 -g'
+alias pcat='pygmentize -O style=monokai -f console256 -g'
+pygmentize_fn() {
+  function=${1}
+  file=${2}
+  pcat ${file} | ${function} -r
+}
+alias pless='pygmentize_fn less'
+alias pmore='pygmentize_fn more'
 
 # CD into the root of a git repo
 alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
