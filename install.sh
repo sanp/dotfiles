@@ -45,9 +45,16 @@ brew install pyenv
 brew install pyenv-virtualenv
 
 ##
+# Scala
+##
+brew install scala
+brew install sbt
+
+##
 # Tmux
 ##
 brew install tmux
+# reattach-to-user-namespace necessary for doing vim copy/pasting in tmux window
 brew install reattach-to-user-namespace
 
 ##
