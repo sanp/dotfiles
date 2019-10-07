@@ -70,6 +70,8 @@ brew install dos2unix
 brew install tree
 # Youtube downloader
 brew install youtube-dl
+# ag: the silver searcher
+brew install the_silver_searcher
 
 echo "All packages now installed."
 
@@ -80,8 +82,8 @@ echo "Symlinks created."
 
 # Fetch the vim submodules
 cd ~/dotfiles
-git submodule update --init --recursive
-git submodule sync
+git submodule init
+git submodule update
 echo "Vim submodules updated."
 
 # Create the file which will store vim history, for vim MRU (most recently used)
