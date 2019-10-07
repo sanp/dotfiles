@@ -485,7 +485,6 @@ endfunction
 " Source all scripts that are in the my_functions directory -- some I wrote,
 " some others wrote.
 " Includes: Commenting script for commenting/uncommenting portions of code
-" FormatQuery script for proper indentation of SocialSense queries (for Networked Insights)
 " RemoveDiacritics script for removing diacritical markings from text
 for file in split(globpath($VIM, 'my_functions/*.vim'), '\n')
   exe 'source' file
