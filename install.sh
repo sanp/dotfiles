@@ -58,6 +58,13 @@ brew install tmux
 brew install reattach-to-user-namespace
 
 ##
+# R
+##
+sudo chown -R $(whoami) /usr/local/var/log
+chmod u+w /usr/local/var/log
+brew install r
+
+##
 # Misc
 ##
 # Exuberant ctags

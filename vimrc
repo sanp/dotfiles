@@ -64,8 +64,8 @@ set textwidth=80
 
 " Show search results as you type them
 set incsearch
-" This unsets the "last search pattern" by hitting escape
-nnoremap <silent> <ESC> :noh<CR><CR>
+" This unsets the "last search pattern"
+nnoremap <silent> <leader><space> :noh<CR><CR>
 " Highlight all search results
 set hlsearch
 
@@ -108,9 +108,6 @@ set guioptions-=T
 " Don't show autocomplete menus -- I don't like this because it doesn't work well
 " with the ,e mapping below -- pressing the -> arrow does the wrong thing.
 set nowildmenu
-
-" Set filetype to vb when a .vb file is read
-autocmd BufNewFile,BufRead *.vb set ft=vb
 
 " Set the global default shell to be the bash shell
 let g:is_bash=1
@@ -199,9 +196,8 @@ set statusline+=%<%P                            " file position
 " => e. Mappings and abbreviations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Set local leader to the - character to avoid clashes between global
-" and ft plugins
-let maplocalleader = "-"
+" Set leader to the - character
+let mapleader = "-"
 
 " <C-e> scrolls up one line at a time. Default maps <C-y> to move screen down
 " one line. <C-s> is a better mapping -- less hand movement. <C-y> still works.
@@ -311,7 +307,7 @@ nnoremap <silent> ,sv :silent! so $MYVIMRC<CR>
 
 " For increment.vim plugin -- :I already mapped to a command
 " so map new shortcut for incrementing
-vnoremap <silent> <leader>i :Inc<CR>
+vnoremap <silent> \i :Inc<CR>
 
 " Shortcuts for working with buffers
 " list buffers
