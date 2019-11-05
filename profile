@@ -1,6 +1,10 @@
 # Some useful aliases
 source ~/.aliases
 
+# For 10.15 (Cataline), the default terminal is zsh, and opening a bash terminal
+# prompts a warning message. To suppress this warning:
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Use vi shortcuts in terminal
 set -o vi
 
