@@ -22,7 +22,9 @@ defaults write com.apple.Dock autohide-delay -float 5 && killall Dock
 # Homebrew
 ##
 # Uninstall
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+if [ -d "/usr/local/Homebrew" ]; then
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+fi
 # Install
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
