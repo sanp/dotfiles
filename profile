@@ -48,8 +48,14 @@ PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
 green=$'\e[1;32m'
 magenta=$'\e[1;35m'
 normal_colours=$'\e[m'
+# Only show the last three directory names. Requires bash >=4
+PROMPT_DIRTRIM=3
 # Customize the terminal prompt by setting the PS1 value
-PS1="\[$green\]\u@\h:\w\[$magenta\]\$git_branch\[$green\]\\$\[$normal_colours\] "
+# If the hostname isn't too long, show the full hostname:
+# PS1="\[$green\]\u@\h:\w\[$magenta\]\$git_branch\[$green\]\\$\[$normal_colours\] "
+# But if it's too long, just show the first part of the hostname before the
+# first dash
+PS1="\[$green\]\u@${HOSTNAME%%-*}:\w\[$magenta\]\$git_branch\[$green\]\\$\[$normal_colours\] "
 
 # Diffmerge
 export PATH="$PATH:/Applications/DiffMerge.app/Contents/MacOS"

@@ -126,19 +126,15 @@ set nojoinspaces
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set color
-if has("gui_running")
-    colorscheme Mustang
-else
-    colorscheme darkblue
-endif
+colorscheme candycode
+" if has("gui_running")
+"     colorscheme Mustang
+" else
+"     colorscheme darkblue
+" endif
 
 " Set font
-if has('win32') || has('win64')
-    " http://jeffmilner.com/index.php/2005/07/30/windows-vista-fonts-now-available/
-    set guifont=Consolas:h10:cANSI
-elseif has('unix')
-    let &guifont="Monospace 10"
-endif
+set guifont=Monaco:h13
 
 " " Set vim to copy to system clipboard by default
 " set clipboard=unnamed
@@ -174,6 +170,7 @@ autocmd Filetype htmldjango setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=in
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype js setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype sh setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+autocmd Filetype scala setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => d. Status line
@@ -199,18 +196,16 @@ set statusline+=%<%P                            " file position
 " Set leader to the - character
 let mapleader = "-"
 
-" <C-e> scrolls up one line at a time. Default maps <C-y> to move screen down
-" one line. <C-s> is a better mapping -- less hand movement. <C-y> still works.
-nnoremap <silent> <C-s> <C-y>
+" <C-e> scrolls up one line at a time. By default, <C-y> to move screen down
+" one line, and <C-u> to go up a page. Remap to <C-w> and <C-S>
+nnoremap <silent> <C-w> <C-y>
+nnoremap <silent> <C-c> <C-u>
 
-" Make navigating vim panes the same as moving around tmux panes -- my tmux
-" prefix is <C-a>
-" unmap <C-a>
 " Moving
-nnoremap <silent> <C-a>h :wincmd h<CR>
-nnoremap <silent> <C-a>j :wincmd j<CR>
-nnoremap <silent> <C-a>k :wincmd k<CR>
-nnoremap <silent> <C-a>l :wincmd l<CR>
+nnoremap <silent> <C-s>h :wincmd h<CR>
+nnoremap <silent> <C-s>j :wincmd j<CR>
+nnoremap <silent> <C-s>k :wincmd k<CR>
+nnoremap <silent> <C-s>l :wincmd l<CR>
 " Splits
 nnoremap <C-a><bar> :vsplit<CR>:enew<CR>
 nnoremap <silent> <C-a>- :split<CR>:enew<CR>
@@ -282,11 +277,6 @@ inoremap <CR> <C-g>u<CR>
 " Map ,n and ,N to open and close NERDTree normally
 noremap <silent> ,n :NERDTree<CR>
 noremap <silent> ,N :NERDTreeClose<CR>
-
-" Map ,,n and ,,N to open/close NERDTree using functions I define
-" below.
-noremap <silent> ,,n :call OpenNERDTree()<CR>
-noremap <silent> ,,N :call CloseNERDTree()<CR>
 
 " Indenting and unindenting current line
 nnoremap <silent> <leader>t V>
@@ -452,32 +442,6 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
-" This function Opens NERDTree according to my specifications.
-" It resizes the window so that the NERDTree window is appended
-" to the left of the gvim window, so that it does not cause the 
-" gvim window to be smaller.
-" NOTE: to do -- make this more generalizable and not hard coded
-function OpenNERDTree()
-   let NERDTreeCols = 26
-   let winCols = 115
-   let totalCols = NERDTreeCols + winCols
-   execute ':set columns=' . totalCols
-   execute ':NERDTree'
-endfunction
-
-" This function closes NERDTree according to my specifications.
-" It resizes the window back to where it was before NERDTree was opened.
-" NOTE: to do -- make this more generalizable and not hard coded
-function CloseNERDTree()
-   execute ':NERDTreeClose'
-   execute ':set columns=115' 
-    if has('win32') || has('win64')
-       execute ':winpos 1000 100'
-    else
-       execute ':winpos 445 123'
-   endif
-endfunction
-
 " Source all scripts that are in the my_functions directory -- some I wrote,
 " some others wrote.
 " Includes: Commenting script for commenting/uncommenting portions of code
@@ -490,71 +454,71 @@ endfor
 " Not really sure what the numbers should be for windows OS -- if I ever use a
 " windows machine again, maybe I'll adjust them.
 
-" Small size
-function SetSmallWindow()
-    if has('win32') || has('win64')
-        if has("gui_running")
-            winpos 600 225
-            set lines=40 columns=115
-        endif
-    else
-        " Don't change window size/pos in terminal!
-        if has("gui_running")
-"             " For 13-inch screens
-"             winpos 445 123
-            " For 15-inch screens
-            winpos 600 225
-            set lines=48 columns=115
-        endif
-    endif
-endfunction
+" " Small size
+" function SetSmallWindow()
+"     if has('win32') || has('win64')
+"         if has("gui_running")
+"             winpos 600 225
+"             set lines=40 columns=115
+"         endif
+"     else
+"         " Don't change window size/pos in terminal!
+"         if has("gui_running")
+" "             " For 13-inch screens
+" "             winpos 445 123
+"             " For 15-inch screens
+"             winpos 600 225
+"             set lines=48 columns=115
+"         endif
+"     endif
+" endfunction
 
 " Medium size
 function SetMediumWindow()
     if has('win32') || has('win64')
         if has("gui_running")
             winpos 617 23
-            set lines=65 columns=115
+            set lines=59 columns=115
         endif
     else
         " Don't change window size/pos in terminal!
         if has("gui_running")
-            winpos 617 23
-            set lines=65 columns=115
+            winpos 740 23
+            set lines=59 columns=115
         endif
     endif
 endfunction
 
-" Large size
-function SetLargeWindow()
-    if has('win32') || has('win64')
-        if has("gui_running")
-            winpos 286 100
-            set lines=64 columns=180
-        endif
-    else
-        " Don't change window size/pos in terminal!
-        if has("gui_running")
-            winpos 275 159
-            set lines=64 columns=180
-        endif
-    endif
-endfunction
+" " Large size
+" function SetLargeWindow()
+"     if has('win32') || has('win64')
+"         if has("gui_running")
+"             winpos 286 100
+"             set lines=64 columns=180
+"         endif
+"     else
+"         " Don't change window size/pos in terminal!
+"         if has("gui_running")
+"             winpos 275 159
+"             set lines=64 columns=180
+"         endif
+"     endif
+" endfunction
 
-" Maxmimum size - no need for winpos since the window will take up the whole
-" screen
-function SetMaxWindow()
-    if has('win32') || has('win64')
-        if has("gui_running")
-            set lines=500 columns=500
-        endif
-    else
-        " Don't change window size/pos in terminal!
-        if has("gui_running")
-            set lines=500 columns=500
-        endif
-    endif
-endfunction
+" " Maxmimum size - no need for winpos since the window will take up the whole
+" " screen
+" function SetMaxWindow()
+"     if has('win32') || has('win64')
+"         if has("gui_running")
+"             set lines=500 columns=500
+"         endif
+"     else
+"         " Don't change window size/pos in terminal!
+"         if has("gui_running")
+"             set lines=500 columns=500
+"         endif
+"     endif
+" endfunction
 
 " Make fold text line more readable -- thanks to Scott's vim config:
 " Puts the fold details text at the end of line not beginning, which is the

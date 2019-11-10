@@ -29,6 +29,16 @@ fi
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 ##
+# Bash
+##
+# Install latest bash
+brew install bash
+# Add the new bash shell to the list of allowed shells
+sudo bash -c "echo /usr/local/bin/bash >> /private/etc/shells"
+# Change the shell for the user
+chsh -s /usr/local/bin/bash 
+
+##
 # Git
 ##
 # Git -- ensure that git is up to date, and includes gitk, etc
