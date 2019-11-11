@@ -1,0 +1,8 @@
+# Files/folders for fd/fzf to ignore
+~/Library
+~/Parallels
+*~
+~/dotfiles/vimbackup
+~/dotfiles/vimtmpdir
+~/vimbackup
+~/vimtmpdir

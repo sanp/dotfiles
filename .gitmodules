@@ -49,9 +49,6 @@
 [submodule "vim/bundle/vim-abolish"]
   path = vim/bundle/vim-abolish
   url = https://github.com/tpope/vim-abolish.git
-[submodule "vim/bundle/vim-latex"]
-  path = vim/bundle/vim-latex
-  url = https://github.com/vim-latex/vim-latex.git
 [submodule "vim/bundle/tlib_vim"] 
   path = vim/bundle/tlib_vim
   url = https://github.com/tomtom/tlib_vim.git

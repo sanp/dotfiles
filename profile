@@ -78,3 +78,19 @@ export TERM=xterm-256color
 eval "$(pyenv init -)"
 # Pyenv-virtualenv
 eval "$(pyenv virtualenv-init -)"
+
+# FZF
+# Use fd instead of find for default fzf searching
+# FD default options
+FD_OPTIONS="--follow --exclude .git"
+export FZF_DEFAULT_COMMAND="fd --type f ${FD_OPTIONS} . ."
+export FZF_DEFAULT_OPTS="--no-mouse --height 50% --reverse --multi --inline-info"
+# --preview='bat --theme=1337 --color=always {}'
+# export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_COMMAND="fd --type f ${FD_OPTIONS} . ."
+export FZF_ALT_C_COMMAND="fd --type d ${FD_OPTIONS} . ."
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER="~~"
+
+# Some packages (fzf) create a bashrc file. Source it here
+source ~/.bashrc

@@ -8,3 +8,5 @@
 vim/bundle/**/doc/tags
 vim/bundle/xptemplate
 viminfo
+vim/plugged
+vim/autoload/plug.vim

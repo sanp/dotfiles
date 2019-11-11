@@ -32,23 +32,28 @@ execute pathogen#infect()
 " No more manually running :helptags doc!
 execute 'Helptags'
 
+" Plug.vim plugin manager
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'trevordmiller/nova-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+call plug#end()
+
 " Chage the $VIM env var to a reasonable place when working on a mac
 if has('unix') || has('mac')
     let $VIM = "~/.vim"
 endif
 
 " Make windows keyboard mappings work with vim -- good for Macs too
-" so $VIM/source/mswin.vim
-" so $VIM/source/vimrc_example.vim
 behave mswin
 
 " Enable plugins
 filetype plugin on
 filetype indent on
 filetype on
-
-" " Set default working directory -- I don't like this
-" cd ~/desktop
 
 " Keep backup files all in one directory -- remove clutter
 set backup writebackup
@@ -105,9 +110,8 @@ set cpoptions+=$
 set guioptions-=m
 set guioptions-=T
 
-" Don't show autocomplete menus -- I don't like this because it doesn't work well
-" with the ,e mapping below -- pressing the -> arrow does the wrong thing.
-set nowildmenu
+" Show autocomplete menus
+set wildmenu
 
 " Set the global default shell to be the bash shell
 let g:is_bash=1
@@ -126,22 +130,17 @@ set nojoinspaces
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set color
-colorscheme candycode
-" if has("gui_running")
-"     colorscheme Mustang
-" else
-"     colorscheme darkblue
-" endif
+set background=dark
+colorscheme nova
 
 " Set font
 set guifont=Monaco:h13
 
 " " Set vim to copy to system clipboard by default
-" set clipboard=unnamed
-
+set clipboard=unnamed
 " Set clipboard so that when you yank to a register it doesn't wipe out what's
 " in the unnamed register
-set clipboard=
+" set clipboard=
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => c. Text, tab, and indent related
@@ -196,23 +195,25 @@ set statusline+=%<%P                            " file position
 " Set leader to the - character
 let mapleader = "-"
 
+" FZF fuzzy finder
+nnoremap <silent> \f :FZF<CR>
+
 " <C-e> scrolls up one line at a time. By default, <C-y> to move screen down
-" one line, and <C-u> to go up a page. Remap to <C-w> and <C-S>
+" one line, and <C-u> to go up a page. Remap to <C-w> and <C-c>
 nnoremap <silent> <C-w> <C-y>
 nnoremap <silent> <C-c> <C-u>
 
-" Moving
+" Moving between vim panes
 nnoremap <silent> <C-s>h :wincmd h<CR>
 nnoremap <silent> <C-s>j :wincmd j<CR>
 nnoremap <silent> <C-s>k :wincmd k<CR>
 nnoremap <silent> <C-s>l :wincmd l<CR>
 " Splits
-nnoremap <C-a><bar> :vsplit<CR>:enew<CR>
-nnoremap <silent> <C-a>- :split<CR>:enew<CR>
-" Open new split panes to right and bottom, which feels more natural than Vim’s
-" default
+nnoremap <C-s><bar> :vsplit<CR>:enew<CR>
+nnoremap <silent> <C-s>- :split<CR>:enew<CR>
+" Open new split panes to left (default) and bottom
 set splitbelow
-set splitright
+" set splitright
 
 " Fast window resizing with plus/minus keys if more than one window is open
 " Technically not the plus key -- equal key -- because it's too much work to hit
@@ -230,18 +231,12 @@ if bufwinnr(1)
   noremap <silent> ,,i 5<C-W><
 endif
 
-" maps ,e to open file with the current working directory already
-" filled in so you have to specify only the filename
-" and maps ,cd to change the current working directory to the
-" directory that the current file you are editing is in
-nnoremap <silent> ,e :e <C-R>=expand("%:p:h") . "/" <CR>
+" Maps ,cd to change the current working directory to the directory that the
+" current file you are editing is in
 nnoremap <silent> ,cd :cd %:p:h <CR>
 
 " ,D to set the working directory to the desktop
 nnoremap <silent> ,D :cd ~/Desktop <CR>:pwd<CR>
-
-" Other useful mappings
-nnoremap <silent> ,V :cd $VIM<CR>:pwd<CR>
 
 " Defines abbreviations for tab commands
 ca <silent> tn tabnew
@@ -271,9 +266,6 @@ vnoremap <silent> <S-Tab> <gv
 nnoremap <silent> <F3> a<C-R>=strftime("%Y %b %d %a %I:%M %p")<CR><Esc>
 inoremap <silent> <F3> <C-R>=strftime("%Y %b %d %a %I:%M %p")<CR>
 
-" CTRL-G u  break undo sequence, start new change      *i_CTRL-G_u*
-inoremap <CR> <C-g>u<CR>
-
 " Map ,n and ,N to open and close NERDTree normally
 noremap <silent> ,n :NERDTree<CR>
 noremap <silent> ,N :NERDTreeClose<CR>
@@ -295,8 +287,7 @@ nnoremap <silent> ,ev :e $MYVIMRC<CR>
 " in this vimrc are already loaded/defined
 nnoremap <silent> ,sv :silent! so $MYVIMRC<CR>
 
-" For increment.vim plugin -- :I already mapped to a command
-" so map new shortcut for incrementing
+" For increment.vim plugin, map new shortcut for incrementing
 vnoremap <silent> \i :Inc<CR>
 
 " Shortcuts for working with buffers
@@ -362,12 +353,6 @@ nnoremap ,ce v$
 " Toggle paste mode and display whether paste or nopaste
 verbose nnoremap <silent> ,p :set invpaste<CR>:set paste?<CR>
 
-" " TODO: Fix this...
-" " Convert CamelCase to under_scores in highlighted block
-" vnoremap <silent> \us s#\(\<\u\l\+\|\l\+\)\(\u\)#\l\1_\l\2#g<CR>
-" " Convert under_scores to CamelCase in highlighted block
-" vnoremap <silent> \cam :s#\(\%(\<\l\+\)\%(_\)\@=\)\|_\(\l\)#\u\1\2#g<CR>
-
 " Search for the current visually selected text
 vnoremap // y/<C-R>"<CR>
 
@@ -386,12 +371,6 @@ nnoremap \be :set tw=80<CR>
 " Pressing <leader>ss will toggle and untoggle spell checking
 noremap <leader>ss :setlocal spell!<CR>
 
-" Shortcuts using <leader>
-noremap <leader>sn ]s
-noremap <leader>sp [s
-noremap <leader>sa zg
-noremap <leader>s? z=
-
 " For long strings (e.g. docstrings) vim sometimes loses its place and the
 " syntax highlighting breaks -- because vim only looks back so many lines to
 " determine the syntax highlighting. Use this command to tell vim to look from
@@ -408,40 +387,6 @@ nnoremap ,ga :g/^/norm gqq<CR>
 " => g. Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" The following function calculates the length in characters of the 
-" current line: position the cursor on a line, and call this function
-" (e.g., echo: CurrentLineLength())
-function CurrentLineLength()
-    let len = strlen(getline("."))
-    return len
-endfunction
-
-" Function that came with Vim when I downloaded it
-set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
-
 " Source all scripts that are in the my_functions directory -- some I wrote,
 " some others wrote.
 " Includes: Commenting script for commenting/uncommenting portions of code
@@ -454,24 +399,24 @@ endfor
 " Not really sure what the numbers should be for windows OS -- if I ever use a
 " windows machine again, maybe I'll adjust them.
 
-" " Small size
-" function SetSmallWindow()
-"     if has('win32') || has('win64')
-"         if has("gui_running")
-"             winpos 600 225
-"             set lines=40 columns=115
-"         endif
-"     else
-"         " Don't change window size/pos in terminal!
-"         if has("gui_running")
-" "             " For 13-inch screens
-" "             winpos 445 123
-"             " For 15-inch screens
-"             winpos 600 225
-"             set lines=48 columns=115
-"         endif
-"     endif
-" endfunction
+" Small size
+function SetSmallWindow()
+    if has('win32') || has('win64')
+        if has("gui_running")
+            winpos 600 225
+            set lines=40 columns=115
+        endif
+    else
+        " Don't change window size/pos in terminal!
+        if has("gui_running")
+"             " For 13-inch screens
+"             winpos 445 123
+            " For 15-inch screens
+            winpos 600 225
+            set lines=48 columns=115
+        endif
+    endif
+endfunction
 
 " Medium size
 function SetMediumWindow()
@@ -489,36 +434,36 @@ function SetMediumWindow()
     endif
 endfunction
 
-" " Large size
-" function SetLargeWindow()
-"     if has('win32') || has('win64')
-"         if has("gui_running")
-"             winpos 286 100
-"             set lines=64 columns=180
-"         endif
-"     else
-"         " Don't change window size/pos in terminal!
-"         if has("gui_running")
-"             winpos 275 159
-"             set lines=64 columns=180
-"         endif
-"     endif
-" endfunction
+" Large size
+function SetLargeWindow()
+    if has('win32') || has('win64')
+        if has("gui_running")
+            winpos 286 100
+            set lines=64 columns=180
+        endif
+    else
+        " Don't change window size/pos in terminal!
+        if has("gui_running")
+            winpos 275 159
+            set lines=64 columns=180
+        endif
+    endif
+endfunction
 
-" " Maxmimum size - no need for winpos since the window will take up the whole
-" " screen
-" function SetMaxWindow()
-"     if has('win32') || has('win64')
-"         if has("gui_running")
-"             set lines=500 columns=500
-"         endif
-"     else
-"         " Don't change window size/pos in terminal!
-"         if has("gui_running")
-"             set lines=500 columns=500
-"         endif
-"     endif
-" endfunction
+" Maxmimum size - no need for winpos since the window will take up the whole
+" screen
+function SetMaxWindow()
+    if has('win32') || has('win64')
+        if has("gui_running")
+            set lines=500 columns=500
+        endif
+    else
+        " Don't change window size/pos in terminal!
+        if has("gui_running")
+            set lines=500 columns=500
+        endif
+    endif
+endfunction
 
 " Make fold text line more readable -- thanks to Scott's vim config:
 " Puts the fold details text at the end of line not beginning, which is the
@@ -600,30 +545,6 @@ let g:tagbar_type_r = {
         \ 'v:FunctionVariables',
     \ ]
 \ }
-
-"""""""""""""""""""""""""
-" Taglist/Exuberant Ctags
-"""""""""""""""""""""""""
-
-" Taglist is not as good as Tagbar, so this section is not super useful.  Keep
-" these settings, though, in case decide to use Taglist in the future.
-
-" " Taglist variables
-" " Display function name in status bar:
-" let g:ctags_statusline=1
-" " Automatically start script
-" let generate_tags=1
-" " Displays taglist results in a vertical window:
-" let Tlist_Use_Horiz_Window=0
-" " Shorter commands to toggle Taglist display
-" nnoremap <silent> TT :TlistToggle<CR>
-" map <F1> :TlistToggle<CR>
-" " Various Taglist diplay config:
-" let Tlist_Use_Right_Window = 1
-" let Tlist_Compact_Format = 1
-" let Tlist_Exit_OnlyWindow = 1
-" let Tlist_GainFocus_On_ToggleOpen = 1
-" let Tlist_File_Fold_Auto_Close = 1
 
 """""""""""""""""""""""""
 " Python compiler
@@ -727,25 +648,16 @@ vnoremap <silent> ,ss :ScreenSend<CR>
 nnoremap <silent> ,sq :ScreenQuit<CR>
 
 """""""""""""""""""""""""
-" Vim-LaTeX
+" Rainbow Parentheses
 """""""""""""""""""""""""
+" Apply rainbow coloring everywhere
+autocmd VimEnter * RainbowParentheses
 
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" " Compiling multiple times
-" let g:Tex_MultipleCompileFormats = 'dvi,pdf'
-
-" Make <leader>lv work to open document in pdf viewer
-let g:tex_flavor='latex'
-" let g:Tex_TreatMacViewerAsUNIX = 1
-" let g:Tex_ExecuteUNIXViewerInForeground = 1
-" let g:Tex_ViewRule_ps = 'open -a Preview'
-" let g:Tex_ViewRule_pdf = 'open -a Preview'
-" let g:Tex_ViewRule_dvi = 'open -a Preview'
-
-" Compile and view changes in tex doc all at once
-" Use nmap rather than nnoremap in order to call mapped keys inside of call
-" nmap <leader>lt <leader>ll<leader>lv
+"""""""""""""""""""""""""
+" Deoplete - autocompletion framework
+"""""""""""""""""""""""""
+" Start deoplete at startup
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr><C-l> pumvisible() ? "\<C-y>" : "\<C-l>"

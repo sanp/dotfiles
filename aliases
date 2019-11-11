@@ -19,6 +19,9 @@ alias sop="source ~/.profile"
 
 # programs
 alias mvim='open -a "MacVim"'
+# Use nvim by default
+alias vim="nvim"
+alias oldvim="\vim"
 
 # Start psql
 alias start_psql='pg_ctl -D /usr/local/var/postgres -l logfile start'
@@ -34,14 +37,6 @@ alias la="ls -al"
 alias lsd='ls -l | grep "^d"'
 # List all files, folders, and subfolders and files
 alias lr='ls -R'
-# Grep -- example usage: 'lg txt' short for 'ls grep | txt'
-alias lg='ls | grep -i'
-# Grep long version 
-alias llg='ls -al | grep -i'
-# Grep history
-alias hg='history | grep -i'
-# List all virtual environments
-alias lv='pyenv virtualenvs'
 
 # `cat` with beautiful colors. requires Pygments installed.
 # Use pcat rather than remapping cat because pygmentize only works on single
@@ -131,31 +126,8 @@ alias tns='tmux new -s'
 # Kill tmux session
 alias tk='tmux kill-session -t'
 
-# Fn to get the pid of whatever input string
-get_pid() {
-  grepstring="$1"
-  echo `ps -fe | grep $grepstring | grep -v grep | tr -s " "|cut -d" " -f2`
-}
-alias gpid="get_pid"
-
 # List all connections in ssh config file
 alias lssh='cat $HOME/.ssh/config | grep Host'
-
-##
-# PID fns
-##
-# Show all processes matching grep string
-show_all() {
-  search_term=$1
-  ps aux | grep $search_term
-}
-# Kill all processes matching grep string
-kill_all() {
-  search_term=$1
-  ps aux | grep $search_term | awk '{print $2}' | xargs kill -9
-}
-
-alias bgitk="gitk --simplify-by-decoration --all"
 
 # Default `top` command to sort by CPU usage, not MEM
 alias top="top -o cpu"

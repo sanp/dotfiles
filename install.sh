@@ -7,6 +7,8 @@
 
 set -e
 
+DOTFILES_DIR=${HOME}/dotfiles
+
 # Execute script as root user
 echo "Installation will now begin."
 
@@ -55,6 +57,11 @@ brew install python
 brew install pyenv
 # Virtualenv: environment manager
 brew install pyenv-virtualenv
+# Install python 3.x
+pyenv install 3.8.0
+pyenv global 3.8.0
+# Pynvim necessary for installing certain vim packages which use python 3.x
+pip install pynvim
 
 ##
 # Scala
@@ -75,6 +82,21 @@ brew install reattach-to-user-namespace
 brew install r
 
 ##
+# Vim
+##
+brew install vim
+# Plug.vim for vim plugins
+curl -fLo ${DOTFILES_DIR}/vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# Dir where all plug.vim plugins will go
+mkdir -p ${DOTFILES_DIR}/vim/plugged
+# Fetch the vim submodules
+cd ${DOTFILES_DIR}
+git submodule init
+git submodule update
+echo "Vim submodules updated."
+
+##
 # Misc
 ##
 # Exuberant ctags
@@ -89,21 +111,22 @@ brew install tree
 brew install youtube-dl
 # ag: the silver searcher
 brew install the_silver_searcher
+# Fuzzy finder
+brew install fzf
+$(brew --prefix)/opt/fzf/install
+# Fd: better than `find`
+brew install fd
+# bat for syntax highlighting
+brew install bat
 
 echo "All packages now installed."
 
 # The makesymlinks.sh script creates symlinks to the dotfiles in your home
 # directory
-~/dotfiles/makesymlinks.sh
+${DOTFILES_DIR}/makesymlinks.sh
 echo "Symlinks created."
 
-# Fetch the vim submodules
-cd ~/dotfiles
-git submodule init
-git submodule update
-echo "Vim submodules updated."
-
 # Copy desktop background images to home folder
-cp -r ~/dotfiles/desktop_backgrounds $HOME
+cp -r ${DOTFILES_DIR}/desktop_backgrounds $HOME
 
 echo "Done! Restart your terminal and vim."
