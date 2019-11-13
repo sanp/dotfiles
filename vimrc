@@ -42,7 +42,7 @@ Plug 'trevordmiller/nova-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-" Plug 'Yggdroot/indentLine'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 " Chage the $VIM env var to a reasonable place when working on a mac
@@ -211,6 +211,7 @@ nnoremap <silent> <C-s>h :wincmd h<CR>
 nnoremap <silent> <C-s>j :wincmd j<CR>
 nnoremap <silent> <C-s>k :wincmd k<CR>
 nnoremap <silent> <C-s>l :wincmd l<CR>
+
 " Splits
 nnoremap <C-s><bar> :vsplit<CR>:enew<CR>
 nnoremap <silent> <C-s>- :split<CR>:enew<CR>

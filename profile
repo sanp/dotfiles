@@ -92,5 +92,10 @@ export FZF_ALT_C_COMMAND="fd --type d ${FD_OPTIONS} . ."
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER="~~"
 
+# Always have a tmux session running. By default, call that session 'work'
+if ! [ -n "$TMUX" ]; then
+  tmux attach -t work || tmux new -s work
+fi
+
 # Some packages (fzf) create a bashrc file. Source it here
 source ~/.bashrc
