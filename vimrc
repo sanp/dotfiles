@@ -42,7 +42,7 @@ Plug 'trevordmiller/nova-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " Chage the $VIM env var to a reasonable place when working on a mac
