@@ -75,6 +75,8 @@ brew install sbt
 brew install tmux
 # reattach-to-user-namespace necessary for doing vim copy/pasting in tmux window
 brew install reattach-to-user-namespace
+# Install tmux plugin manager
+git clone https://github.com/tmux-plugins/tmux-resurrect ${HOME}/.tmux/plugins
 
 ##
 # R

@@ -40,6 +40,9 @@ Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'trevordmiller/nova-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 " Chage the $VIM env var to a reasonable place when working on a mac
@@ -661,3 +664,10 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 inoremap <expr><C-l> pumvisible() ? "\<C-y>" : "\<C-l>"
+
+"""""""""""""""""""""""""
+" Syntastic -- Error checking
+"""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*

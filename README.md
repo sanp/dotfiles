@@ -8,18 +8,22 @@ mac
 
 ## Installation
 
-Clone the repository into your `${HOME}` folder. Then, go into the dotfiles
-folder, and run the install script.
+1. Clone the repository into your `${HOME}` folder. Then, go into the dotfiles
+folder, and run the install script:
 
 ```bash
-cd ~
-git clone https://github.com/sanp/dotfiles.git
-cd ~/dotfiles
-./install.sh
+git clone https://github.com/sanp/dotfiles.git ~/dotfiles
+~/dotfiles/install.sh
 ```
 
-Restart your terminal and vim. Then open vim and run `:PlugInstall`. If all went
-well, you should now have access to all of the settings.
+2. Restart your terminal and vim. 
+
+3. Open vim and run `:PlugInstall`. 
+
+4. Launch tmux (by typing `tmux`), and install tmux plugins by pressing
+`prefix + I` (capital i, as in Install) to fetch the plugins.
+
+If all went well, you should now have access to all of the settings.
 
 ## Uninstalling
 
