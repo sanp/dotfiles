@@ -2,7 +2,7 @@
   name = Steve SanPietro
   email = sanpietro.steve@gmail.com
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore_global
 [credential]
   helper = osxkeychain
