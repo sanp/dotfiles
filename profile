@@ -49,7 +49,7 @@ green=$'\e[1;32m'
 magenta=$'\e[1;35m'
 normal_colours=$'\e[m'
 # Only show the last three directory names. Requires bash >=4
-PROMPT_DIRTRIM=3
+PROMPT_DIRTRIM=2
 # Customize the terminal prompt by setting the PS1 value
 # If the hostname isn't too long, show the full hostname:
 # PS1="\[$green\]\u@\h:\w\[$magenta\]\$git_branch\[$green\]\\$\[$normal_colours\] "
