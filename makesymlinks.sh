@@ -6,38 +6,35 @@
 
 ########## Variables
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
+DOT_DIR=~/dotfiles                    # dotfiles directory
+OLD_DOT_DIR=~/dotfiles_old             # old dotfiles backup directory
 
-source ./files_and_folders.sh     # file containing names of files/folders to be symlinked
+source ${DOT_DIR}/files_and_folders.sh     # file containing names of files/folders to be symlinked
 
 ##########
 
 # create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
-echo "...done"
-
-# change to the dotfiles directory
-echo "Changing to the $dir directory"
-cd $dir
+echo "Creating ${OLD_DOT_DIR} for backup of any existing dotfiles in ~"
+mkdir -p ${OLD_DOT_DIR}
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 # first do this for the dot_links
 for link in $dot_links; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$link ~/dotfiles_old/
-    echo "Creating symlink to $link in home directory."
-    ln -s $dir/$link ~/.$link
+    mv ~/.$link ${OLD_DOT_DIR}
+    ln -s ${DOT_DIR}/$link ~/.$link
 done
 
 # next do it for the nondot_links
 for link in $nondot_links; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    # note that the dot is not added before the link, as above
-    mv ~/$link ~/dotfiles_old/
-    echo "Creating symlink to $link in home directory."
-    # again, no dot is added
-    ln -s $dir/$link ~/$link
+    mv ~/$link ${OLD_DOT_DIR}
+    ln -s ${DOT_DIR}/$link ~/$link
 done
+
+# Vim. TODO: Make this less hard coded
+ln -s ${DOT_DIR}/vim ~/.vim
+# Symlink the nvim config file
+INIT_VIM_SYMLINK_LOCATION=~/.config/nvim/init.vim
+INIT_VIM_DOTFILES_LOCATION=${DOT_DIR}/init.vim
+mv ${INIT_VIM_SYMLINK_LOCATION} ${OLD_DOT_DIR}
+ln -s ${INIT_VIM_DOTFILES_LOCATION} ${INIT_VIM_SYMLINK_LOCATION}

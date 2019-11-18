@@ -5,9 +5,10 @@
 # list of dot files to symlink in homedir
 dot_files="aliases profile gitconfig gitignore_global gitignore gitk viminfo vimrc Rprofile tmux.conf ctags"
 # list of dot folders to symlink in homedir
-dot_folders="vim"
+# Todo: this isn't working -- figure out why
+# dot_folders="vim"
 # all files/folders which start with a dot
-dot_links="$dot_files $dot_folders"
+dot_links="$dot_folders $dot_files"
 
 # files and folders which should not start with a dot when symlinked
 # list of nondot files to symlink in homedir
