@@ -323,7 +323,6 @@ XPT with " with .. as .. :
 with `opener^` as `name?^:
     `cursor^
 
-
 XPT import " import ..
 import `mod^` as `name?^
 

@@ -90,13 +90,8 @@ brew install vim
 # Plug.vim for vim plugins
 curl -fLo ${DOTFILES_DIR}/vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# Dir where all plug.vim plugins will go
+# All plug.vim plugins will be installed into the plugged directory
 mkdir -p ${DOTFILES_DIR}/vim/plugged
-# Fetch the vim submodules
-cd ${DOTFILES_DIR}
-git submodule init
-git submodule update
-echo "Vim submodules updated."
 
 ##
 # Misc
@@ -120,6 +115,8 @@ $(brew --prefix)/opt/fzf/install
 brew install fd
 # bat for syntax highlighting
 brew install bat
+# jq for pretty printing json in the terminal
+brew install jq
 
 echo "All packages now installed."
 

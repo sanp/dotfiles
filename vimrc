@@ -2,7 +2,6 @@
 "
 " Title: My VIMRC File
 " Author: Steve SanPietro
-" Created: 2013 Apr 27 Sat 10:21 AM
 "
 " Sections:
 "   -> a. General
@@ -25,24 +24,54 @@
 " This must be first, because it changes other options as a side effect
 set nocompatible
 
-" Activate Pathogen plugin -- crucial that these commands called before
-" enabling filetype detection, so good to be at top of vimrc, right
-" below set nocompatible
-execute pathogen#infect()
-" No more manually running :helptags doc!
-execute 'Helptags'
-
 " Plug.vim plugin manager
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'trevordmiller/nova-vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
-Plug 'christoomey/vim-tmux-navigator'
+  " File browsing
+  Plug 'scrooloose/nerdtree'
+  " Show most recently updated files
+  Plug 'vim-scripts/mru.vim'
+  " Fuzzy finder for fim
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  " Seoul256 colorscheme
+  Plug 'junegunn/seoul256.vim'
+  " Nova colorscheme
+  Plug 'trevordmiller/nova-vim'
+  " Make different nesting levels of parentheses have different colors
+  Plug 'junegunn/rainbow_parentheses.vim'
+  " Autocomplete paths and words
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Commenting
+  Plug 'scrooloose/nerdcommenter'
+  " Syntax checker
+  Plug 'scrooloose/syntastic'
+  " Move between Vim panes and tmux splits seamlessly
+  Plug 'christoomey/vim-tmux-navigator'
+  " Move to any place on the screen
+  Plug 'easymotion/vim-easymotion'
+  " vim-markdown and tabular used for opening and closing all folds
+  Plug 'godlygeek/tabular'
+  Plug 'plasticboy/vim-markdown'
+  " Surround text with parens, quotes, etc
+  Plug 'tpope/vim-surround'
+  " Browse tags of the current file and display its structure
+  Plug 'majutsushi/tagbar'
+  " Simulate a split shell and send code to shell to be run
+  Plug 'ervandew/screen'
+  " Send commands to an R console from vim. Like ervandew/screen but specifically
+  " for R
+  Plug 'jalvesaq/Nvim-R'
+  " Provides a way to make incremented lists using visual block mode
+  Plug 'sanp/increment.vim--Avadhanula'
+  " Smart search and replace with case sensitivity and stem/affix recognition. To
+  " use: `:Abolish`, `:Subvert`. `:help abolish` for more.
+  Plug 'tpope/vim-abolish'
+  " Utility functions needed for some other plugins
+  Plug 'tomtom/tlib_vim'
+  " Scroll through available colorschemes
+  Plug 'vim-scripts/ScrollColors'
+  " Language specific templating
+  Plug 'vim-scripts/xptemplate'
 call plug#end()
 
 " Chage the $VIM env var to a reasonable place when working on a mac
@@ -257,7 +286,7 @@ noremap <silent> <s-c-tab> gT
 " zo, zc, za
 noremap <silent> <space> za
 
-" Open and close all folds in the document
+" Open and close all folds in the document (using vim-markdown plugin)
 noremap <silent> ,fo zR
 noremap <silent> ,fc zM
 
@@ -561,24 +590,8 @@ autocmd BufNewFile,BufRead *.py compiler python
 " Nvim-R
 """""""""""""""""""""""""
 
-let R_in_buffer = 0
-
 " Map the ; to <-
 let R_assign_map = ";"
-
-" Start R in the GUI console, not in terminal/tmux
-" let R_applescript = 1
-
-" Start R in a new tmux pane rather than a new terminal window
-let R_applescript = 0
-let R_tmux_split = 1
-let R_vsplit = 1  " Split window vertically
-
-" Split to the left, not to the right
-let R_objbr_place = "console,right"
-
-" Start R in vim's working directory
-let R_nvim_wd = 1
 
 """""""""""""""""""""""""
 " MRU
@@ -598,11 +611,7 @@ let MRU_Exclude_Files = '_vimrc'
 """""""""""""""""""""""""
 
 " Set location of personal snippets folder
-if has('win32') || has('win64')
-    let g:xptemplate_snippet_folders = [$VIM . '/vimfiles/xpt-personal']
-else
-    let g:xptemplate_snippet_folders = [$VIM . '/xpt-personal']
-endif
+let g:xptemplate_snippet_folders = [$VIM . '/xpt-personal']
 
 " Set the trigger key for xptemplate code completion to be \<Tab>
 let g:xptemplate_key = '\<Tab>'

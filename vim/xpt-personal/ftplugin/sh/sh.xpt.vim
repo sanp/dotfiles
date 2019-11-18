@@ -81,10 +81,8 @@ XPT shebang " #!/bin/bash
 
 ..XPT
 
-XPT sb alias=shebang
-
-XPT sh   alias=shebang
-XPT bash alias=shebang
+XPT b alias=shebang
+XPT she   alias=shebang
 
 
 XPT echodate " echo `date +%...`
