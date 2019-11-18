@@ -8,7 +8,7 @@
 "   -> b. Colors and Fonts
 "   -> c. Text, tab, and indent related
 "   -> d. Status line
-"   -> e. Mappings and abbreviations 
+"   -> e. Mappings and abbreviations
 "   -> f. Spell checking
 "   -> g. Helper functions
 "   -> h. Display
@@ -158,9 +158,6 @@ nnoremap Q <nop>
 " Don't use two spaces after a period when joining with J or gq. Just use one.
 set nojoinspaces
 
-" Remove white space at the end of lines when saving a file
-autocmd BufWritePre * %s/\s\+$//
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => b. Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -294,7 +291,7 @@ noremap <silent> <space> za
 noremap <silent> ,fo zR
 noremap <silent> ,fc zM
 
-" Mappings in visual mode for indenting and de-indenting highlighted 
+" Mappings in visual mode for indenting and de-indenting highlighted
 " text with tab and shift+tab, as in other editors.
 vnoremap <silent> <Tab> >gv
 vnoremap <silent> <S-Tab> <gv
@@ -565,14 +562,14 @@ let g:NERDTreeChDirMode=2
 " Useful commands:
 "   s: toggle sorting options (alphabetical vs order in file)
 "   space/mouse hover: display the prototype of a tag. For example, for a
-"       method, will display the signature of the method (method name and 
+"       method, will display the signature of the method (method name and
 "       arguments)
 "   p: Jump to the tag under the cursor, but stay in the Tagbar window.
 "       Map option: tagbar_map_preview
 "   x: Toggle zooming the window. Map option: tagbar_map_zoomwin
 
 " Display classes, methods, functions, etc in window
-nnoremap <silent> tt :TagbarToggle<CR> 
+nnoremap <silent> tt :TagbarToggle<CR>
 
 let g:tagbar_type_r = {
     \ 'ctagstype' : 'r',
@@ -623,7 +620,7 @@ let g:xptemplate_key = '\<Tab>'
 " Open the pop-up menu
 let g:xptemplate_key_pum_only = '<F2>'
 
-" Turn on brace completion 
+" Turn on brace completion
 let g:xptemplate_brace_complete = '([{'
 
 " Set global variables in xpt:
@@ -652,7 +649,7 @@ nnoremap <silent> ,svp :ScreenShellVertical python<CR>
 
 " Send lines of code from buffer to the terminal
 
-" Send one line to the shell 
+" Send one line to the shell
 nnoremap <silent> ,sl V:ScreenSend<CR>
 " Send one line to the shell -- j at end to also go down one line -- useful for
 " stepping through entire selections of code
