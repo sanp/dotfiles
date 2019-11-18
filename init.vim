@@ -158,6 +158,9 @@ nnoremap Q <nop>
 " Don't use two spaces after a period when joining with J or gq. Just use one.
 set nojoinspaces
 
+" Remove white space at the end of lines when saving a file
+autocmd BufWritePre * %s/\s\+$//
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => b. Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
