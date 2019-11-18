@@ -83,9 +83,6 @@ if has('unix') || has('mac')
   let $VIM = "~/.vim"
 endif
 
-" Make windows keyboard mappings work with vim -- good for Macs too
-behave mswin
-
 " Enable plugins
 filetype plugin on
 filetype indent on
