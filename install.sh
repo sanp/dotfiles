@@ -47,6 +47,8 @@ chsh -s /usr/local/bin/bash
 brew install git
 # Git completion and shell completion via homebrew
 brew install bash-completion
+# Tk: required for gitk, etc
+brew install tcl-tk
 
 ##
 # Python

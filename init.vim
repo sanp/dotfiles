@@ -50,7 +50,7 @@ call plug#begin('~/.vim/plugged')
   " Syntax checker
   Plug 'scrooloose/syntastic'
   " Move between Vim panes and tmux splits seamlessly
-  Plug 'christoomey/vim-tmux-navigator'
+"   Plug 'christoomey/vim-tmux-navigator'
   " Move to any place on the screen
   Plug 'easymotion/vim-easymotion'
   " vim-markdown and tabular used for opening and closing all folds

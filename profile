@@ -8,6 +8,9 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # Use vi shortcuts in terminal
 set -o vi
 
+# Enable ctrl-l for clearing the screen in vi mode
+bind -m vi-insert "\C-l":clear-screen
+
 # Add some color
 export CLICOLOR=1
 # See http://geoff.greer.fm/lscolors/ to test out different colors

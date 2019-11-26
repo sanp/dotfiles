@@ -1,6 +1,6 @@
 [user]
   name = Steve SanPietro
-  email = sanpietro.steve@gmail.com
+  email = steven.sanpietro@rate.com
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
@@ -11,6 +11,7 @@
 [alias]
   last = log -1 HEAD
   logg = log --pretty=format:\"%h - %an, %ar : %s\"
+  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
   unstage = reset HEAD --
   st = status
   co = checkout
