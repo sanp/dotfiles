@@ -78,10 +78,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/xptemplate'
 call plug#end()
 
-" Chage the $VIM env var to a reasonable place when working on a mac
-if has('unix') || has('mac')
-  let $VIM = "~/.vim"
-endif
+" Set the $VIM env var
+let $VIM = "~/.vim"
 
 " Enable plugins
 filetype plugin on
@@ -158,22 +156,29 @@ nnoremap Q <nop>
 " Don't use two spaces after a period when joining with J or gq. Just use one.
 set nojoinspaces
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => b. Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Set color
-set background=dark
-colorscheme nova
-
-" Set font
-set guifont=Monaco:h13
-
 " " Set vim to copy to system clipboard by default
 set clipboard=unnamed
 " Set clipboard so that when you yank to a register it doesn't wipe out what's
 " in the unnamed register
 " set clipboard=
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => b. Colors and Fonts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable support for true colors
+set termguicolors
+
+" Set color
+set background=dark
+colorscheme nova
+
+" Setting fonts is not supported in neovim
+" " Set font
+" set guifont=Monaco:h13
+
+" Show comments in italics
+highlight Comment cterm=italic
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => c. Text, tab, and indent related
@@ -585,8 +590,8 @@ let g:tagbar_type_r = {
 " Python compiler
 """""""""""""""""""""""""
 
-" run the python compiler plugin whenever a python file is opened
-autocmd BufNewFile,BufRead *.py compiler python
+" " run the python compiler plugin whenever a python file is opened
+" autocmd BufNewFile,BufRead *.py compiler python
 
 """""""""""""""""""""""""
 " Nvim-R

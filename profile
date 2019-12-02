@@ -74,8 +74,8 @@ shopt -s histappend
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$PATH:$JAVA_HOME/bin 
 
-# Set TERM to tmux-256color so that terminal can support 256 colors
-export TERM=screen-256color
+# # Enable true colors
+export TERM=xterm-256color-italic
 
 # Pyenv
 eval "$(pyenv init -)"
