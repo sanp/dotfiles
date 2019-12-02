@@ -162,6 +162,13 @@ set clipboard=unnamed
 " in the unnamed register
 " set clipboard=
 
+" If you plan to use per-project virtualenvs often, you should assign one
+" virtualenv for Neovim and hard-code the interpreter path via
+" |g:python3_host_prog| (or |g:python_host_prog|) so that the "pynvim" package
+" is not required for each virtualenv.
+" https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
+let g:python3_host_prog = '~/.pyenv/versions/3.8.0/bin/python'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => b. Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -382,11 +389,13 @@ nnoremap <silent> ,m :MRU<CR>
 nnoremap n nzz
 nnoremap N Nzz
 
-" Select current line without selecting line break / new line like with V
-nnoremap ,cc 0v$
-" Select from cursor to end of current line without selecting line break / new
-" line like with V
-nnoremap ,ce v$
+" Select from cursor to end of line without selecting new line/line break
+nnoremap <silent> ,ce vg_
+" Select from beginning to end of line without selecting new line/line break
+nnoremap <silent> ,cc 0vg_
+" Select from first printable character to end of line without selecting new
+" line/line break
+nnoremap <silent> ,cb ^vg_
 
 " For pasting to work correctly in the terminal, set paste before each paste,
 " and turn it off after
@@ -534,7 +543,6 @@ set foldtext=CustomFoldText()
 set foldcolumn=0
 highlight Folded  cterm=underline ctermfg=10 ctermbg=0
 " }}}
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => h. Display
