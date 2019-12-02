@@ -51,7 +51,7 @@ PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
 green=$'\e[1;32m'
 magenta=$'\e[1;35m'
 normal_colours=$'\e[m'
-# Only show the last three directory names. Requires bash >=4
+# Only show the last two directory names. Requires bash >=4
 PROMPT_DIRTRIM=2
 # Customize the terminal prompt by setting the PS1 value
 # If the hostname isn't too long, show the full hostname:
@@ -74,8 +74,8 @@ shopt -s histappend
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$PATH:$JAVA_HOME/bin 
 
-# Set TERRM to xterm-256color so that terminal can support 256 colors
-export TERM=xterm-256color
+# Set TERM to tmux-256color so that terminal can support 256 colors
+export TERM=screen-256color
 
 # Pyenv
 eval "$(pyenv init -)"
@@ -86,12 +86,13 @@ eval "$(pyenv virtualenv-init -)"
 # Use fd instead of find for default fzf searching
 # FD default options
 FD_OPTIONS="--follow --exclude .git"
-export FZF_DEFAULT_COMMAND="fd --type f ${FD_OPTIONS} . ."
+FZF_ROOT=${HOME}
+export FZF_DEFAULT_COMMAND="fd --type f ${FD_OPTIONS} . ${FZF_ROOT}"
 export FZF_DEFAULT_OPTS="--no-mouse --height 50% --reverse --multi --inline-info"
 # --preview='bat --theme=1337 --color=always {}'
 # export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_COMMAND="fd --type f ${FD_OPTIONS} . ."
-export FZF_ALT_C_COMMAND="fd --type d ${FD_OPTIONS} . ."
+export FZF_CTRL_T_COMMAND="fd --type f ${FD_OPTIONS} . ${FZF_ROOT}"
+export FZF_ALT_C_COMMAND="fd --type d ${FD_OPTIONS} . ${FZF_ROOT}"
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER="~~"
 
@@ -100,5 +101,5 @@ if ! [ -n "$TMUX" ]; then
   tmux attach -t work || tmux new -s work
 fi
 
-# Some packages (fzf) create a bashrc file. Source it here
+# Some packages (e.g., fzf) create a bashrc file. Source it here
 source ~/.bashrc

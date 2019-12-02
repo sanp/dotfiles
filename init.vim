@@ -230,6 +230,7 @@ let mapleader = "-"
 
 " FZF fuzzy finder
 nnoremap <silent> \f :FZF<CR>
+nnoremap <silent> \\f :FZF ~<CR>
 
 " <C-e> scrolls up one line at a time. By default, <C-y> to move screen down
 " one line, and <C-u> to go up a page. Remap to <C-w> and <C-c>
