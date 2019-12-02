@@ -28,6 +28,9 @@ let &packpath = &runtimepath
 " This must be first, because it changes other options as a side effect
 set nocompatible
 
+" Set the $VIM env var
+let $VIM = "~/.vim"
+
 " Plug.vim plugin manager
 call plug#begin('~/.vim/plugged')
   " File browsing
@@ -77,9 +80,6 @@ call plug#begin('~/.vim/plugged')
   " Language specific templating
   Plug 'vim-scripts/xptemplate'
 call plug#end()
-
-" Set the $VIM env var
-let $VIM = "~/.vim"
 
 " Enable plugins
 filetype plugin on

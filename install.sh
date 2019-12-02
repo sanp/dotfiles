@@ -126,6 +126,9 @@ brew install fd
 brew install bat
 # jq for pretty printing json in the terminal
 brew install jq
+# fantasque-sans font: https://github.com/belluzj/fantasque-sans
+brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
+brew cask install font-fantasque-sans-mono
 
 echo "All packages now installed."
 
