@@ -8,6 +8,10 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # Use vi shortcuts in terminal
 set -o vi
 
+# <Esc>-V will open a vim window for edit-and-execute-command command editing.
+# Set EDITOR to vim in order to source init.vim for this window.
+export EDITOR=vim
+
 # Enable ctrl-l for clearing the screen in vi mode
 bind -m vi-insert "\C-l":clear-screen
 
@@ -85,7 +89,7 @@ eval "$(pyenv virtualenv-init -)"
 # FZF
 # Use fd instead of find for default fzf searching
 # FD default options
-FD_OPTIONS="--follow --exclude .git"
+FD_OPTIONS="--follow --exclude .git --exclude *~"
 FZF_ROOT=${HOME}
 export FZF_DEFAULT_COMMAND="fd --type f ${FD_OPTIONS} . ${FZF_ROOT}"
 export FZF_DEFAULT_OPTS="--no-mouse --height 50% --reverse --multi --inline-info"

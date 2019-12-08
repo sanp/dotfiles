@@ -44,6 +44,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/seoul256.vim'
   " Nova colorscheme
   Plug 'trevordmiller/nova-vim'
+  " Neovim solarized colorscheme
+  Plug 'iCyMind/NeoSolarized'
   " Make different nesting levels of parentheses have different colors
   Plug 'junegunn/rainbow_parentheses.vim'
   " Autocomplete paths and words
@@ -53,7 +55,7 @@ call plug#begin('~/.vim/plugged')
   " Syntax checker
   Plug 'scrooloose/syntastic'
   " Move between Vim panes and tmux splits seamlessly
-"   Plug 'christoomey/vim-tmux-navigator'
+  " Plug 'christoomey/vim-tmux-navigator'
   " Move to any place on the screen
   Plug 'easymotion/vim-easymotion'
   " vim-markdown and tabular used for opening and closing all folds
@@ -79,6 +81,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/ScrollColors'
   " Language specific templating
   Plug 'vim-scripts/xptemplate'
+  " Automatically set paste when pasting in insert mode and then unset
+  Plug 'ConradIrwin/vim-bracketed-paste'
 call plug#end()
 
 " Enable plugins
@@ -178,7 +182,8 @@ set termguicolors
 
 " Set color
 set background=dark
-colorscheme nova
+" nova is also nice
+colorscheme NeoSolarized
 
 " Setting fonts is not supported in neovim
 " " Set font
@@ -203,7 +208,6 @@ set expandtab               " Spaces instead of tabs
 set smarttab
 
 " Indenting rules
-autocmd Filetype py setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype python setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype r setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
@@ -215,6 +219,10 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=in
 autocmd Filetype js setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype sh setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd Filetype scala setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
+
+" Set filetypes baseed on extensions
+autocmd BufNewFile,BufRead *.ddl set filetype=sql
+autocmd BufNewFile,BufRead *.py set filetype=python
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => d. Status line

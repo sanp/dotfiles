@@ -14,3 +14,8 @@
 
 ## System preferences:
   - TODO: Write all that here
+  - Keybord shortcuts:
+    - App shortcuts:
+      - Lock Screen: ^Shift=
+      - Force Quiti: Option Command Q
+      - Zoom: Option Control =
