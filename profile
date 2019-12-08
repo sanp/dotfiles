@@ -85,6 +85,8 @@ export TERM=xterm-256color-italic
 eval "$(pyenv init -)"
 # Pyenv-virtualenv
 eval "$(pyenv virtualenv-init -)"
+# Show the virtualenv you're in in parens next to the prompt
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # FZF
 # Use fd instead of find for default fzf searching
