@@ -28,41 +28,54 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 source ~/git-completion.bash
+
+##
+# PS1 Prompt
+##
+
+# Only show the last two directory names. Requires bash >=4
+PROMPT_DIRTRIM=2
+
 # Function to find the name of the git branch you are currently on
 # taken from: http://aaroncrane.co.uk/2009/03/git_branch_prompt/
 function find_git_branch {
-local dir=. head
-until [ "$dir" -ef / ]; do
+  local dir=. head
+  until [ "$dir" -ef / ]; do
     if [ -f "$dir/.git/HEAD" ]; then
-        head=$(< "$dir/.git/HEAD")
-        if [[ $head == ref:\ refs/heads/* ]]; then
-            git_branch=" ${head#*/*/}"
-        elif [[ $head != '' ]]; then
-            git_branch=' (detached)'
-        else
-            git_branch=' (unknown)'
-        fi
-        return
+      head=$(< "$dir/.git/HEAD")
+      if [[ $head == ref:\ refs/heads/* ]]; then
+        git_branch=" ${head#*/*/}"
+      elif [[ $head != '' ]]; then
+        git_branch=' (detached)'
+      else
+        git_branch=' (unknown)'
+      fi
+      return
     fi
     dir="../$dir"
-done
-git_branch=''
+  done
+  git_branch=''
 }
-# Find the git branch
-PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
 
-# Define some colors
-green=$'\e[1;32m'
-magenta=$'\e[1;35m'
-normal_colours=$'\e[m'
-# Only show the last two directory names. Requires bash >=4
-PROMPT_DIRTRIM=2
-# Customize the terminal prompt by setting the PS1 value
-# If the hostname isn't too long, show the full hostname:
-# PS1="\[$green\]\u@\h:\w\[$magenta\]\$git_branch\[$green\]\\$\[$normal_colours\] "
-# But if it's too long, just show the first part of the hostname before the
-# first dash
-PS1="\[$green\]\u@${HOSTNAME%%-*}:\w\[$magenta\]\$git_branch\[$green\]\\$\[$normal_colours\] "
+function updatePrompt {
+  # Define some colors
+  GREEN=$'\e[1;32m'
+  MAGENTA=$'\e[1;35m'
+  NORMAL_COLOURS=$'\e[m'
+  # Find the git branch
+  PROMPT_COMMAND="find_git_branch; $PROMPT_COMMAND"
+  # Define base prompt
+  PROMPT="\[$GREEN\]\u@${HOSTNAME%%-*}:\w\[$MAGENTA\]\$git_branch\[$GREEN\]\\$\[$NORMAL_COLOURS\] "
+  # Get current virtualenv
+  if [[ $VIRTUAL_ENV != "" ]]; then
+    PROMPT="(${VIRTUAL_ENV##*/}) ${PROMPT}"
+  fi
+  # Set PS1
+  PS1="${PROMPT}"
+}
+export -f updatePrompt
+# Bash shell executes this function just before displaying the PS1 variable
+export PROMPT_COMMAND='updatePrompt'
 
 # Diffmerge
 export PATH="$PATH:/Applications/DiffMerge.app/Contents/MacOS"
