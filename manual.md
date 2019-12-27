@@ -12,6 +12,12 @@
   - Map escape key to `vk_none (disable this key)`
   - TODO: write that all down here
 
+## Moom
+  - https://manytricks.com/moom/
+  - Launch autoomatically at login
+  - Run as faceless
+  - Don't show preferences on launch
+
 ## System preferences:
   - TODO: Write all that here
   - Keybord shortcuts:

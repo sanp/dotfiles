@@ -136,3 +136,6 @@ alias top="top -o cpu"
 alias ytdl-mp3="youtube-dl -x --audio-quality 0 --audio-format mp3"
 
 alias taw="tmux attach -t work || tmux new -s work"
+
+# Prevent SSH client from passing TERM variable to remote server
+alias ssh="TERM=xterm ssh"

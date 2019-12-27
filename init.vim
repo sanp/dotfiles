@@ -421,6 +421,10 @@ nnoremap \bd :set tw=0<CR>
 " Enable auto line breaks
 nnoremap \be :set tw=80<CR>
 
+" Commenting
+noremap <silent> ,xc :call NERDComment("n", "Comment")<CR>
+noremap <silent> ,xu :call NERDComment("n", "Uncomment")<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => f. Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -444,13 +448,10 @@ nnoremap ,ga :g/^/norm gqq<CR>
 " => g. Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Source all scripts that are in the my_functions directory -- some I wrote,
-" some others wrote.
-" Includes: Commenting script for commenting/uncommenting portions of code
-" RemoveDiacritics script for removing diacritical markings from text
-for file in split(globpath($VIM, 'my_functions/*.vim'), '\n')
-  exe 'source' file
-endfor
+" " Source all scripts that are in the my_functions directory
+" for file in split(globpath($VIM, 'my_functions/*.vim'), '\n')
+"   exe 'source' file
+" endfor
 
 " Functions to set window positions and sizes
 " Not really sure what the numbers should be for windows OS -- if I ever use a
@@ -704,3 +705,23 @@ inoremap <expr><C-l> pumvisible() ? "\<C-y>" : "\<C-l>"
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+"""""""""""""""""""""""""
+" Nerdcommenter
+"""""""""""""""""""""""""
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_python = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
