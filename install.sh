@@ -76,6 +76,7 @@ brew install tmux
 # reattach-to-user-namespace necessary for doing vim copy/pasting in tmux window
 brew install reattach-to-user-namespace
 # Install tmux plugin manager
+rm -rf ${HOME}/.tmux/plugins
 git clone https://github.com/tmux-plugins/tmux-resurrect ${HOME}/.tmux/plugins
 # Download terminfo database so that system will suppoort tmux-256color
 curl -Lo ${HOME}/terminfo/terminfo.src.gz \
