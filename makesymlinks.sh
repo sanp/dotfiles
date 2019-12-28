@@ -32,6 +32,7 @@ for link in $nondot_links; do
 done
 
 # Vim. TODO: Make this less hard coded
+rm -rf ~/.vim
 ln -s ${DOT_DIR}/vim ~/.vim
 # Symlink the nvim config file
 INIT_VIM_SYMLINK_LOCATION=~/.config/nvim/init.vim
