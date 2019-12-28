@@ -1,0 +1,25 @@
+# Workaround script for installing older python versions.
+#
+# Pyenv will fail when installing python versions < 3.6 with the following error
+# message:
+#
+#   ERROR: The Python ssl extension was not compiled. Missing the OpenSSL lib?
+#
+# This script is a workaround for that. Taken from:
+# https://github.com/pyenv/pyenv/issues/993. To install python versions lower
+# than 3.6, source this script before running the install:
+#
+#   source ~/.env_exporter
+#   pyenv install -v 2.7.13
+
+# about zlib
+export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+# about readline
+export CFLAGS="-I$(brew --prefix readline)/include $CFLAGS"
+export LDFLAGS="-L$(brew --prefix readline)/lib $LDFLAGS"
+# about openssl
+export CFLAGS="-I$(brew --prefix openssl)/include $CFLAGS"
+export LDFLAGS="-L$(brew --prefix openssl)/lib $LDFLAGS"
+# about SQLite (maybe not necessary)
+export CFLAGS="-I$(brew --prefix sqlite)/include $CFLAGS"
+export LDFLAGS="-L$(brew --prefix sqlite)/lib $LDFLAGS"
