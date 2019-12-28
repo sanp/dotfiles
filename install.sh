@@ -145,8 +145,8 @@ cp -r ${DOTFILES_DIR}/desktop_backgrounds $HOME
 
 # Source profile so that pip will become available
 source ${DOTFILES_DIR}/profile
-# Pynvim necessary for installing certain vim packages which use python 3.x
-pip install pynvim
 
 echo "Done! Restart your terminal and vim."
 echo "Then press <tmux-prefix> I to install tmux plugins."
+# Pynvim necessary for installing certain vim packages which use python 3.x
+echo "And then pip install pynvim"
