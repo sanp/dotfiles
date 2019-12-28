@@ -147,6 +147,4 @@ cp -r ${DOTFILES_DIR}/desktop_backgrounds $HOME
 source ${DOTFILES_DIR}/profile
 
 echo "Done! Restart your terminal and vim."
-echo "Then press <tmux-prefix> I to install tmux plugins."
-# Pynvim necessary for installing certain vim packages which use python 3.x
-echo "And then pip install pynvim"
+echo "Follow the instructions in the README for next steps."
