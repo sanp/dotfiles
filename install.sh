@@ -79,6 +79,7 @@ brew install reattach-to-user-namespace
 rm -rf ${HOME}/.tmux/plugins
 git clone https://github.com/tmux-plugins/tmux-resurrect ${HOME}/.tmux/plugins
 # Symlink the terminfo folder
+rm -rf ${HOME}/terminfo
 ln -s ${DOTFILES_DIR}/terminfo ${HOME}/terminfo
 # Download terminfo database so that system will suppoort tmux-256color
 curl -Lo ${HOME}/terminfo/terminfo.src.gz \
@@ -130,7 +131,7 @@ brew install bat
 brew install jq
 # fantasque-sans font: https://github.com/belluzj/fantasque-sans
 brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
-brew cask install font-fantasque-sans-mono
+brew cask install --force font-fantasque-sans-mono
 
 echo "All packages now installed."
 
