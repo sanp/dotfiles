@@ -10,3 +10,4 @@ vim/bundle/xptemplate
 viminfo
 vim/plugged
 vim/autoload/plug.vim
+terminfo/terminfo.src
