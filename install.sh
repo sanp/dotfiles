@@ -96,6 +96,7 @@ brew install r
 # Vim
 ##
 brew install vim
+brew install neovim
 # Plug.vim for vim plugins
 curl -fLo ${DOTFILES_DIR}/vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
