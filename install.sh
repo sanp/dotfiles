@@ -79,6 +79,7 @@ brew install reattach-to-user-namespace
 rm -rf ${HOME}/.tmux/plugins
 git clone https://github.com/tmux-plugins/tmux-resurrect ${HOME}/.tmux/plugins
 # Download terminfo database so that system will suppoort tmux-256color
+mkdir -p ${HOME}/terminfo
 curl -Lo ${HOME}/terminfo/terminfo.src.gz \
   http://invisible-island.net/datafiles/current/terminfo.src.gz
 gunzip ${HOME}/terminfo/terminfo.src.gz
