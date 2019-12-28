@@ -62,8 +62,6 @@ brew install pyenv-virtualenv
 # Install python 3.x
 pyenv install 3.8.0
 pyenv global 3.8.0
-# Pynvim necessary for installing certain vim packages which use python 3.x
-pip install pynvim
 
 ##
 # Scala
@@ -140,5 +138,10 @@ echo "Symlinks created."
 
 # Copy desktop background images to home folder
 cp -r ${DOTFILES_DIR}/desktop_backgrounds $HOME
+
+# Source profile so that pip will become available
+source ${DOTFILES_DIR}/profile
+# Pynvim necessary for installing certain vim packages which use python 3.x
+pip install pynvim
 
 echo "Done! Restart your terminal and vim."
