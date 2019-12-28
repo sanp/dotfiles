@@ -77,7 +77,7 @@ brew install tmux
 brew install reattach-to-user-namespace
 # Install tmux plugin manager
 rm -rf ${HOME}/.tmux/plugins
-git clone https://github.com/tmux-plugins/tmux-resurrect ${HOME}/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Symlink the terminfo folder
 rm -rf ${HOME}/terminfo
 ln -s ${DOTFILES_DIR}/terminfo ${HOME}/terminfo
@@ -149,3 +149,4 @@ source ${DOTFILES_DIR}/profile
 pip install pynvim
 
 echo "Done! Restart your terminal and vim."
+echo "Then press <tmux-prefix> I to install tmux plugins."

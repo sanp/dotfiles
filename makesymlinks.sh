@@ -21,14 +21,14 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 # first do this for the dot_links
 for link in $dot_links; do
-    mv ~/.$link ${OLD_DOT_DIR}
-    ln -s ${DOT_DIR}/$link ~/.$link
+  rm -rf ~/.$link
+  ln -s ${DOT_DIR}/$link ~/.$link
 done
 
 # next do it for the nondot_links
 for link in $nondot_links; do
-    mv ~/$link ${OLD_DOT_DIR}
-    ln -s ${DOT_DIR}/$link ~/$link
+  rm -rf ~/$link
+  ln -s ${DOT_DIR}/$link ~/$link
 done
 
 # Vim. TODO: Make this less hard coded
@@ -39,3 +39,5 @@ INIT_VIM_SYMLINK_LOCATION=~/.config/nvim/init.vim
 INIT_VIM_DOTFILES_LOCATION=${DOT_DIR}/init.vim
 mv ${INIT_VIM_SYMLINK_LOCATION} ${OLD_DOT_DIR}
 ln -s ${INIT_VIM_DOTFILES_LOCATION} ${INIT_VIM_SYMLINK_LOCATION}
+
+echo "Done making symlinks"
