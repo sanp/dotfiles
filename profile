@@ -91,7 +91,7 @@ shopt -s histappend
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$PATH:$JAVA_HOME/bin 
 
-# # Enable true colors
+# Enable true colors
 export TERM=xterm-256color-italic
 
 # Pyenv
