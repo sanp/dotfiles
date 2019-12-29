@@ -53,9 +53,7 @@ call plug#begin('~/.vim/plugged')
   " Commenting
   Plug 'scrooloose/nerdcommenter'
   " Syntax checker
-  Plug 'scrooloose/syntastic'
-  " Move between Vim panes and tmux splits seamlessly
-  " Plug 'christoomey/vim-tmux-navigator'
+  " Plug 'scrooloose/syntastic'
   " Move to any place on the screen
   Plug 'easymotion/vim-easymotion'
   " vim-markdown and tabular used for opening and closing all folds
@@ -83,12 +81,43 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/xptemplate'
   " Automatically set paste when pasting in insert mode and then unset
   Plug 'ConradIrwin/vim-bracketed-paste'
+  " Custom statusline coloring
+  Plug 'itchyny/lightline.vim'
+  " ALE Linter
+  Plug 'dense-analysis/ale'
+  " Display ALE linting in lightline status bar
+  Plug 'maximbaz/lightline-ale'
+  " Display git diffs in real time
+  " Jump between changes with [c and ]c
+  " Preview hunk changes with <leader>hp
+  " Stage and unstage hunk changes with <leader>hs and <leader>hu
+  " :GitGutterFold to fold and unfold only diffs
+  Plug 'airblade/vim-gitgutter'
+  " Display the git branch in the lightline status bar
+  Plug 'itchyny/vim-gitbranch'
+  " General tool for doing git commands from within vim
+  " :Glog, :0Gclog, :Gread, :Gwrite, :Gcommit, :Gblame
+  " For mergeconflicts: :Gdiff. HEAD/target is named with //2 and the merge
+  " branch is named with //3. Use :diffget and :diffput to get/put code from one
+  " version to the other. E.g.: `:diffget //2` puts code from the target into
+  " the working copy.
+  Plug 'tpope/vim-fugitive'
+  " Tools for viewing/browsing git commit history in vim. Requires vim-fugitive
+  " :GV (view full commit history) :GV! (view commit history of current file only)
+  Plug 'junegunn/gv.vim'
+  " Smoother vim scrolling
+  Plug 'psliwka/vim-smoothie'
+  " Fancier start screen for nvim
+  Plug 'mhinz/vim-startify'
 call plug#end()
 
 " Enable plugins
 filetype plugin on
 filetype indent on
 filetype on
+
+" Set the update time to 100ms so that changes show up in gitgutter immediately
+set updatetime=100
 
 " Keep backup files all in one directory -- remove clutter
 set backup writebackup
@@ -170,8 +199,8 @@ set clipboard=unnamed
 " virtualenv for Neovim and hard-code the interpreter path via
 " |g:python3_host_prog| (or |g:python_host_prog|) so that the "pynvim" package
 " is not required for each virtualenv.
-" https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
-let g:python3_host_prog = '~/.pyenv/versions/3.8.0/bin/python'
+"i https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim
+" let g:python3_host_prog = '~/.pyenv/versions/3.8.0/bin/python'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => b. Colors and Fonts
@@ -230,16 +259,30 @@ autocmd BufNewFile,BufRead *.py set filetype=python
 
 " Status line settings
 set laststatus=2                                " Show statusline always
-set statusline=
-set statusline+=%-3.3n\                         " buffer number
-set statusline+=%f\                             " file path and name
-" set statusline+=%t\                           " filename without path
-set statusline+=%h%m%r%w                        " status flags
-set statusline+=\[%{strlen(&ft)?&ft:'none'}]    " file type
-set statusline+=%=                              " right align remainder
-set statusline+=0x%-8B                          " character value
-set statusline+=%-14(%l,%c%V%)                  " line, character
-set statusline+=%<%P                            " file position
+
+" " Old custom statusbar settings
+" set statusline=
+" set statusline+=%-3.3n\                         " buffer number
+" set statusline+=%f\                             " file path and name
+" " set statusline+=%t\                           " filename without path
+" set statusline+=%h%m%r%w                        " status flags
+" set statusline+=\[%{strlen(&ft)?&ft:'none'}]    " file type
+" set statusline+=%=                              " right align remainder
+" set statusline+=0x%-8B                          " character value
+" set statusline+=%-14(%l,%c%V%)                  " line, character
+" set statusline+=%<%P                            " file position
+
+" Lightline status bar
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => e. Mappings and abbreviations
@@ -699,12 +742,12 @@ inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 inoremap <expr><C-l> pumvisible() ? "\<C-y>" : "\<C-l>"
 
-"""""""""""""""""""""""""
-" Syntastic -- Error checking
-"""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"ii """""""""""""""""""""""""
+" " Syntastic -- Error checking
+" """""""""""""""""""""""""
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 """""""""""""""""""""""""
 " Nerdcommenter
@@ -725,3 +768,10 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
+
+"""""""""""""""""""""""""
+" vim-startify
+"""""""""""""""""""""""""
+" Center the header
+let g:startify_custom_header =
+      \ 'startify#center(startify#fortune#cowsay())'
