@@ -50,6 +50,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/rainbow_parentheses.vim'
   " Autocomplete paths and words
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Autocomplete for python
+  Plug 'zchee/deoplete-jedi'
   " Commenting
   Plug 'scrooloose/nerdcommenter'
   " Syntax checker
