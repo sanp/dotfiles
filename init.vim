@@ -85,18 +85,18 @@ call plug#begin('~/.vim/plugged')
   Plug 'ConradIrwin/vim-bracketed-paste'
   " Custom statusline coloring
   Plug 'itchyny/lightline.vim'
-  " ALE Linter
-  Plug 'dense-analysis/ale'
-  " Display ALE linting in lightline status bar
-  Plug 'maximbaz/lightline-ale'
+  " Display the git branch in the lightline status bar
+  Plug 'itchyny/vim-gitbranch'
+  " " ALE Linter
+  " Plug 'dense-analysis/ale'
+  " " Display ALE linting in lightline status bar
+  " Plug 'maximbaz/lightline-ale'
   " Display git diffs in real time
   " Jump between changes with [c and ]c
   " Preview hunk changes with <leader>hp
   " Stage and unstage hunk changes with <leader>hs and <leader>hu
   " :GitGutterFold to fold and unfold only diffs
   Plug 'airblade/vim-gitgutter'
-  " Display the git branch in the lightline status bar
-  Plug 'itchyny/vim-gitbranch'
   " General tool for doing git commands from within vim
   " :Glog, :0Gclog, :Gread, :Gwrite, :Gcommit, :Gblame
   " For mergeconflicts: :Gdiff. HEAD/target is named with //2 and the merge
