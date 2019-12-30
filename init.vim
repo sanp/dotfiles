@@ -482,6 +482,9 @@ nnoremap \be :set tw=80<CR>
 noremap <silent> ,xc :call NERDComment("n", "Comment")<CR>
 noremap <silent> ,xu :call NERDComment("n", "Uncomment")<CR>
 
+" Open a new terminal window and source in my .profile. Takes a second to load
+nnoremap <silent> \t :terminal<CR>isource ${HOME}/.profile<CR>cl<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => f. Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -695,13 +698,15 @@ let MRU_Exclude_Files = '_vimrc'
 let g:xptemplate_snippet_folders = [$VIM . '/xpt-personal']
 
 " Set the trigger key for xptemplate code completion to be \<Tab>
-let g:xptemplate_key = '\<Tab>'
+" Disabling this and leaving the trigger key as the default for now since having
+" tab as the trigger key doesn't work well with deoplete popup windows
+" let g:xptemplate_key = '\<Tab>'
 
-" Open the pop-up menu
-let g:xptemplate_key_pum_only = '<F2>'
+" " Open the pop-up menu
+" let g:xptemplate_key_pum_only = '<F2>'
 
 " Turn on brace completion
-let g:xptemplate_brace_complete = '([{'
+let g:xptemplate_brace_complete = '([{"'''
 
 " Set global variables in xpt:
 " author, email = personal variables.  SParg sets spaces between brackets (disabled)
