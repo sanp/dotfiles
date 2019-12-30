@@ -83,10 +83,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-scripts/xptemplate'
   " Automatically set paste when pasting in insert mode and then unset
   Plug 'ConradIrwin/vim-bracketed-paste'
-  " Custom statusline coloring
-  Plug 'itchyny/lightline.vim'
-  " Display the git branch in the lightline status bar
-  Plug 'itchyny/vim-gitbranch'
   " " ALE Linter
   " Plug 'dense-analysis/ale'
   " " Display ALE linting in lightline status bar
@@ -111,6 +107,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'psliwka/vim-smoothie'
   " Fancier start screen for nvim
   Plug 'mhinz/vim-startify'
+  " " Custom statusline coloring: Lightline - lightweight version of airline
+  " Plug 'itchyny/lightline.vim'
+  " " Display the git branch in the lightline status bar
+  " Plug 'itchyny/vim-gitbranch'
+  " Custom statusline coloring: Airline
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Enable plugins
@@ -259,10 +262,31 @@ autocmd BufNewFile,BufRead *.py set filetype=python
 " => d. Status line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Status line settings
-set laststatus=2                                " Show statusline always
+" Show statusline always
+set laststatus=2
 
-" " Old custom statusbar settings
+" Use "dark" theme. For all themes, see
+" https://github.com/vim-airline/vim-airline/wiki/Screenshots#murmur-1
+let g:airline_theme='dark'
+
+" " If using airline with the solarized dark colorscheme, uncomment the following:
+" let g:airline_theme='solarized'
+" g:airline_solarized_bg='dark'
+
+" If using lightline, uncomment the following:
+" " Lightline status bar
+" let g:lightline = {
+"       \ 'colorscheme': 'solarized',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+"       \ },
+"       \ 'component_function': {
+"       \   'gitbranch': 'gitbranch#name'
+"       \ },
+"       \ }
+
+" " Old custom statusbar settings without any plugins
 " set statusline=
 " set statusline+=%-3.3n\                         " buffer number
 " set statusline+=%f\                             " file path and name
@@ -273,18 +297,6 @@ set laststatus=2                                " Show statusline always
 " set statusline+=0x%-8B                          " character value
 " set statusline+=%-14(%l,%c%V%)                  " line, character
 " set statusline+=%<%P                            " file position
-
-" Lightline status bar
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
-      \ },
-      \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => e. Mappings and abbreviations
@@ -768,7 +780,7 @@ let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
 """""""""""""""""""""""""
