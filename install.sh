@@ -62,6 +62,9 @@ brew install pyenv-virtualenv
 # Install python 3.x
 pyenv install 3.8.0
 pyenv global 3.8.0
+# Enable pip so pip installs can work
+eval "$(pyenv init -)"
+pip install -r ${DOTFILES_DIR}/global_python_requirements
 
 ##
 # Scala
@@ -95,15 +98,10 @@ tic ${DOTFILES_DIR}/terminfo/screen-256color-italic.terminfo
 brew install r
 
 ##
-# Vim
+# Vim and Neovim
 ##
 brew install vim
 brew install neovim
-# Plug.vim for vim plugins
-curl -fLo ${DOTFILES_DIR}/vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# All plug.vim plugins will be installed into the plugged directory
-mkdir -p ${DOTFILES_DIR}/vim/plugged
 
 ##
 # Misc
@@ -142,9 +140,6 @@ echo "Symlinks created."
 
 # Copy desktop background images to home folder
 cp -r ${DOTFILES_DIR}/desktop_backgrounds $HOME
-
-# Source profile so that pip will become available
-source ${DOTFILES_DIR}/profile
 
 echo "Done! Restart your terminal and vim."
 echo "Follow the instructions in the README for next steps."

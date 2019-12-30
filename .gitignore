@@ -5,9 +5,9 @@
 .Rapp.history
 .bash_history
 .sh_history
-vim/bundle/**/doc/tags
-vim/bundle/xptemplate
+nvim/bundle/**/doc/tags
+nvim/bundle/xptemplate
 viminfo
-vim/plugged
-vim/autoload/plug.vim
+nvim/plugged
+nvim/autoload
 terminfo/terminfo.src

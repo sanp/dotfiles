@@ -139,3 +139,5 @@ alias taw="tmux attach -t work || tmux new -s work"
 
 # Prevent SSH client from passing TERM variable to remote server
 alias ssh="TERM=xterm ssh"
+
+alias pyri="pip install -r ~/.global_python_requirements"

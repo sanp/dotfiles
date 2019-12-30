@@ -31,13 +31,10 @@ for link in $nondot_links; do
   ln -s ${DOT_DIR}/$link ~/$link
 done
 
-# Vim. TODO: Make this less hard coded
-rm -rf ~/.vim
-ln -s ${DOT_DIR}/vim ~/.vim
-# Symlink the nvim config file
-INIT_VIM_SYMLINK_LOCATION=~/.config/nvim/init.vim
-INIT_VIM_DOTFILES_LOCATION=${DOT_DIR}/init.vim
-mv ${INIT_VIM_SYMLINK_LOCATION} ${OLD_DOT_DIR}
-ln -s ${INIT_VIM_DOTFILES_LOCATION} ${INIT_VIM_SYMLINK_LOCATION}
+# NeoVim
+SYS_NVIM_CONFIG_DIR=${HOME}/.config/nvim
+DOTFILES_NVIM_DIR=${DOT_DIR}/nvim
+rm -rf ${SYS_NVIM_CONFIG_DIR}
+ln -s ${DOTFILES_NVIM_DIR} ${SYS_NVIM_CONFIG_DIR}
 
 echo "Done making symlinks"

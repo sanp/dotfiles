@@ -24,13 +24,26 @@ mac
 4. `vim` is aliased to neovim. Open neovim by typing `vim` and run
    `:PlugInstall`. 
 
-5. Install pynvim, which is necessary for installing certain vim packages which
-   use python 3.x:
-    ```
-    pip install pynvim
-    ```
+If all went well, you should now have access to all of the settings. 
 
-If all went well, you should now have access to all of the settings.
+### Pyenv virtualenvs
+
+When creating a new python virtualenv using `pyenv`, install the packages in the
+`global_python_requirements` file in the new virtualenv so that all neovim
+packages will work:
+
+```bash
+pip install -r ~/.global_python_requirements
+```
+
+This command is aliased to `pyri`. So, to create a virtualenv using python
+version `3.8.0` named `foobar`, execute:
+
+```bash
+pyenv virtualenv 3.8.0 foobar
+pyenv activate foobar
+pyri
+```
 
 ## Uninstalling
 

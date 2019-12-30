@@ -75,7 +75,7 @@ function updatePrompt {
 }
 export -f updatePrompt
 # Bash shell executes this function just before displaying the PS1 variable
-export PROMPT_COMMAND='updatePrompt'
+export PROMPT_COMMAND='find_git_branch; updatePrompt'
 
 # Diffmerge
 export PATH="$PATH:/Applications/DiffMerge.app/Contents/MacOS"
