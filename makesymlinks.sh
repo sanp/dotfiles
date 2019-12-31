@@ -36,5 +36,15 @@ SYS_NVIM_CONFIG_DIR=${HOME}/.config/nvim
 DOTFILES_NVIM_DIR=${DOT_DIR}/nvim
 rm -rf ${SYS_NVIM_CONFIG_DIR}
 ln -s ${DOTFILES_NVIM_DIR} ${SYS_NVIM_CONFIG_DIR}
+# Make the backup, tmp, and undo directories
+VIM_BKP_DIR=${HOME}/vimbackup
+VIM_TMP_DIR=${HOME}/vimtmpdir
+VIM_UNDO_DIR=${HOME}/vimundodir
+rm -rf ${VIM_BKP_DIR}
+mkdir -p ${VIM_BKP_DIR}
+rm -rf ${VIM_TMP_DIR}
+mkdir -p ${VIM_TMP_DIR}
+rm -rf ${VIM_UNDO_DIR}
+mkdir -p ${VIM_UNDO_DIR}
 
 echo "Done making symlinks"
