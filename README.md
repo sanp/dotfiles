@@ -10,10 +10,10 @@ mac
 
 1. Clone the repository into your `${HOME}` folder. Then, go into the dotfiles
    folder, and run the install script:
-  ```bash
-  git clone https://github.com/sanp/dotfiles.git ~/dotfiles
-  ~/dotfiles/install.sh
-  ```
+    ```bash
+    git clone https://github.com/sanp/dotfiles.git ~/dotfiles
+    ~/dotfiles/install.sh
+    ```
 
 2. Restart your terminal and vim. 
 
