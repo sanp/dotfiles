@@ -385,3 +385,10 @@ let g:winresizer_keycode_mode = 113
 " Since q is now mapped to the toggle key, use c (99) to cancel and quit the
 " resize mode
 let g:winresizer_keycode_cancel = 99
+
+"""""""""""""""""""""""""
+" Gitgutter
+"""""""""""""""""""""""""
+
+" The default is <leader>hp to preview hunks. Change to localleader
+nmap <localleader>hp <Plug>(GitGutterPreviewHunk)
