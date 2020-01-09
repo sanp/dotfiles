@@ -112,6 +112,7 @@ call plug#begin(g:PLUGIN_HOME)
   ""
 
   " XPTemplate: Language specific templating/snippets
+  " Trigger key: <C-\>
   Plug 'vim-scripts/xptemplate'
 
   " Deoplete: Autocomplete paths and words
@@ -267,7 +268,7 @@ let MRU_File = g:mru_file
 let g:xptemplate_snippet_folders = g:xptemplate_personal_folder
 
 " Set the trigger key for xptemplate code completion to be \<Tab>. Doesn't work
-" well with deoplete, so disabling.
+" well with deoplete, so disabling. By default, trigger key is <C-\>
 " let g:xptemplate_key = '\<Tab>'
 
 " Turn on brace completion
