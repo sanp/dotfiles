@@ -181,7 +181,7 @@ vnoremap <silent> <leader>ss :ScreenSend<CR>
 nnoremap <silent> <leader>sq :ScreenQuit<CR>
 
 " Toggle and untoggle spell checking
-noremap <leader>ss :setlocal spell!<CR>
+noremap <localleader>ss :setlocal spell!<CR>
 
 " For long quotoed strings (e.g. docstrings) vim sometimes loses its place and
 " the syntax highlighting breaks -- because vim only looks back so many lines to
