@@ -83,7 +83,7 @@ call plug#begin(g:PLUGIN_HOME)
 
   " Neovim solarized colorscheme
   Plug 'iCyMind/NeoSolarized'
-  
+
   " Scroll through available colorschemes with :SCROLLCOLOR
   Plug 'vim-scripts/ScrollColors'
 
@@ -197,7 +197,7 @@ call plug#begin(g:PLUGIN_HOME)
 
   " Automatically set paste when pasting in insert mode and then unset
   Plug 'ConradIrwin/vim-bracketed-paste'
-  
+
   " vim-markdown and tabular used for opening and closing all folds
   Plug 'godlygeek/tabular'
   Plug 'plasticboy/vim-markdown'
