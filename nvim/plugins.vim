@@ -294,7 +294,7 @@ nnoremap <silent> ,sc :ScreenShell
 nnoremap <silent> ,sp :ScreenShell python<CR>
 
 " Alternative ScreenShellVertical opens vertical pane
-nnoremap <silent> ,svh :ScreenShellVertical<CR>
+nnoremap <silent> ,vsh :ScreenShellVertical<CR>
 " No carriage return here -- so that you can enter a command for the terminal to
 " execute before hitting enter -- e.g.: :ScreenShell python
 nnoremap <silent> ,svc :ScreenShellVertical
