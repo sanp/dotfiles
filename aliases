@@ -37,6 +37,10 @@ alias la="ls -al"
 alias lsd='ls -l | grep "^d"'
 # List all files, folders, and subfolders and files
 alias lr='ls -R'
+# Grep current dir
+alias lg='ls -l | grep '
+# Grep history
+alias hg='history | grep '
 
 # `cat` with beautiful colors. requires Pygments installed.
 # Use pcat rather than remapping cat because pygmentize only works on single
