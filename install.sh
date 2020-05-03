@@ -130,6 +130,8 @@ brew install jq
 # fantasque-sans font: https://github.com/belluzj/fantasque-sans
 brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
 brew cask install --force font-fantasque-sans-mono
+# Linters
+brew install yamllint
 
 echo "All packages now installed."
 

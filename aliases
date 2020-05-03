@@ -84,21 +84,21 @@ alias psql_stop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
 # Tab completion for tmux sessions.
 # Quickly open new tmux sessions in your projects dir.
 # https://gist.github.com/ryandotsmith/1396797
-#  
+#
 # Setup:
 # Source this code in your bash shell.
 # Update the code_dir var with the root directory of your source code.
-#  
+#
 # Usage:
-#  
+#
 # Use the tab to open an existing session.
 # $ ta [TAB]
-# 
+#
 # Arguments that are passed to ta will be used to create a new session.
-# ta will open a new tmux session and set the default path to the found dir. 
+# ta will open a new tmux session and set the default path to the found dir.
 # $ ta payments
 # $ pwd
-# /code_dir/payments 
+# /code_dir/payments
 ta()
 {
   local session_name="$1"
@@ -144,4 +144,8 @@ alias taw="tmux attach -t work || tmux new -s work"
 # Prevent SSH client from passing TERM variable to remote server
 alias ssh="TERM=xterm ssh"
 
+# Install global requirements
 alias pyri="pip install -r ~/.global_python_requirements"
+
+# Tree a python project directory without seeing all the unnecessary stuff
+alias pytree="tree -I '*.egg-info|__pycache__'"
