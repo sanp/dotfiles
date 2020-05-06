@@ -199,3 +199,7 @@ set foldtext=CustomFoldText()
 " If foldcolumn>0 it creates a gutter that shows +/- for folds
 set foldcolumn=0
 highlight Folded  cterm=underline ctermfg=10 ctermbg=0
+
+" "Dedupe" -- remove duplicate lines from file, removing all versions of the
+" duplicates, so that only lines which originally were unique are left.
+nnoremap <silent> <leader>dd :%!sort \| uniq -u<CR>

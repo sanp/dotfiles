@@ -60,8 +60,6 @@ coverage.xml
 *.log
 *.pot
 
-# Sphinx documentation
-docs/_build/
-
 # The coverage python module produces an htmlcov folder with coverage reports
 htmlcov
+.mypy_cache

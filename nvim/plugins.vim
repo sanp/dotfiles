@@ -100,10 +100,10 @@ call plug#begin(g:PLUGIN_HOME)
   " Airline_themes: Themes for airline
   Plug 'vim-airline/vim-airline-themes'
 
-  " Lightline: lightweight alternative airline
-  " Plug 'itchyny/lightline.vim'
-  " Display the git branch in the lightline status bar
-  " Plug 'itchyny/vim-gitbranch'
+  " " Lightline: lightweight alternative airline
+  " " Plug 'itchyny/lightline.vim'
+  " " Display the git branch in the lightline status bar
+  " " Plug 'itchyny/vim-gitbranch'
   " " Display ALE linting in lightline status bar
   " Plug 'maximbaz/lightline-ale'
 
@@ -138,8 +138,8 @@ call plug#begin(g:PLUGIN_HOME)
   " Syntastic: Syntax checker
   " Plug 'scrooloose/syntastic'
 
-  " " ALE: Linting
-  " Plug 'dense-analysis/ale'
+  " ALE: Linting
+  Plug 'dense-analysis/ale'
 
   ""
   " Text manipulation plugins
@@ -393,3 +393,15 @@ let g:winresizer_keycode_cancel = 99
 
 " The default is <leader>hp to preview hunks. Change to localleader
 nmap <localleader>hp <Plug>(GitGutterPreviewHunk)
+
+"""""""""""""""""""""""""
+" ALE
+"""""""""""""""""""""""""
+
+" Check Python files with flake8.
+let b:ale_linters = ['flake8']
+" Fix Python files with autopep8 and yapf.
+let b:ale_fixers = ['autopep8', 'yapf']
+
+" Go to next ALE error in the file and wrap around to the top
+nnoremap <silent> <localleader>e :ALENextWrap<CR>

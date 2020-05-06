@@ -28,8 +28,8 @@ set directory=~/vimtmpdir//
 syntax on
 syntax enable
 
-" Set textwidth to 80 columns
-set textwidth=80
+" Set textwidth to 79 columns
+set textwidth=79
 
 " Show search results as you type them
 set incsearch

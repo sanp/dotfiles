@@ -64,6 +64,7 @@ pyenv install 3.8.0
 pyenv global 3.8.0
 # Enable pip so pip installs can work
 eval "$(pyenv init -)"
+pip install --upgrade pip setuptools wheel
 pip install -r ${DOTFILES_DIR}/global_python_requirements
 
 ##
