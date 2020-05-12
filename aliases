@@ -35,8 +35,6 @@ alias l="ls -l"
 alias la="ls -al"
 # List only directories
 alias lsd='ls -l | grep "^d"'
-# List all files, folders, and subfolders and files
-alias lr='ls -R'
 # Grep current dir
 alias lg='ls -l | grep '
 # Grep history
@@ -149,3 +147,28 @@ alias pyri="pip install -r ~/.global_python_requirements"
 
 # Tree a python project directory without seeing all the unnecessary stuff
 alias pytree="tree -I '*.egg-info|__pycache__'"
+
+# ex - archive extractor
+# Taken from: https://github.com/ChrisTitusTech/zsh/blob/master/.zsh/aliasrc
+# usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
