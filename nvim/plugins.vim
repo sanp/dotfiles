@@ -401,7 +401,7 @@ nmap <localleader>hp <Plug>(GitGutterPreviewHunk)
 " Check Python files with flake8.
 let b:ale_linters = ['flake8']
 " Fix Python files with autopep8 and yapf.
-let b:ale_fixers = ['autopep8', 'yapf']
+" let b:ale_fixers = ['autopep8', 'yapf']
 
 " Go to next ALE error in the file and wrap around to the top
-nnoremap <silent> <localleader>e :ALENextWrap<CR>
+nnoremap <silent> -e :ALENextWrap<CR>
