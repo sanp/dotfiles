@@ -23,8 +23,8 @@ export LSCOLORS=GxFxBxDxCxegedabagacad
 # Git completion and shell completion via homebrew
 # Must first: 'brew install bash-completion'
 # https://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 source ~/git-completion.bash
@@ -77,19 +77,12 @@ export -f updatePrompt
 # Bash shell executes this function just before displaying the PS1 variable
 export PROMPT_COMMAND='find_git_branch; updatePrompt'
 
-# Diffmerge
-export PATH="$PATH:/Applications/DiffMerge.app/Contents/MacOS"
-
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
 # Append to bash history file instead of overwriting it in new tmux panes
 shopt -s histappend
 
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$PATH:$JAVA_HOME/bin 
+export PATH=$PATH:$JAVA_HOME/bin
 
 # Enable true colors
 export TERM=xterm-256color-italic
