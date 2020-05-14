@@ -79,6 +79,7 @@ alias psql_stop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
 # Tmux
 ##
 
+# The following snippet is necessary in bash, not zsh.
 # # Tab completion for tmux sessions.
 # # Quickly open new tmux sessions in your projects dir.
 # # https://gist.github.com/ryandotsmith/1396797
@@ -151,6 +152,9 @@ alias pyri="pip install -r ~/.global_python_requirements"
 
 # Tree a python project directory without seeing all the unnecessary stuff
 alias pytree="tree -I '*.egg-info|__pycache__'"
+
+# Update and upgrade brew
+alias bru="brew update && brew upgrade"
 
 # ex - archive extractor
 # Taken from: https://github.com/ChrisTitusTech/zsh/blob/master/.zsh/aliasrc
