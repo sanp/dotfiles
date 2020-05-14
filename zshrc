@@ -100,6 +100,7 @@ export FZF_ALT_C_COMMAND="fd --type d ${FD_OPTIONS} . ${FZF_ROOT}"
 ##
 
 # Create a pull request from the last pushed branch into develop
+# Adapted from: https://pastebin.com/UWHMV2Q
 gpr() {
   if [ $? -eq 0 ]; then
     github_url=`git remote -v | awk '/fetch/{print $2}' | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@' -e 's%\.git$%%'`;
