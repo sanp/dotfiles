@@ -36,9 +36,41 @@ fi
 # Install latest bash
 brew install bash
 # Add the new bash shell to the list of allowed shells
-sudo bash -c "echo /usr/local/bin/bash >> /private/etc/shells"
+sudo sh -c "echo /usr/local/bin/bash >> /private/etc/shells"
+sudo sh -c "echo /usr/local/bin/bash >> /etc/shells"
+# To use bash as the SHELL, uncomment the following:
 # Change the shell for the user
-chsh -s /usr/local/bin/bash 
+# chsh -s /usr/local/bin/bash
+
+##
+# Zsh
+##
+# Install latest zsh
+brew install zsh
+# Add the new zsh shell to the list of allowed shells
+sudo sh -c "echo /usr/local/bin/zsh >> /private/etc/shells"
+sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
+# Change the shell for the user
+chsh -s /usr/local/bin/zsh
+
+# Oh my zsh
+ZSH_CUSTOM=~/.oh-my-zsh/custom
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Zsh autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+# Zsh syntax highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+# Zsh spaceship theme
+# Clone the spaceship repo
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+# Symlink it
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+##
+# Docker
+##
+brew install docker docker-machine
+brew cask install virtualbox
 
 ##
 # Git
