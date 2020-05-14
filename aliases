@@ -14,8 +14,8 @@ alias p="python"
 
 # Sourcing
 alias so="source"
-# Source the .profile
-alias sop="source ~/.profile"
+# Source the zshrc
+alias sop="source ~/.zshrc"
 
 # programs
 alias mvim='open -a "MacVim"'

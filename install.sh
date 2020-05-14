@@ -65,6 +65,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
 # Symlink it
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+# Z.sh
+git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 
 ##
 # Docker
@@ -165,6 +167,10 @@ brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
 brew cask install --force font-fantasque-sans-mono
 # Linters
 brew install yamllint
+# NPM
+brew install npm
+# Trash: https://github.com/sindresorhus/trash
+npm install --global trash-cli
 
 echo "All packages now installed."
 

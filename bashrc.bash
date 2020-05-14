@@ -1,3 +1,7 @@
+##
+# If using bash as your SHELL, use this bashrc.
+##
+
 # Some useful aliases
 source ~/.aliases
 
