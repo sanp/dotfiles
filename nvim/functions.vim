@@ -5,7 +5,7 @@
 " default.
 " https://github.com/ddrscott/dot-config/blob/master/nvim/init.vim
 function! CustomFoldText()
-  "get first non-blank line
+  " Get first non-blank line
   let fs = v:foldstart
   while getline(fs) =~ '^\s*$' | let fs = nextnonblank(fs + 1)
   endwhile

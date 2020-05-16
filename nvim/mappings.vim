@@ -1,6 +1,13 @@
 " Visual block mode: meta (or alt key) + q
 nnoremap <M-q> <C-v>
 
+" Use the below commands as an alternative to setting and jumping to marks if
+" you want vim to also remember the scroll cursor position.
+" Record the current cursor position.
+nnoremap <silent> ps :let pos = winsaveview()<CR>
+" Jump to the cursor position recorded by sp.
+nnoremap <silent> pj :call winrestview(pos)<CR>
+
 " FZF fuzzy finder
 " Launch fuzzy finder from home directory
 nnoremap <silent> <localleader>f :FZF ~<CR>
@@ -190,11 +197,6 @@ noremap <localleader>ss :setlocal spell!<CR>
 " performance reasons.)
 noremap <leader>fs :syntax sync fromstart<CR>
 
-" Hard wraps all lines longer than 80 characters without affecting lines shorter
-" than 80 characters. Equivalent to doing gqq on every line that is longer than
-" 80 characters.
-nnoremap <leader>ga :g/^/norm gqq<CR>
-
 set foldtext=CustomFoldText()
 " If foldcolumn>0 it creates a gutter that shows +/- for folds
 set foldcolumn=0
@@ -203,3 +205,13 @@ highlight Folded  cterm=underline ctermfg=10 ctermbg=0
 " "Dedupe" -- remove duplicate lines from file, removing all versions of the
 " duplicates, so that only lines which originally were unique are left.
 nnoremap <silent> <leader>dd :%!sort \| uniq -u<CR>
+
+" Viewing git history of files
+" Open a menu with the previous commit versions of the file you're in.
+nnoremap <silent> <localleader>g
+      \ :let pos=winsaveview()<CR>
+      \ :0Gclog<CR>:Gedit<CR>
+      \ :call winrestview(pos)<CR>
+      \ :wincmd j<CR>
+" Return back to editing current file
+nnoremap <silent> <localleader>e :Gedit<CR>:call winrestview(pos)<CR>
