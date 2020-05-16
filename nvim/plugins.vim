@@ -85,7 +85,7 @@ call plug#begin(g:PLUGIN_HOME)
   Plug 'iCyMind/NeoSolarized'
 
   " Scroll through available colorschemes with :SCROLLCOLOR
-  Plug 'vim-scripts/ScrollColors'
+  Plug 'sanp/ScrollColors'
 
   " Make different nesting levels of parentheses have different colors
   Plug 'junegunn/rainbow_parentheses.vim'
@@ -331,6 +331,27 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 inoremap <expr><C-l> pumvisible() ? "\<C-y>" : "\<C-l>"
+
+"""""""""""""""""""""""""
+" Fugitive
+"""""""""""""""""""""""""
+
+" Viewing git history of files
+" Open a menu with the previous commit versions of the file you're in.
+nnoremap <silent> <localleader>g
+      \ :let pos=winsaveview()<CR>
+      \ :0Gclog<CR>:Gedit<CR>
+      \ :call winrestview(pos)<CR>
+      \ :wincmd j<CR>
+" Return back to editing current file
+nnoremap <silent> <localleader>e :Gedit<CR>:call winrestview(pos)<CR>
+
+" Overwrite current buffer with latest git version of file.
+nnoremap <silent> <leader>gr :Gread<CR>
+" Git add / stage the currently opened file.
+nnoremap <silent> <leader>gw :Gwrite<CR>
+" Git commit.
+nnoremap <silent> <leader>gc :Gcommit<CR>
 
 " """""""""""""""""""""""""
 " " Syntastic

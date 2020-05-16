@@ -4,9 +4,9 @@ nnoremap <M-q> <C-v>
 " Use the below commands as an alternative to setting and jumping to marks if
 " you want vim to also remember the scroll cursor position.
 " Record the current cursor position.
-nnoremap <silent> ps :let pos = winsaveview()<CR>
+nnoremap <silent> <localleader>sp :let pos = winsaveview()<CR>
 " Jump to the cursor position recorded by sp.
-nnoremap <silent> pj :call winrestview(pos)<CR>
+nnoremap <silent> <localleader>p :call winrestview(pos)<CR>
 
 " FZF fuzzy finder
 " Launch fuzzy finder from home directory
@@ -205,13 +205,3 @@ highlight Folded  cterm=underline ctermfg=10 ctermbg=0
 " "Dedupe" -- remove duplicate lines from file, removing all versions of the
 " duplicates, so that only lines which originally were unique are left.
 nnoremap <silent> <leader>dd :%!sort \| uniq -u<CR>
-
-" Viewing git history of files
-" Open a menu with the previous commit versions of the file you're in.
-nnoremap <silent> <localleader>g
-      \ :let pos=winsaveview()<CR>
-      \ :0Gclog<CR>:Gedit<CR>
-      \ :call winrestview(pos)<CR>
-      \ :wincmd j<CR>
-" Return back to editing current file
-nnoremap <silent> <localleader>e :Gedit<CR>:call winrestview(pos)<CR>
