@@ -352,6 +352,8 @@ nnoremap <silent> <leader>gr :Gread<CR>
 nnoremap <silent> <leader>gw :Gwrite<CR>
 " Git commit.
 nnoremap <silent> <leader>gc :Gcommit<CR>
+" Git status
+nnoremap <silent> <leader>gs :G<CR>
 
 " """""""""""""""""""""""""
 " " Syntastic
