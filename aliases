@@ -56,6 +56,7 @@ alias pmore='pygmentize_fn more'
 # CD into the root of a git repo
 alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
 alias gcm='git commit -m'
+alias gpu='git push -u origin head'
 
 # Get file size
 alias fs="stat -f \"%z bytes\""

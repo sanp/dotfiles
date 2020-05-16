@@ -405,3 +405,6 @@ let b:ale_linters = ['flake8']
 
 " Go to next ALE error in the file and wrap around to the top
 nnoremap <silent> -e :ALENextWrap<CR>
+
+" Disable ALE for the current file
+nnoremap <silent> <localleader>ad :ALEDisable<CR>
