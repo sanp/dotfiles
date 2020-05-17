@@ -37,6 +37,7 @@ plugins=(
   vi-mode
   virtualenv
   web-search
+  you-should-use
   zsh-autosuggestions
   zsh-syntax-highlighting
   zsh-z
@@ -50,6 +51,16 @@ source ~/.aliases
 # <Esc>-V will open a vim window for edit-and-execute-command command editing.
 # Set EDITOR to nvim order to source init.vim for this window.
 export EDITOR=nvim
+
+##
+# Autosuggestions
+# https://github.com/zsh-users/zsh-autosuggestions
+##
+# Accept the autosuggestion.
+bindkey '^l' autosuggest-accept
+# Since Ctrl-l is now bound to autosuggest-accept, use Ctrl-k for clering the
+# screen.
+bindkey '^k' clear-screen
 
 ##
 # FZF
@@ -72,20 +83,24 @@ export FZF_COMPLETION_TRIGGER="~~"
 # else
 #   FZF_ROOT=${HOME}
 # fi
+# FZF_ROOT=$(git rev-parse --show-toplevel)
 
 FZF_ROOT=${HOME}
-# FZF_ROOT=$(git rev-parse --show-toplevel)
 export FZF_DEFAULT_COMMAND="fd --type f ${FD_OPTIONS} . ${FZF_ROOT}"
 
 export FZF_DEFAULT_OPTS="
-  --no-mouse --multi
-  --height 45% --layout reverse --info inline --border
-  --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'
+  --no-mouse
+  --multi
+  --height 50%
+  --layout reverse
+  --info inline
+  --border
   --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file ||
       (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -300'
   --preview-window='right:hidden:wrap'
   --bind='ctrl-w:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-y:execute-silent(echo {+} | pbcopy)'
 "
+#  --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'
 
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="fd --type d ${FD_OPTIONS} . ${FZF_ROOT}"
