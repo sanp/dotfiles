@@ -27,3 +27,5 @@
       - Lock Screen: ^Shift=
       - Force Quiti: Option Command Q
       - Zoom: Option Control =
+
+## Shady app

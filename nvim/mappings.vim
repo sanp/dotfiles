@@ -88,8 +88,8 @@ nnoremap <silent> <leader><leader>b :b#<CR>
 nnoremap <silent> <leader>k :bp<CR>
 " Next buffer
 nnoremap <silent> <leader>j :bn<CR>
-" Delete currently opened buffer
-nnoremap <silent> <leader>d :bd<CR>
+" " Delete currently opened buffer
+" nnoremap <silent> <leader>d :bd<CR>
 
 " Copy the full absolute path only into the system clipboard
 nnoremap <silent> <leader>yp :let @+ = expand("%:p:h")<CR>

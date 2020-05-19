@@ -14,26 +14,17 @@ SPACESHIP_PYENV_SHOW=false
 SPACESHIP_VENV_SHOW=true
 SPACESHIP_VENV_SYMBOL="🐍 "
 SPACESHIP_VENV_COLOR=yellow
-SPACESHIP_VI_MODE_INSERT="\b"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+SPACESHIP_VI_MODE_SHOW=false
+# SPACESHIP_VI_MODE_INSERT="\b"
 
 plugins=(
-  brew
-  bundler
   colored-man-pages
-  cloudfoundry
-  docker
-  dotenv
-  fzf
+  # command-not-found
+  extract
   git
   last-working-dir
-  osx
   pyenv
-  rake
   sudo
-  tmux
   vi-mode
   virtualenv
   web-search
@@ -45,12 +36,27 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Some useful aliases
+# My aliases
 source ~/.aliases
+
+# Make searches insensitive to - or _
+HYPHEN_INSENSITIVE="true"
+
+# Update zsh every day
+export UPDATE_ZSH_DAYS=1
+
+# Enable true colors
+export TERM=xterm-256color-italic
 
 # <Esc>-V will open a vim window for edit-and-execute-command command editing.
 # Set EDITOR to nvim order to source init.vim for this window.
 export EDITOR=nvim
+
+# ZSH uses the KEYTIMEOUT parameter to determine how long to wait (in
+# hundredths of a second) for additional characters in sequence. Default is 0.4
+# seconds. Set KEYTIMEOUT=1 to wait 10m for key sequences.
+# See: https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+KEYTIMEOUT=1
 
 ##
 # Autosuggestions
@@ -62,12 +68,21 @@ bindkey '^l' autosuggest-accept
 # screen.
 bindkey '^k' clear-screen
 
+# Expand aliases with <Tab>
+zstyle ':completion:*' completer _expand_alias _complete _ignored
+
 ##
 # FZF
 ##
 
 # Enable fuzzy search key bindings and auto completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Remap the FZF hotkeys to more sensible bindings.
+# Instead of Ctrl t:
+bindkey '^q' fzf-file-widget
+# Instead of Alt c:
+bindkey '^w' fzf-cd-widget
 
 # Use fd instead of find for default fzf searching
 # FD default options
@@ -105,10 +120,10 @@ export FZF_DEFAULT_OPTS="
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="fd --type d ${FD_OPTIONS} . ${FZF_ROOT}"
 
-# Always have a tmux session running. By default, call that session 'work'
-if ! [ -n "$TMUX" ]; then
-  tmux attach -t work || tmux new -s work
-fi
+# # Always have a tmux session running. By default, call that session 'work'
+# if ! [ -n "$TMUX" ]; then
+#   tmux attach -t work || tmux new -s work
+# fi
 
 ##
 # Custom functions
@@ -132,3 +147,40 @@ gpr() {
 # Tmux unbinding that doesn't work if I have it in the tmux conf for some
 # reason.
 tmux unbind a
+
+##
+# Cursor
+# See: https://superuser.com/questions/685005/tmux-in-zsh-with-vi-mode-toggle-cursor-shape-between-normal-and-insert-mode
+# Note: This doesn't play well with Spaceship theme's vi mode, so set
+# SPACESHIP_VI_MODE_SHOW=false when using the below settings.
+##
+
+# Change cursor with support for inside/outside tmux
+function _set_cursor() {
+  if [[ $TMUX = '' ]]; then
+    echo -ne $1
+  else
+    echo -ne "\ePtmux;\e\e$1\e\\"
+  fi
+}
+
+function _set_blinking_block_cursor() { _set_cursor '\e[1 q' }
+function _set_solid_block_cursor() { _set_cursor '\e[2 q' }
+function _set_blinking_underscore_cursor() { _set_cursor '\e[3 q' }
+function _set_solid_underscore_cursor() { _set_cursor '\e[4 q' }
+function _set_blinking_beam_cursor() { _set_cursor '\e[5 q' }
+function _set_solid_beam_cursor() { _set_cursor '\e[6 q' }
+
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+    _set_solid_block_cursor
+  else
+    _set_blinking_beam_cursor
+  fi
+}
+zle -N zle-keymap-select
+
+# Ensure blinking beam cursor when starting new terminal.
+precmd_functions+=(_set_blinking_beam_cursor)
+# Ensure blinking beam cursor in insert mode and when exiting vim.
+zle-line-init() { zle -K viins; _set_blinking_beam_cursor }

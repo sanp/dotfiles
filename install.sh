@@ -68,7 +68,7 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 # You should use plugin
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
 # Z.sh
-git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z 
+git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 
 ##
 # Docker
@@ -118,6 +118,12 @@ brew install reattach-to-user-namespace
 # Install tmux plugin manager
 rm -rf ${HOME}/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+##
+# Terminfo
+# The following is necessary to display true colors in the shell, vim, and
+# tmux.
+##
 # Symlink the terminfo folder
 rm -rf ${HOME}/terminfo
 ln -s ${DOTFILES_DIR}/terminfo ${HOME}/terminfo
@@ -173,6 +179,17 @@ brew install yamllint
 brew install npm
 # Trash: https://github.com/sindresorhus/trash
 npm install --global trash-cli
+# Better version of top
+brew install htop
+# Shorter man pages
+brew install tldr
+# File browser like du utility
+brew install ncdu
+# Terminal based task app
+brew install task
+brew install tasksh
+# Lastpass CLI
+brew install lastpass-cli
 
 echo "All packages now installed."
 

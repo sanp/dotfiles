@@ -355,6 +355,14 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 " Git status
 nnoremap <silent> <leader>gs :G<CR>
 
+" Difftool/Mergetool settings
+" Get from LOCAL file
+nnoremap <silent> <leader>dh :diffget LOCAL<CR>
+" Get from REMOTE file
+nnoremap <silent> <leader>dl :diffget REMOTE<CR>
+" Put the current line into the BASE file
+nnoremap <silent> <leader>db :diffput BASE<CR>
+
 " """""""""""""""""""""""""
 " " Syntastic
 " """""""""""""""""""""""""

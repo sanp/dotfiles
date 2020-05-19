@@ -27,12 +27,14 @@
   brdate = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short)  -  %(refname:short)'
 [color]
   ui = true
-[diff]
-  tool = diffmerge
 [merge]
-  tool = diffmerge
-[difftool "diffmerge"]
-  cmd = diffmerge $LOCAL $REMOTE
-[mergetool "diffmerge"]
-  cmd = diffmerge --merge\n--result=$MERGED $LOCAL $BASE $REMOTE
-  trustExitCode = true
+  tool = vimdiff
+[mergetool]
+  prompt = false
+  conflictstyle = diff3
+[mergetool "vimdiff"]
+  cmd = nvim -d $MERGED $LOCAL $BASE $REMOTE -c 'wincmd J' -c 'wincmd k' -c 'wincmd l' -c 'resize 40'
+[difftool]
+  prompt = false
+[diff]
+  tool = vimdiff

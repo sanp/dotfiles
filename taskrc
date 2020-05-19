@@ -1,0 +1,23 @@
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Files
+data.location=~/.task
+
+# Basic config
+search.case.sensitive=no
+
+# Color theme
+include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-dark-256.theme
+
+# Swap priority of None and Low priority tasks
+uda.priority.values = H,M,,L
+urgency.uda.priority.L.coefficient=0
+urgency.uda.priority..coefficient=1.8
+
+# Contexts
+context.work=project:work or +work
+context.home=project:home or +home
+context.band=project:band or +band
+context.fun=project:fun or +fun

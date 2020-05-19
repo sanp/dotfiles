@@ -31,11 +31,24 @@ for link in $nondot_links; do
   ln -s ${DOT_DIR}/$link ~/$link
 done
 
+##
+# Configs directories
+##
+
+CONFIG_DIR=${HOME}/.config
+
 # NeoVim
-SYS_NVIM_CONFIG_DIR=${HOME}/.config/nvim
+NVIM_CONFIG_DIR=${CONFIG_DIR}/nvim
 DOTFILES_NVIM_DIR=${DOT_DIR}/nvim
-rm -rf ${SYS_NVIM_CONFIG_DIR}
-ln -s ${DOTFILES_NVIM_DIR} ${SYS_NVIM_CONFIG_DIR}
+rm -rf ${NVIM_CONFIG_DIR}
+ln -s ${DOTFILES_NVIM_DIR} ${NVIM_CONFIG_DIR}
+
+# Bugwarrior
+BW_CONFIG_DIR=${CONFIG_DIR}/bugwarrior
+DOTFILES_BW_DIR=${DOT_DIR}/bugwarrior
+rm -rf ${BW_CONFIG_DIR}
+ln -s ${DOTFILES_BW_DIR} ${BW_CONFIG_DIR}
+
 # Make the backup, tmp, and undo directories
 VIM_BKP_DIR=${HOME}/vimbackup
 VIM_TMP_DIR=${HOME}/vimtmpdir
@@ -46,5 +59,6 @@ rm -rf ${VIM_TMP_DIR}
 mkdir -p ${VIM_TMP_DIR}
 rm -rf ${VIM_UNDO_DIR}
 mkdir -p ${VIM_UNDO_DIR}
+
 
 echo "Done making symlinks"

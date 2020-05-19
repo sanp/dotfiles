@@ -158,6 +158,34 @@ alias pytree="tree -I '*.egg-info|__pycache__'"
 # Update and upgrade brew
 alias bru="brew update && brew upgrade"
 
+##
+# Taskwarrior and Timewarrior
+##
+alias w="task"
+alias wl="task list"
+# Usage: wa +footag
+alias wa="task add"
+alias wan="task annotate"
+alias wd="task done"
+alias wrm="task delete"
+alias wm="task modify"
+alias wp="task projects"
+alias wt="task tags"
+# # You can add tasks and optionally wait or schedule them:
+# # wa Send xmas cards wait:2020-12-01 schedule:2020-12-15 until:2020-12-25
+alias ww="task waiting"
+alias wcd="task context define"
+alias wcrm="task context delete"
+alias wcl="task context list"
+# Show current context
+alias wcs="task context show"
+# Switch to context
+alias wcon="task context"
+# Clear context
+alias wcc="task context none"
+# Pull in information from all external services bugwarrior is tracking.
+alias bup="bugwarrior-pull"
+
 # ex - archive extractor
 # Taken from: https://github.com/ChrisTitusTech/zsh/blob/master/.zsh/aliasrc
 # usage: ex <file>

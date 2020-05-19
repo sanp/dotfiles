@@ -1,3 +1,10 @@
 neovim
 jedi
 flake8
+python-devel
+dbus-devel
+dbus-glib-devel
+bugwarrior
+"bugwarrior[keyring]"
+"bugwarrior[jira]"
+"bugwarrior[gmail]"
