@@ -154,6 +154,9 @@ call plug#begin(g:PLUGIN_HOME)
   " To use: `:Abolish`, `:Subvert`. `:help abolish` for more.
   Plug 'tpope/vim-abolish'
 
+  " Vissort: Sort visual selections of text.
+  Plug 'navicore/vissort.vim'
+
   ""
   " Git related plugins
   ""
@@ -176,6 +179,9 @@ call plug#begin(g:PLUGIN_HOME)
   " Stage and unstage hunk changes with <leader>hs and <leader>hu
   " :GitGutterFold to fold and unfold only diffs
   Plug 'airblade/vim-gitgutter'
+
+  " Plugin to make git a better mergetool
+  Plug 'samoshkin/vim-mergetool'
 
   ""
   " Code sending plugins
@@ -209,116 +215,21 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""
-" NERDTree
+" ALE
 """""""""""""""""""""""""
 
-" Set NERDTree window size
-let NERDTreeWinSize=32
+" Check Python files with flake8.
+let b:ale_linters = ['flake8']
+" Fix Python files with autopep8 and yapf.
+" let b:ale_fixers = ['autopep8', 'yapf']
 
-" Change working directory of vim whenever NERDTree root directory is changed
-let g:NERDTreeChDirMode=2
+" Go to next ALE error in the file and wrap around to the top
+nnoremap <silent> -e :ALENextWrap<CR>
 
-"""""""""""""""""""""""""
-" Tagbar/Exuberant Ctags
-"""""""""""""""""""""""""
-
-" Useful commands:
-"   s: toggle sorting options (alphabetical vs order in file)
-"   space/mouse hover: display the prototype of a tag. For example, for a
-"       method, will display the signature of the method (method name and
-"       arguments)
-"   p: Jump to the tag under the cursor, but stay in the Tagbar window.
-"       Map option: tagbar_map_preview
-"   x: Toggle zooming the window. Map option: tagbar_map_zoomwin
-"   <Enter>: Jump to tag under cursor in the code window
-
-let g:tagbar_type_r = {
-    \ 'ctagstype' : 'r',
-    \ 'kinds'     : [
-        \ 'f:Functions',
-        \ 'g:GlobalVariables',
-        \ 'v:FunctionVariables',
-    \ ]
-\ }
-
-"""""""""""""""""""""""""
-" Nvim-R
-"""""""""""""""""""""""""
-
-" Map the ; to <-
-let R_assign_map = ";"
-
-"""""""""""""""""""""""""
-" MRU
-"""""""""""""""""""""""""
-
-" Set the file which stores the list of the most recently
-" used files
-let MRU_File = g:mru_file
-
-" Display the MRU window in the current window, rather than
-" in a new one
-" let MRU_Use_Current_Window = 1
-
-"""""""""""""""""""""""""
-" XPTemplate
-"""""""""""""""""""""""""
-
-" Set location of personal snippets folder
-let g:xptemplate_snippet_folders = g:xptemplate_personal_folder
-
-" Set the trigger key for xptemplate code completion to be \<Tab>. Doesn't work
-" well with deoplete, so disabling. By default, trigger key is <C-\>
-" let g:xptemplate_key = '\<Tab>'
-
-" Turn on brace completion
-let g:xptemplate_brace_complete = '([{"'''
-
-" Set global variables in xpt:
-" SParg sets spaces between brackets. If set to nothing, then brackets will not
-" have any spaces between them by default.
-let g:xptemplate_vars = '$author=' . g:my_name . '&$email=' . g:my_email . '&SParg='
-
-" " Open the pop-up menu
-" let g:xptemplate_key_pum_only = '<F2>'
-
-"""""""""""""""""""""""""
-" ScreenShell
-"""""""""""""""""""""""""
-
-" Default ScreenShell opens horizontal pane
-nnoremap <silent> ,sh :ScreenShell<CR>
-" No carriage return here -- so that you can enter a command for the terminal to
-" execute before hitting enter -- e.g.: :ScreenShell python
-nnoremap <silent> ,sc :ScreenShell
-nnoremap <silent> ,sp :ScreenShell python<CR>
-
-" Alternative ScreenShellVertical opens vertical pane
-nnoremap <silent> ,vsh :ScreenShellVertical<CR>
-" No carriage return here -- so that you can enter a command for the terminal to
-" execute before hitting enter -- e.g.: :ScreenShell python
-nnoremap <silent> ,svc :ScreenShellVertical
-nnoremap <silent> ,svp :ScreenShellVertical python<CR>
-
-" Send lines of code from buffer to the terminal
-
-" Send one line to the shell
-nnoremap <silent> ,sl V:ScreenSend<CR>
-" Send one line to the shell -- j at end to also go down one line -- useful for
-" stepping through entire selections of code
-nnoremap <silent> ,sd V:ScreenSend<CR>j
-" Send selection (or entire buffer, if no selection highlighted) to the shell
-nnoremap <silent> ,ss :ScreenSend<CR>
-vnoremap <silent> ,ss :ScreenSend<CR>
-
-" Quit the GNU screen
-nnoremap <silent> ,sq :ScreenQuit<CR>
-
-"""""""""""""""""""""""""
-" Rainbow Parentheses
-"""""""""""""""""""""""""
-" Apply rainbow coloring everywhere
-autocmd VimEnter * RainbowParentheses
+" Disable ALE for the current file
+nnoremap <silent> <localleader>ad :ALEDisable<CR>
+" Enable ALE for the current file
+nnoremap <silent> <localleader>ae :ALEEnable<CR>
 
 """""""""""""""""""""""""
 " Deoplete
@@ -355,21 +266,12 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 " Git status
 nnoremap <silent> <leader>gs :G<CR>
 
-" Difftool/Mergetool settings
-" Get from LOCAL file
-nnoremap <silent> <leader>dh :diffget LOCAL<CR>
-" Get from REMOTE file
-nnoremap <silent> <leader>dl :diffget REMOTE<CR>
-" Put the current line into the BASE file
-nnoremap <silent> <leader>db :diffput BASE<CR>
+"""""""""""""""""""""""""
+" Gitgutter
+"""""""""""""""""""""""""
 
-" """""""""""""""""""""""""
-" " Syntastic
-" """""""""""""""""""""""""
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+" The default is <leader>hp to preview hunks. Change to localleader
+nmap <localleader>hp <Plug>(GitGutterPreviewHunk)
 
 """""""""""""""""""""""""
 " Nerdcommenter
@@ -390,6 +292,129 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
+
+"""""""""""""""""""""""""
+" NERDTree
+"""""""""""""""""""""""""
+
+" Set NERDTree window size
+let NERDTreeWinSize=32
+
+" Change working directory of vim whenever NERDTree root directory is changed
+let g:NERDTreeChDirMode=2
+
+"""""""""""""""""""""""""
+" Nvim-R
+"""""""""""""""""""""""""
+
+" Map the ; to <-
+let R_assign_map = ";"
+
+"""""""""""""""""""""""""
+" MRU
+"""""""""""""""""""""""""
+
+" Set the file which stores the list of the most recently
+" used files
+let MRU_File = g:mru_file
+
+" Display the MRU window in the current window, rather than
+" in a new one
+" let MRU_Use_Current_Window = 1
+
+"""""""""""""""""""""""""
+" Rainbow Parentheses
+"""""""""""""""""""""""""
+" Apply rainbow coloring everywhere
+autocmd VimEnter * RainbowParentheses
+
+" """""""""""""""""""""""""
+" " Syntastic
+" """""""""""""""""""""""""
+
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+""
+" ScreenShell plugin
+""
+
+" Default ScreenShell opens horizontal pane
+nnoremap <silent> <leader>sh :ScreenShell<CR>
+" No carriage return here -- so that you can enter a command for the terminal to
+" execute before hitting enter -- e.g.: :ScreenShell python. Also not silent so
+" you can see what you're typing
+nnoremap <leader>sc :ScreenShell<space>
+nnoremap <silent> <leader>sp :ScreenShell python<CR>
+
+" Alternative ScreenShellVertical opens vertical pane
+nnoremap <silent> <leader>svh :ScreenShellVertical<CR>
+nnoremap <leader>svc :ScreenShellVertical<space>
+nnoremap <silent> <leader>svp :ScreenShellVertical python<CR>
+
+""
+" Send lines of code from buffer to the terminal
+""
+" Send one line to the shell
+nnoremap <silent> <leader>sl V:ScreenSend<CR>
+" Send one line to the shell -- j at end to also go down one line -- useful for
+" stepping through entire selections of code
+nnoremap <silent> <leader>sd V:ScreenSend<CR>j
+" Send selection (or entire buffer, if no selection highlighted) to the shell
+nnoremap <silent> <leader>ss :ScreenSend<CR>
+vnoremap <silent> <leader>ss :ScreenSend<CR>
+
+" Quit the GNU screen
+nnoremap <silent> <leader>sq :ScreenQuit<CR>
+
+"""""""""""""""""""""""""
+" Tagbar/Exuberant Ctags
+"""""""""""""""""""""""""
+
+" Useful commands:
+"   s: toggle sorting options (alphabetical vs order in file)
+"   space/mouse hover: display the prototype of a tag. For example, for a
+"       method, will display the signature of the method (method name and
+"       arguments)
+"   p: Jump to the tag under the cursor, but stay in the Tagbar window.
+"       Map option: tagbar_map_preview
+"   x: Toggle zooming the window. Map option: tagbar_map_zoomwin
+"   <Enter>: Jump to tag under cursor in the code window
+
+let g:tagbar_type_r = {
+    \ 'ctagstype' : 'r',
+    \ 'kinds'     : [
+        \ 'f:Functions',
+        \ 'g:GlobalVariables',
+        \ 'v:FunctionVariables',
+    \ ]
+\ }
+
+" Display classes, methods, functions, etc in tagbar window
+nnoremap <silent> tt :TagbarToggle<CR>
+
+"""""""""""""""""""""""""
+" vim-mergetool
+"""""""""""""""""""""""""
+
+" What
+function s:on_mergetool_set_layout(split)
+  set syntax=off
+  set nospell
+endfunction
+
+let g:MergetoolSetLayoutCallback = function('s:on_mergetool_set_layout')
+
+" Set layout to LOCAL, MERGED, REMOTE. Use capitals to name the files with
+" conventional REMOTE and LOCAL names.
+let g:mergetool_layout = 'LmR'
+" Use what's in the MERGED buffer as the final saved/merged version
+" let g:mergetool_prefer_revision = 'local'
+
+" If you don't want vim-mergetool to process MERGED file and remove raw
+" conflict markers:
+" let g:mergetool_prefer_revision = 'unmodified'
 
 """""""""""""""""""""""""
 " vim-startify
@@ -419,23 +444,23 @@ let g:winresizer_keycode_mode = 113
 let g:winresizer_keycode_cancel = 99
 
 """""""""""""""""""""""""
-" Gitgutter
+" XPTemplate
 """""""""""""""""""""""""
 
-" The default is <leader>hp to preview hunks. Change to localleader
-nmap <localleader>hp <Plug>(GitGutterPreviewHunk)
+" Set location of personal snippets folder
+let g:xptemplate_snippet_folders = g:xptemplate_personal_folder
 
-"""""""""""""""""""""""""
-" ALE
-"""""""""""""""""""""""""
+" Set the trigger key for xptemplate code completion to be \<Tab>. Doesn't work
+" well with deoplete, so disabling. By default, trigger key is <C-\>
+" let g:xptemplate_key = '\<Tab>'
 
-" Check Python files with flake8.
-let b:ale_linters = ['flake8']
-" Fix Python files with autopep8 and yapf.
-" let b:ale_fixers = ['autopep8', 'yapf']
+" Turn on brace completion
+let g:xptemplate_brace_complete = '([{"'''
 
-" Go to next ALE error in the file and wrap around to the top
-nnoremap <silent> -e :ALENextWrap<CR>
+" Set global variables in xpt:
+" SParg sets spaces between brackets. If set to nothing, then brackets will not
+" have any spaces between them by default.
+let g:xptemplate_vars = '$author=' . g:my_name . '&$email=' . g:my_email . '&SParg='
 
-" Disable ALE for the current file
-nnoremap <silent> <localleader>ad :ALEDisable<CR>
+" " Open the pop-up menu
+" let g:xptemplate_key_pum_only = '<F2>'

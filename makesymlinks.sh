@@ -18,7 +18,7 @@ echo "Creating ${OLD_DOT_DIR} for backup of any existing dotfiles in ~"
 mkdir -p ${OLD_DOT_DIR}
 echo "...done"
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 # first do this for the dot_links
 for link in $dot_links; do
   rm -rf ~/.$link

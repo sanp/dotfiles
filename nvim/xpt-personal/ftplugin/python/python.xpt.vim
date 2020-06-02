@@ -232,7 +232,7 @@ Description : `desc^
 XPT fh alias=filehead
 
 XPT docstring " docstring
-`$PYTHON_DOC_MARK^ `cursor^ `$PYTHON_DOC_MARK^
+`$PYTHON_DOC_MARK^`cursor^ `$PYTHON_DOC_MARK^
 
 XPT ds alias=docstring
 

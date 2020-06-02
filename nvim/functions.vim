@@ -24,3 +24,15 @@ function! CustomFoldText()
   let expansionString = repeat(" ", w - strwidth(foldSizeStr.line.foldLevelStr.foldPercentage))
   return line . expansionString . foldSizeStr . foldPercentage . foldLevelStr
 endfunction
+
+" Settings to apply when in diffmode
+function! DiffmodeOn()
+  syntax off
+  setlocal nospell
+endfunction
+
+" Turn off diffmode settings when leaving diffmode
+function! DiffmodeOff()
+  syntax on
+  setlocal spell
+endfunction

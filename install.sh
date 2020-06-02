@@ -190,6 +190,8 @@ brew install task
 brew install tasksh
 # Lastpass CLI
 brew install lastpass-cli
+# Count Lines of Code package
+npm install -g cloc
 
 echo "All packages now installed."
 

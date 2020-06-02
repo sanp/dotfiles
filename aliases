@@ -150,8 +150,10 @@ alias ytdl-mp3="youtube-dl -x --audio-quality 0 --audio-format mp3"
 alias ssh="TERM=xterm ssh"
 
 # Install global requirements
-alias pyri="pip install -r ~/.global_python_requirements"
+alias pyri="pip install --upgrade pip wheel setuptools && pip install -r ~/.global_python_requirements"
 
+# Always show colors with tree
+alias tree="tree -C"
 # Tree a python project directory without seeing all the unnecessary stuff
 alias pytree="tree -I '*.egg-info|__pycache__'"
 

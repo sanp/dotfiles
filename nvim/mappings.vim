@@ -45,6 +45,9 @@ ca <silent> tn tabnew
 ca <silent> th tabp
 ca <silent> tl tabn
 
+" Move to last tab without stretching fingers
+nnoremap <silent> ft gT
+
 " Use spacebar to open and close folds in Normal mode, rather than
 " zo, zc, za
 noremap <silent> <space> za
@@ -142,50 +145,12 @@ nnoremap <localleader>be :set tw=80<CR>
 " noremap <silent> ,xu :call NERDComment("n", "Uncomment")<CR>
 
 " Open a new terminal window and source in my .profile. Takes a second to load
-nnoremap <silent> <localleader>t :terminal<CR>isource ${HOME}/.profile<CR>cl<CR>
+nnoremap <silent> <localleader>t :terminal<CR>isource ${HOME}/.zshrc<CR>cl<CR>
 " Use normal moving around key mappings for moving in terminal mode
 tnoremap <C-s>h <C-\><C-n><C-w>h
 tnoremap <C-s>j <C-\><C-n><C-w>j
 tnoremap <C-s>k <C-\><C-n><C-w>k
 tnoremap <C-s>l <C-\><C-n><C-w>l
-
-""
-" Tagbar plugin
-""
-
-" Display classes, methods, functions, etc in tagbar window
-nnoremap <silent> tt :TagbarToggle<CR>
-
-""
-" ScreenShell plugin
-""
-
-" Default ScreenShell opens horizontal pane
-nnoremap <silent> <leader>sh :ScreenShell<CR>
-" No carriage return here -- so that you can enter a command for the terminal to
-" execute before hitting enter -- e.g.: :ScreenShell python. Also not silent so
-" you can see what you're typing
-nnoremap <leader>sc :ScreenShell<space>
-nnoremap <silent> <leader>sp :ScreenShell python<CR>
-
-" Alternative ScreenShellVertical opens vertical pane
-nnoremap <silent> <leader>svh :ScreenShellVertical<CR>
-nnoremap <leader>svc :ScreenShellVertical<space>
-nnoremap <silent> <leader>svp :ScreenShellVertical python<CR>
-
-" Send lines of code from buffer to the terminal
-
-" Send one line to the shell
-nnoremap <silent> <leader>sl V:ScreenSend<CR>
-" Send one line to the shell -- j at end to also go down one line -- useful for
-" stepping through entire selections of code
-nnoremap <silent> <leader>sd V:ScreenSend<CR>j
-" Send selection (or entire buffer, if no selection highlighted) to the shell
-nnoremap <silent> <leader>ss :ScreenSend<CR>
-vnoremap <silent> <leader>ss :ScreenSend<CR>
-
-" Quit the GNU screen
-nnoremap <silent> <leader>sq :ScreenQuit<CR>
 
 " Toggle and untoggle spell checking
 noremap <localleader>ss :setlocal spell!<CR>
@@ -205,3 +170,21 @@ highlight Folded  cterm=underline ctermfg=10 ctermbg=0
 " "Dedupe" -- remove duplicate lines from file, removing all versions of the
 " duplicates, so that only lines which originally were unique are left.
 nnoremap <silent> <leader>dd :%!sort \| uniq -u<CR>
+
+""
+" Git diff mappings
+""
+
+" Difftool/Mergetool settings
+" Get from LOCAL file
+nnoremap <silent> <leader>dh :diffget LOCAL<CR>
+" Get from REMOTE file
+nnoremap <silent> <leader>dl :diffget REMOTE<CR>
+" Put the current line into the BASE file
+nnoremap <silent> <leader>db :diffput BASE<CR>
+" If two files are open in a split screen, diff them
+nnoremap <silent> <leader>wd :windo diffthis<CR>:call DiffmodeOn()<CR>
+" Turn on diffing
+nnoremap <silent> <leader>dt :diffthis<CR>:call DiffmodeOn()<CR>
+" Turn off diffing
+nnoremap <silent> <leader>do :diffo<CR>:call DiffmodeOff()<CR>

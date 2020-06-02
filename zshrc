@@ -58,6 +58,16 @@ export EDITOR=nvim
 # See: https://www.johnhawthorn.com/2012/09/vi-escape-delays/
 KEYTIMEOUT=1
 
+# Limit the size of the history log file
+HISTSIZE=1000
+SAVEHIST=1000
+
+# Use vim keys (with Ctrl prefix) in tab complete menu.
+bindkey -M menuselect '^h' vi-backward-char
+bindkey -M menuselect '^j' vi-down-line-or-history
+bindkey -M menuselect '^k' vi-up-line-or-history
+bindkey -M menuselect '^l' vi-forward-char
+
 ##
 # Autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions

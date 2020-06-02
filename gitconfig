@@ -8,6 +8,8 @@
   helper = osxkeychain
 [push]
   default = simple
+[pager]
+  branch = false
 [alias]
   last = log -1 HEAD
   logg = log --pretty=format:\"%h - %an, %ar : %s\"
@@ -27,14 +29,41 @@
   brdate = for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short)  -  %(refname:short)'
 [color]
   ui = true
-[merge]
-  tool = vimdiff
-[mergetool]
-  prompt = false
-  conflictstyle = diff3
-[mergetool "vimdiff"]
-  cmd = nvim -d $MERGED $LOCAL $BASE $REMOTE -c 'wincmd J' -c 'wincmd k' -c 'wincmd l' -c 'resize 40'
+[color "diff"]
+  meta = yellow
+  frag = magenta # line info
+  old = red # deletions
+  new = green # additions
+  whitespace = red reverse
+[diff]
+  tool = nvim
+  guitool = diffmerge
+  submodule = log
+  algorithm = patience
+  indentHeuristic = true
 [difftool]
   prompt = false
-[diff]
-  tool = vimdiff
+[difftool "nvim"]
+  cmd = nvim -d $LOCAL $REMOTE -c 'wincmd l'
+[difftool "diffmerge"]
+  cmd = "/Applications/DiffMerge.app/Contents/Resources/diffmerge.sh --nosplash \"$LOCAL\" \"$REMOTE\""
+[merge]
+  # tool = nvim
+  tool = vim_mergetool
+  guitool = diffmerge
+  submodule = log
+  algorithm = patience
+  indentHeuristic = true
+  conflictstyle = diff3
+[mergetool]
+  prompt = false
+  keepBackup = false
+  trustExitCode = true
+[mergetool "vim_mergetool"]
+  cmd = nvim -f -c "MergetoolStart" "$MERGED" "$BASE" "$LOCAL" "$REMOTE" -c ':1'
+[mergetool "nvim"]
+  # cmd = nvim -d $MERGED $LOCAL $BASE $REMOTE -c 'wincmd J'
+  # cmd = nvim -d $MERGED $LOCAL $BASE $REMOTE -c 'wincmd J' -c 'wincmd k' -c 'wincmd l' -c 'resize 40'
+  cmd = nvim -d $LOCAL $MERGED $REMOTE -c 'wincmd l'
+[mergetool "diffmerge"]
+  cmd = "/Applications/DiffMerge.app/Contents/Resources/diffmerge.sh --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\""

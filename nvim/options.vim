@@ -59,6 +59,9 @@ set showcmd
 " highlight the current line
 " set cul
 
+" Turn on spellcheck
+set spell
+
 " Use UTF-8
 set encoding=utf-8
 
@@ -90,9 +93,9 @@ set clipboard=unnamed
 " in the unnamed register
 " set clipboard=
 
-" Open new split panes to left (default) and bottom
+" Open new split panes to right and bottom
 set splitbelow
-" set splitright
+set splitright
 
 " Set custom fold appearance (references CustomFoldText function defined in
 " functions.vim)
@@ -100,6 +103,28 @@ set foldtext=CustomFoldText()
 " If foldcolumn>0 it creates a gutter that shows +/- for folds
 set foldcolumn=0
 highlight Folded  cterm=underline ctermfg=10 ctermbg=0
+
+" Use vertical splits for diffing files
+set diffopt=vertical
+" Show filler lines so files are aligned.
+set diffopt+=filler
+" Show 3 lines for each diff instead of the default 5.
+set diffopt+=context:3
+" Take up less space with the gutter
+set diffopt+=foldcolumn:1
+" Use patience algorithm. See: https://vimways.org/2018/the-power-of-diff/
+set diffopt+=algorithm:patience,internal
+" Use indent heuristic to shift hunk boundaries and make new code stand out
+" better.
+set diffopt+=indent-heuristic
+
+" Detect if vim is started as a diff tool (vim -d, vimdiff)
+" NOTE: Does not work when you start Vim as usual and enter diff mode using :diffthis
+if &diff
+  let s:is_started_as_vim_diff = 1
+  syntax off
+  setlocal nospell
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
@@ -167,3 +192,5 @@ let g:airline_theme='dark'
 " set statusline+=0x%-8B                          " character value
 " set statusline+=%-14(%l,%c%V%)                  " line, character
 " set statusline+=%<%P                            " file position
+
+set hidden
