@@ -21,8 +21,19 @@ mac
    launch tmux (by typing `tmux`). Install tmux plugins by pressing `prefix` +
    `I` (capital i, as in Install) to fetch the plugins.
 
-4. `vim` is aliased to neovim. Open neovim by typing `vim` and run
-   `:PlugInstall`. 
+4. `vim` is aliased to neovim. Open neovim by typing `vim`. Plugins will
+   automagically install.
+
+5. Tell iterm2 to load profile: Preferences > Preferences > Load preferences
+   from a custom folder or URL > ~/dotfiles/iterm2. Then restart iTerm2. Make
+   sure that iTerm2 didn't overwrite the `plist` file in the iterm2 folder. If
+   it did:
+
+   ```
+   git checkout -- ~/dotfiles/iterm2
+   ```
+
+   And then restart iTerm2.
 
 If all went well, you should now have access to all of the settings. 
 
