@@ -6,6 +6,7 @@
       - Appearance > Options > Save position when dragging Alfred main window
   - Download [Shady](https://download.cnet.com/Shady/3000-2094_4-75784600.html)
   - Download [Karibiner Elements](https://karabiner-elements.pqrs.org/)
+  - Download [iTerm2](https://www.iterm2.com/)
 
 ## Moom
   - Download [Moom](https://manytricks.com/moom/)
