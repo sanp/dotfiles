@@ -1,7 +1,13 @@
 # Manual steps post install
 
+## Apps
+  - Download Chrome
+  - Download [Alfred](https://www.alfredapp.com/)
+  - Download [Shady](https://download.cnet.com/Shady/3000-2094_4-75784600.html)
+  - Download [Karibiner Elements](https://karabiner-elements.pqrs.org/)
+
 ## Moom
-  - https://manytricks.com/moom/
+  - Download [Moom](https://manytricks.com/moom/)
   - Launch autoomatically at login
   - Run as faceless
   - Don't show preferences on launch
@@ -25,6 +31,8 @@
               - "Lock Screen": ^Shift=
               - "Force Quit...": Option Command Q
               - "Zoom": Option Control =
+      - Customize control strip:
+          - Remove everything except brightness and volume
 
   - Trackpad:
       - Point and click:
