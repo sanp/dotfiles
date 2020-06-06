@@ -54,8 +54,8 @@ sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
 chsh -s /usr/local/bin/zsh
 
 # Oh my zsh
+rm -rf ~/.oh-my-zsh
 ZSH_CUSTOM=~/.oh-my-zsh/custom
-rm -rf ${ZSH_CUSTOM}
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # Zsh autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
