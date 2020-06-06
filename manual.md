@@ -38,3 +38,4 @@
       - Mouse and trackpad
           - Trackpad options
               - Enable dragging
+                  - 3 finger
