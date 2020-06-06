@@ -27,6 +27,19 @@
       - Text size: 10
       - Label position: Right
 
+  - Finder Settings:
+      - View > Show Status Bar
+      - View > as Columns
+      - Preferences:
+          - General:
+              - Show these items on the desktop:
+                  - External disks
+                  - CDs, DVDs, and oPods
+              - New windows show: home user
+              - Uncheck "Open folders in tabs instead of new windows
+          - Sidebar:
+              - Check items show in sidebar
+
 ## System preferences:
 
   - General:
