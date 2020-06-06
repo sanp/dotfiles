@@ -33,3 +33,8 @@
           - All
       - More gestures:
           - All
+
+  - Accessibility
+      - Mouse and trackpad
+          - Trackpad options
+              - Enable dragging
