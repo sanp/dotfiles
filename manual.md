@@ -39,3 +39,5 @@
           - Trackpad options
               - Enable dragging
                   - 3 finger
+      - Zoom
+          - Use scroll gesture with modifier keys to zoom ^Control
