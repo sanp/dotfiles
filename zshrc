@@ -130,10 +130,10 @@ export FZF_DEFAULT_OPTS="
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="fd --type d ${FD_OPTIONS} . ${FZF_ROOT}"
 
-# # Always have a tmux session running. By default, call that session 'work'
-# if ! [ -n "$TMUX" ]; then
-#   tmux attach -t work || tmux new -s work
-# fi
+# Always have a tmux session running. By default, call that session 'work'
+if ! [ -n "$TMUX" ]; then
+  tmux attach -t work || tmux new -s work
+fi
 
 ##
 # Custom functions

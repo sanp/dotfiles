@@ -35,6 +35,8 @@ mac
 
    And then restart iTerm2.
 
+5. Follow all instructions in `manual.md` to run manual installation steps.
+
 If all went well, you should now have access to all of the settings. 
 
 ### Pyenv virtualenvs

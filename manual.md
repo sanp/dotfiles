@@ -10,14 +10,10 @@
 
 ## Moom
   - Download [Moom](https://manytricks.com/moom/)
-  - Launch autoomatically at login
-  - Run as faceless
-  - Don't show preferences on launch
-  - Custom:
-      - ctrl opt command up: full
-      - ctrl opt command down: center
-      - ctrl opt command left: left
-      - ctrl opt command right: right
+  - Import moom custom settings:
+  ```sh
+  defaults import com.manytricks.Moom ~/dotfiles/moom/moom.plist
+  ```
 
 ## General settings
 
