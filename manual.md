@@ -3,6 +3,7 @@
 ## Apps
   - Download Chrome
   - Download [Alfred](https://www.alfredapp.com/)
+      - Appearance > Options > Save position when dragging Alfred main window
   - Download [Shady](https://download.cnet.com/Shady/3000-2094_4-75784600.html)
   - Download [Karibiner Elements](https://karabiner-elements.pqrs.org/)
 
@@ -16,6 +17,14 @@
       - ctrl opt command down: center
       - ctrl opt command left: left
       - ctrl opt command right: right
+
+## General settings
+
+  - Command J (view options):
+      - Icon size: Smallest
+      - Grid spacing: Default
+      - Text size: 10
+      - Label position: Right
 
 ## System preferences:
 
