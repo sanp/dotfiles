@@ -22,9 +22,9 @@
           - Delay until repeat: short
       - Shortcuts:
           - App shortcuts:
-              - Lock Screen: ^Shift=
-              - Force Quiti: Option Command Q
-              - Zoom: Option Control =
+              - "Lock Screen": ^Shift=
+              - "Force Quit...": Option Command Q
+              - "Zoom": Option Control =
 
   - Trackpad:
       - Point and click:
