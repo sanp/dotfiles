@@ -32,6 +32,13 @@
   - General:
       - Appearance: Auto
 
+  - Mission Control Settings:
+      - Uncheck:
+          - Automatically rearrange spaces based on most recent use
+          - When switching to an application, switch to a space with open
+              windows for the application
+          - Group windows by application
+
   - Keyboard:
       - Keyboard:
           - Key repeat: fast
@@ -41,8 +48,14 @@
               - "Lock Screen": ^Shift=
               - "Force Quit...": Option Command Q
               - "Zoom": Option Control =
-      - Customize control strip:
-          - Remove everything except brightness and volume
+
+    - Touchbar:
+      - Keyboard:
+          - "Touch bar showos": Expanded Control Strip
+          - Customize control strip:
+              - Remove everything except brightness, volume, and keyboard
+                  brightness
+              - Add space
 
   - Trackpad:
       - Point and click:

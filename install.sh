@@ -56,6 +56,7 @@ chsh -s /usr/local/bin/zsh
 # Oh my zsh
 rm -rf ~/.oh-my-zsh
 ZSH_CUSTOM=~/.oh-my-zsh/custom
+# Install stops after here
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # Zsh autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -75,7 +76,7 @@ git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 # Docker
 ##
 brew install docker docker-machine
-brew cask install virtualbox
+brew cask install virtualbox # Need to change system preferences for this to work
 
 ##
 # Git
