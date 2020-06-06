@@ -8,6 +8,10 @@
   - Download [Karibiner Elements](https://karabiner-elements.pqrs.org/)
   - Download [iTerm2](https://www.iterm2.com/)
 
+## Desktop background
+  - [Earth from ISS background](https://www.jetsoncreative.com/mac-dynamic-desktop-store/earth-mac)
+    Download, put in Pictures folder and then set as desktop background.
+
 ## Moom
   - Download [Moom](https://manytricks.com/moom/)
   - Import moom custom settings:
