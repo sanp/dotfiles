@@ -13,6 +13,9 @@
 
 ## System preferences:
 
+  - General:
+      - Appearance: Auto
+
   - Keyboard:
       - Keyboard:
           - Key repeat: fast
@@ -41,3 +44,11 @@
                   - 3 finger
       - Zoom
           - Use scroll gesture with modifier keys to zoom ^Control
+
+  - Dock
+      - Size: small
+      - Magnification: Min
+      - Position on screen: left
+      - Automatically hide and show dock
+
+
