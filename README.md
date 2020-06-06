@@ -1,6 +1,6 @@
 # Sanp's dotfiles
 
-This is my dotfiles directory. It's a pretty standard one.
+This is my dotfiles directory.
 
 ## OS
 
