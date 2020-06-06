@@ -49,6 +49,20 @@ DOTFILES_BW_DIR=${DOT_DIR}/bugwarrior
 rm -rf ${BW_CONFIG_DIR}
 ln -s ${DOTFILES_BW_DIR} ${BW_CONFIG_DIR}
 
+# Karabiner
+KARABINER_CONFIG_DIR=${CONFIG_DIR}/karabiner
+DOTFILES_KARABINER_DIR=${DOT_DIR}/karabiner
+rm -rf ${KARABINER_CONFIG_DIR}
+ln -s ${DOTFILES_KARABINER_DIR} ${KARABINER_CONFIG_DIR}
+
+# Iterm2
+defaults delete com.googlecode.iterm2
+ITERM_PROFILE=${HOME}/Library/Preferences/com.googlecode.iterm2.plist
+DOTFILES_ITERM_FILE=${DOT_DIR}/iterm2/com.googlecode.iterm2.plist
+rm -rf ${ITERM_PROFILE}
+ln -s ${DOTFILES_ITERM_FILE} ${ITERM_PROFILE}
+defaults read -app iTerm
+
 # Make the backup, tmp, and undo directories
 VIM_BKP_DIR=${HOME}/vimbackup
 VIM_TMP_DIR=${HOME}/vimtmpdir
@@ -59,6 +73,5 @@ rm -rf ${VIM_TMP_DIR}
 mkdir -p ${VIM_TMP_DIR}
 rm -rf ${VIM_UNDO_DIR}
 mkdir -p ${VIM_UNDO_DIR}
-
 
 echo "Done making symlinks"

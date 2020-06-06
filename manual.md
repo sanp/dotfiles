@@ -1,31 +1,35 @@
 # Manual steps post install
 
-## Iterm2
-  - Download: https://www.iterm2.com/downloads.html
-  - Preferences > Profile > Terminal > Report terminal type: xterm-256color-italic
-  - Preferences > Profile > Text > Font: Fantasque Sans Mono Bold 16
-  - Preferences > Profile > Keys: Delete all key mappings, and then set option
-      key to act as "esc +" for both left and right
-
-## Alfred:
-  - Download: https://www.alfredapp.com/
-
-## Karabiner Elements:
-  - Map escape key to `vk_none (disable this key)`
-  - TODO: write that all down here
-
 ## Moom
   - https://manytricks.com/moom/
   - Launch autoomatically at login
   - Run as faceless
   - Don't show preferences on launch
+  - Custom:
+      - ctrl opt command up: full
+      - ctrl opt command down: center
+      - ctrl opt command left: left
+      - ctrl opt command right: right
 
 ## System preferences:
-  - TODO: Write all that here
-  - Keybord shortcuts:
-    - App shortcuts:
-      - Lock Screen: ^Shift=
-      - Force Quiti: Option Command Q
-      - Zoom: Option Control =
 
-## Shady app
+  - Keyboard:
+      - Keyboard:
+          - Key repeat: fast
+          - Delay until repeat: short
+      - Shortcuts:
+          - App shortcuts:
+              - Lock Screen: ^Shift=
+              - Force Quiti: Option Command Q
+              - Zoom: Option Control =
+
+  - Trackpad:
+      - Point and click:
+          - Secondary click
+          - Tap to click
+          - Click light
+          - Tracking speed: 6/10
+      - Scroll and zoom:
+          - All
+      - More gestures:
+          - All

@@ -140,6 +140,9 @@ nnoremap <localleader>bd :set tw=0<CR>
 " Enable auto line breaks
 nnoremap <localleader>be :set tw=80<CR>
 
+" Remove all trailing white space at the end of lines
+nnoremap <silent> <localleader>w :%s/\s\+$//e<CR>
+
 " " Commenting
 " noremap <silent> ,xc :call NERDComment("n", "Comment")<CR>
 " noremap <silent> ,xu :call NERDComment("n", "Uncomment")<CR>

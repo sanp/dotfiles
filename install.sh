@@ -149,6 +149,14 @@ brew install neovim
 ##
 # Misc
 ##
+# Iterm2
+brew cask install iterm2
+# Alfred
+brew cask install alfred
+# Chrome
+brew cask install google-chrome
+# Shady app
+brew cask install shady
 # Exuberant ctags
 brew install ctags-exuberant
 # Pygments -- for nice colors in the terminal
