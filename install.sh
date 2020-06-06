@@ -56,8 +56,13 @@ chsh -s /usr/local/bin/zsh
 # Oh my zsh
 rm -rf ~/.oh-my-zsh
 ZSH_CUSTOM=~/.oh-my-zsh/custom
-# Install stops after here
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# Install Oh My Zsh non-interactively (withouot switching into it), otherwise
+# the install script will exit after the install finishes. See:
+# https://github.com/ohmyzsh/ohmyzsh/issues/5873
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch || {
+  echo "Could not install Oh My Zsh" >/dev/stderr
+  exit 1
+}
 # Zsh autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 # Zsh syntax highlighting
