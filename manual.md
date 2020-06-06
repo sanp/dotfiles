@@ -41,6 +41,12 @@
   - General:
       - Appearance: Auto
 
+  - Security and Privacy
+      - General
+          - Require password immediately after sleep
+          - Show message when screen is locked:
+              - "Property of Steve SanPietro. If found, call (631) 877 - 3110, or email sanpietro.steve@gmail.com."
+
   - Mission Control Settings:
       - Uncheck:
           - Automatically rearrange spaces based on most recent use
