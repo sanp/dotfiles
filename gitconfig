@@ -1,13 +1,15 @@
 [user]
-  name = Steve SanPietro
+	name = ssanpietro-gr
   email = steven.sanpietro@rate.com
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global
 [credential]
-  helper = osxkeychain
+	helper = osxkeychain
 [push]
   default = simple
+[pull]
+	rebase = false
 [pager]
   branch = false
 [alias]

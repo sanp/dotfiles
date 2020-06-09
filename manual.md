@@ -26,6 +26,7 @@
       - Grid spacing: Default
       - Text size: 10
       - Label position: Right
+      - Sort by: Name
 
   - Finder Settings:
       - View > Show Status Bar
