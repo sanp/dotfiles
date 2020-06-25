@@ -222,3 +222,6 @@ git_replace() {
   git grep -l "${old_str}" | xargs sed -i '' -e "s/${old_str}/${new_str}/g"
 }
 alias grp="git_replace"
+
+# Kill
+alias kn="kill -9"

@@ -42,8 +42,8 @@ source ~/.aliases
 # Make searches insensitive to - or _
 HYPHEN_INSENSITIVE="true"
 
-# Update zsh every day
-export UPDATE_ZSH_DAYS=1
+# Number of days between updates
+export UPDATE_ZSH_DAYS=5
 
 # Enable true colors
 export TERM=xterm-256color-italic
