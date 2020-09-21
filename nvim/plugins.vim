@@ -152,6 +152,10 @@ call plug#begin(g:PLUGIN_HOME)
 
   " Smart search and replace with case sensitivity and stem/affix recognition.
   " To use: `:Abolish`, `:Subvert`. `:help abolish` for more.
+  " Want to turn fooBar into foo_bar? Press crs (coerce to snake_case).
+  " MixedCase (crm), camelCase (crc), snake_case (crs), UPPER_CASE (cru),
+  " dash-case (cr-), dot.case (cr.), space case (cr<space>), and Title Case
+  " (crt) are all just 3 keystrokes away.
   Plug 'tpope/vim-abolish'
 
   " Vissort: Sort visual selections of text.
@@ -207,6 +211,9 @@ call plug#begin(g:PLUGIN_HOME)
   " vim-markdown and tabular used for opening and closing all folds
   Plug 'godlygeek/tabular'
   Plug 'plasticboy/vim-markdown'
+
+  " Terraform utilities
+  Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
@@ -464,3 +471,14 @@ let g:xptemplate_vars = '$author=' . g:my_name . '&$email=' . g:my_email . '&SPa
 
 " " Open the pop-up menu
 " let g:xptemplate_key_pum_only = '<F2>'
+
+
+"""""""""""""""""""""""""
+" vim-terraform
+"""""""""""""""""""""""""
+
+" Automatically running terraform fmt when saving *.tf and/or *.tfvars files
+let g:terraform_fmt_on_save=1
+
+" Override the indentation level to 2 spaces to conform to the hashicorp style
+let g:terraform_align=1

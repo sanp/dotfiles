@@ -93,9 +93,9 @@ set clipboard=unnamed
 " in the unnamed register
 " set clipboard=
 
-" Open new split panes to right and bottom
+" Open new split panes to left and bottom
 set splitbelow
-set splitright
+set nosplitright
 
 " Set custom fold appearance (references CustomFoldText function defined in
 " functions.vim)

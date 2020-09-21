@@ -58,6 +58,7 @@ alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup 
 alias gcm='git commit -m'
 alias gpu='git push -u origin head'
 alias gfp='git fetch -p'
+alias gpn='git push --no-verify'
 
 # Get file size
 alias fs="stat -f \"%z bytes\""
@@ -225,3 +226,13 @@ alias grp="git_replace"
 
 # Kill
 alias kn="kill -9"
+
+# Terraform
+alias tf="terraform"
+alias tfi="terraform init"
+alias tfp="terraform plan"
+alias tfa="terraform apply"
+alias tfd="terraform destroy"
+alias tfo="terraform output"
+alias tfw="terraform workspace"
+alias tfu="terraform get -update"
