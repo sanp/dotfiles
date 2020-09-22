@@ -87,6 +87,8 @@ zstyle ':completion:*' completer _expand_alias _complete _ignored
 ##
 
 # Remap the FZF hotkeys to more sensible bindings.
+# Ctrl r to search history
+bindkey '^r' fzf-history-widget
 # Instead of Ctrl t:
 bindkey '^q' fzf-file-widget
 # Instead of Alt c:
