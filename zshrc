@@ -21,6 +21,7 @@ plugins=(
   colored-man-pages
   # command-not-found
   extract
+  fzf
   git
   last-working-dir
   pyenv
@@ -85,9 +86,6 @@ zstyle ':completion:*' completer _expand_alias _complete _ignored
 # FZF
 ##
 
-# Enable fuzzy search key bindings and auto completion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # Remap the FZF hotkeys to more sensible bindings.
 # Instead of Ctrl t:
 bindkey '^q' fzf-file-widget
@@ -113,6 +111,7 @@ export FZF_COMPLETION_TRIGGER="~~"
 FZF_ROOT=${HOME}
 export FZF_DEFAULT_COMMAND="fd --type f ${FD_OPTIONS} . ${FZF_ROOT}"
 
+# Preview window will open if you press <C-w> while in a FZF window.
 export FZF_DEFAULT_OPTS="
   --no-mouse
   --multi
