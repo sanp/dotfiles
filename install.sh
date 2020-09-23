@@ -127,22 +127,6 @@ rm -rf ${HOME}/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ##
-# Terminfo
-# The following is necessary to display true colors in the shell, vim, and
-# tmux.
-##
-# Symlink the terminfo folder
-rm -rf ${HOME}/terminfo
-ln -s ${DOTFILES_DIR}/terminfo ${HOME}/terminfo
-# Download terminfo database so that system will suppoort tmux-256color
-curl -Lo ${HOME}/terminfo/terminfo.src.gz \
-  http://invisible-island.net/datafiles/current/terminfo.src.gz
-gunzip ${HOME}/terminfo/terminfo.src.gz
-tic -x ${HOME}/terminfo/terminfo.src
-tic ${DOTFILES_DIR}/terminfo/xterm-256color-italic.terminfo
-tic ${DOTFILES_DIR}/terminfo/screen-256color-italic.terminfo
-
-##
 # R
 ##
 brew install r

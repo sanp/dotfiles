@@ -86,6 +86,8 @@ zstyle ':completion:*' completer _expand_alias _complete _ignored
 # FZF
 ##
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Remap the FZF hotkeys to more sensible bindings.
 # Ctrl r to search history
 bindkey '^r' fzf-history-widget
