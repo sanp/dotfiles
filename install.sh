@@ -135,12 +135,13 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 rm -rf ${HOME}/terminfo
 ln -s ${DOTFILES_DIR}/terminfo ${HOME}/terminfo
 # Download terminfo database so that system will suppoort tmux-256color
-curl -Lo ${HOME}/terminfo/terminfo.src.gz \
-  http://invisible-island.net/datafiles/current/terminfo.src.gz
+cd ${HOME}/terminfo
+curl -LO http://invisible-island.net/datafiles/current/terminfo.src.gz
 gunzip ${HOME}/terminfo/terminfo.src.gz
 tic -x ${HOME}/terminfo/terminfo.src
 tic ${DOTFILES_DIR}/terminfo/xterm-256color-italic.terminfo
 tic ${DOTFILES_DIR}/terminfo/screen-256color-italic.terminfo
+cd ${DOTFILES_DIR}
 
 ##
 # R
