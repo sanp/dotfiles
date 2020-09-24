@@ -105,9 +105,13 @@
 
 ## ITerm2
 
+TODO: figure out why this isn't in the iterm profile.
+
 - Set font to fantasque-sans-mono size 14
 - Maximize window:
     By default iTerm2 opens as a small window. But in my workflow, I want all my
     windows maximized when they open. If you wan the same, you can go to
     Preferences → Profiles → Window → Settings for New Windows to set Columns and
     Rows of the new window.
+- Preferences -> Profiles -> Keys -> Delete all key mappings
+- Preferences -> Profiles -> Keys -> Left Option Key: Esc+
