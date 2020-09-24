@@ -140,6 +140,10 @@ brew install neovim
 ##
 # Misc
 ##
+# Terraform
+brew install hashicorp/tap/terraform
+# AWS CLI
+brew install awscli
 # Exuberant ctags
 brew install ctags-exuberant
 # Pygments -- for nice colors in the terminal
