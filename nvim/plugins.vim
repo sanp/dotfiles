@@ -202,6 +202,11 @@ call plug#begin(g:PLUGIN_HOME)
   " Misc / Utility plugins
   ""
 
+  " Terminus: Enhanced terminal integration for vim
+  " Allows Vim to receive FocusGained and FocusLost events, even in the
+  " terminal and inside tmux. This allows GitGutter to update properly.
+  Plug 'wincent/terminus'
+
   " Utility functions needed for some other plugins
   Plug 'tomtom/tlib_vim'
 
