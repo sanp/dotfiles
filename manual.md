@@ -102,6 +102,8 @@
       - Position on screen: left
       - Automatically hide and show dock
 
+  - Displays
+      - Uncheck True Tone
 
 ## ITerm2
 

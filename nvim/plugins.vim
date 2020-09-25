@@ -45,9 +45,12 @@ call plug#begin(g:PLUGIN_HOME)
   " Startify: Fancier start screen for nvim (invluding MRU files at startup)
   Plug 'mhinz/vim-startify'
 
-  " FZF: Fuzzy finder for fim
+  " FZF: Fuzzy finder for vim
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+
+  " Taboo: Rename tabs in vim
+  Plug 'gcmt/taboo.vim'
 
   ""
   " Code navigation related plugins
@@ -487,3 +490,17 @@ let g:terraform_fmt_on_save=1
 
 " Override the indentation level to 2 spaces to conform to the hashicorp style
 let g:terraform_align=1
+
+"""""""""""""""""""""""""
+" taboo
+"""""""""""""""""""""""""
+
+" Let Taboo remember tab names when you save the current session
+set sessionoptions+=tabpages,globals
+
+" Renames the current tab with the name provided.
+nnoremap -tr :TabooRename<space>
+" Opens a new tab and and gives it the name provided.
+nnoremap -to :TabooOpen<space>
+" Removes the custom label associated with the current tab
+nnoremap -ts :TabooReset<space>
