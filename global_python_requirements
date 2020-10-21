@@ -1,4 +1,5 @@
-neovim
-jedi
+black
 flake8
+jedi
 mypy
+neovim

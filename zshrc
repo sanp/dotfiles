@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Update path for homebrew
+export PATH="/usr/local/sbin:$PATH"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -63,11 +66,19 @@ KEYTIMEOUT=1
 HISTSIZE=1000
 SAVEHIST=1000
 
+# Share history between all tmux panes/windows
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+
 # Use vim keys (with Ctrl prefix) in tab complete menu.
 bindkey -M menuselect '^h' vi-backward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
 bindkey -M menuselect '^k' vi-up-line-or-history
 bindkey -M menuselect '^l' vi-forward-char
+
+# Remove key binding for Ctrl-s
+bindkey -r '^s'
 
 ##
 # Autosuggestions

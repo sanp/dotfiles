@@ -135,7 +135,7 @@ call plug#begin(g:PLUGIN_HOME)
   Plug 'scrooloose/nerdcommenter'
 
   ""
-  " Linting plugins
+  " Linting and code fixing/style plugins
   ""
 
   " Syntastic: Syntax checker
@@ -143,6 +143,12 @@ call plug#begin(g:PLUGIN_HOME)
 
   " ALE: Linting
   Plug 'dense-analysis/ale'
+
+  " Black: Python formatting
+  Plug 'python/black'
+
+  " Vim-terraform: Terraform formatting/linting
+  Plug 'hashivim/vim-terraform'
 
   ""
   " Text manipulation plugins
@@ -220,9 +226,6 @@ call plug#begin(g:PLUGIN_HOME)
   Plug 'godlygeek/tabular'
   Plug 'plasticboy/vim-markdown'
 
-  " Terraform utilities
-  Plug 'hashivim/vim-terraform'
-
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -235,7 +238,7 @@ call plug#end()
 
 " Check Python files with flake8.
 let b:ale_linters = ['flake8']
-" Fix Python files with autopep8 and yapf.
+" " Fix Python files with autopep8 and yapf.
 " let b:ale_fixers = ['autopep8', 'yapf']
 
 " Go to next ALE error in the file and wrap around to the top
@@ -245,6 +248,12 @@ nnoremap <silent> -e :ALENextWrap<CR>
 nnoremap <silent> <localleader>ad :ALEDisable<CR>
 " Enable ALE for the current file
 nnoremap <silent> <localleader>ae :ALEEnable<CR>
+
+"""""""""""""""""""""""""
+" Black
+"""""""""""""""""""""""""
+
+let g:black_linelength = 79  " default is 88
 
 """""""""""""""""""""""""
 " Deoplete

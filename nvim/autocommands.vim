@@ -15,3 +15,10 @@ autocmd Filetype scala setlocal ts=2 sts=2 sw=2 foldnestmax=2 foldmethod=indent
 autocmd BufNewFile,BufRead *.ddl set filetype=sql
 autocmd BufNewFile,BufRead *.dml set filetype=sql
 autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
+
+" Treat terragrunt files like terraform files
+autocmd BufNewFile,BufRead *.hcl set filetype=terraform
+autocmd BufWritePre *.hcl call terraform#fmt()
+
+" Automatically format python files with Black formatting upon save
+autocmd BufWritePre *.py execute ':Black'

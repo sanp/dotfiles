@@ -48,6 +48,12 @@ ca <silent> tl tabn
 " Move to last tab without stretching fingers
 nnoremap <silent> ft gT
 
+" Move the current tab back
+nnoremap <silent> -t- :tabmove-<CR>
+" Move the current tab forward
+nnoremap <silent> -t- :tabmove-<CR>
+nnoremap <silent> -t= :tabmove+<CR>
+
 " Use spacebar to open and close folds in Normal mode, rather than
 " zo, zc, za
 noremap <silent> <space> za
@@ -61,8 +67,9 @@ noremap <silent> <leader>fc zM
 vnoremap <silent> <Tab> >gv
 vnoremap <silent> <S-Tab> <gv
 
-" Open and close NERDTree normally
+" Open NERDTree
 noremap <silent> <leader>n :NERDTree<CR>
+" Close NERDTree
 noremap <silent> <leader>N :NERDTreeClose<CR>
 
 " Indenting and unindenting current line

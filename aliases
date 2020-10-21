@@ -8,7 +8,7 @@ alias -- -="cd -"
 # Shortcuts
 alias d="cd ~/Desktop"
 alias dl="cd ~/Downloads"
-alias dot="cd ~/dotfiles"
+# alias dot="cd ~/dotfiles"
 alias cl="clear"
 alias p="python"
 
@@ -230,9 +230,30 @@ alias kn="kill -9"
 # Terraform
 alias tf="terraform"
 alias tfi="terraform init"
+alias tfv="terraform validate"
 alias tfp="terraform plan"
 alias tfa="terraform apply"
 alias tfd="terraform destroy"
 alias tfo="terraform output"
+alias tfsl="terraform state list"
 alias tfw="terraform workspace"
+alias tfwl="terraform workspace list"
 alias tfu="terraform get -update"
+
+# Terragrunt
+alias tg="terragrunt"
+alias tgv="terragrunt validate"
+alias tgp="terragrunt plan"
+alias tga="terragrunt apply"
+alias tgd="terragrunt destroy"
+alias tgo="terragrunt output"
+alias tgsl="terragrunt state list"
+alias tgw="terragrunt workspace"
+
+# Update terragrunt sources
+alias tgu="terragrunt init --terragrunt-source-update"
+
+# Terragrunt all commands
+alias tgpp="terragrunt plan-all"
+alias tgaa="terragrunt apply-all"
+alias tgdd="terragrunt destroy-all"

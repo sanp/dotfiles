@@ -59,8 +59,8 @@ set showcmd
 " highlight the current line
 " set cul
 
-" Turn on spellcheck
-set spell
+" " Turn on spellcheck
+" set spell
 
 " Use UTF-8
 set encoding=utf-8

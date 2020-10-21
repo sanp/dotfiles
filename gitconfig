@@ -51,8 +51,9 @@
   cmd = "/Applications/DiffMerge.app/Contents/Resources/diffmerge.sh --nosplash \"$LOCAL\" \"$REMOTE\""
 [merge]
   # tool = nvim
-  tool = vim_mergetool
-  guitool = diffmerge
+  ; tool = vim_mergetool
+  ; guitool = diffmerge
+  tool = diffmerge
   submodule = log
   algorithm = patience
   indentHeuristic = true
