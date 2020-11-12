@@ -20,5 +20,9 @@ autocmd BufNewFile,BufRead Jenkinsfile set filetype=groovy
 autocmd BufNewFile,BufRead *.hcl set filetype=terraform
 autocmd BufWritePre *.hcl call terraform#fmt()
 
+" All files beginning or ending with Jenkinsfile are groovy
+autocmd BufNewFile,BufRead *.Jenkinsfile set filetype=groovy
+autocmd BufNewFile,BufRead Jenkinsfile.* set filetype=groovy
+
 " Automatically format python files with Black formatting upon save
 autocmd BufWritePre *.py execute ':Black'

@@ -153,7 +153,20 @@ fi
 # Custom functions
 ##
 
-# Create a pull request from the last pushed branch into develop
+# Open in a browser the remote URL for the git repo you are currently in.
+gop() {
+  inside_git_repo="$(git rev-parse --is-inside-work-tree 2>/dev/null)"
+  if [ "${inside_git_repo}" ]; then
+    github_url=$(git remote -v \
+      | awk '/fetch/{print $2}' \
+      | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@' -e 's%\.git$%%');
+    open ${github_url};
+  else
+    echo "Not in a git repo."
+  fi
+}
+
+# Create a pull request from the last pushed branch into main
 # Adapted from: https://pastebin.com/UWHMV2Q
 gpr() {
   if [ $? -eq 0 ]; then
@@ -161,7 +174,7 @@ gpr() {
       | awk '/fetch/{print $2}' \
       | sed -Ee 's#(git@|git://)#http://#' -e 's@com:@com/@' -e 's%\.git$%%');
     branch_name=$(git rev-parse --abbrev-ref HEAD)
-    pr_url="${github_url}/compare/develop...${branch_name}"
+    pr_url="${github_url}/compare/main...${branch_name}"
     open ${pr_url};
   else
     echo 'Failed to open a pull request.';

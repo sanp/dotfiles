@@ -59,6 +59,8 @@ alias gcm='git commit -m'
 alias gpu='git push -u origin head'
 alias gfp='git fetch -p'
 alias gpn='git push --no-verify'
+# Show tags with full messages, sorted with latest on top
+alias gtl='git tag -n99 --sort=-v:refname'
 
 # Get file size
 alias fs="stat -f \"%z bytes\""
@@ -231,6 +233,7 @@ alias kn="kill -9"
 alias tf="terraform"
 alias tfi="terraform init"
 alias tfv="terraform validate"
+alias tfl="tflint"
 alias tfp="terraform plan"
 alias tfa="terraform apply"
 alias tfd="terraform destroy"
