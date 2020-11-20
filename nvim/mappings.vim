@@ -182,7 +182,7 @@ highlight Folded  cterm=underline ctermfg=10 ctermbg=0
 nnoremap <silent> <leader>dd :%!sort \| uniq -u<CR>
 
 ""
-" Git diff mappings
+" Git mappings
 ""
 
 " Difftool/Mergetool settings

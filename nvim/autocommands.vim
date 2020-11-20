@@ -26,3 +26,6 @@ autocmd BufNewFile,BufRead Jenkinsfile.* set filetype=groovy
 
 " Automatically format python files with Black formatting upon save
 autocmd BufWritePre *.py execute ':Black'
+
+" MANIFEST.in files are python conf files
+autocmd BufNewFile,BufRead MANIFEST.in set filetype=conf

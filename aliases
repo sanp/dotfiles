@@ -62,6 +62,16 @@ alias gpn='git push --no-verify'
 # Show tags with full messages, sorted with latest on top
 alias gtl='git tag -n99 --sort=-v:refname'
 
+# String replace across all files in a git repo
+git_replace() {
+  local old_str
+  local new_str
+  old_str=$1
+  new_str=$2
+  git grep -l "${old_str}" | xargs sed -i '' -e "s/${old_str}/${new_str}/g"
+}
+alias grp="git_replace"
+
 # Get file size
 alias fs="stat -f \"%z bytes\""
 
@@ -216,16 +226,6 @@ ex () {
   fi
 }
 
-# String replace across all files in a git repo
-git_replace() {
-  local old_str
-  local new_str
-  old_str=$1
-  new_str=$2
-  git grep -l "${old_str}" | xargs sed -i '' -e "s/${old_str}/${new_str}/g"
-}
-alias grp="git_replace"
-
 # Kill
 alias kn="kill -9"
 
@@ -240,6 +240,7 @@ alias tfd="terraform destroy"
 alias tfo="terraform output"
 alias tfsl="terraform state list"
 alias tfw="terraform workspace"
+alias tfws="terraform workspace select"
 alias tfwl="terraform workspace list"
 alias tfu="terraform get -update"
 

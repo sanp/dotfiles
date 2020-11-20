@@ -281,14 +281,16 @@ nnoremap <silent> <localleader>g
 " Return back to editing current file
 nnoremap <silent> <localleader>e :Gedit<CR>:call winrestview(pos)<CR>
 
-" Overwrite current buffer with latest git version of file.
-nnoremap <silent> <leader>gr :Gread<CR>
-" Git add / stage the currently opened file.
-nnoremap <silent> <leader>gw :Gwrite<CR>
-" Git commit.
-nnoremap <silent> <leader>gc :Gcommit<CR>
 " Git status
 nnoremap <silent> <leader>gs :G<CR>
+" Overwrite current buffer with latest git version of file.
+nnoremap <leader>gr :Gread<CR>
+" Git add / stage the currently opened file.
+nnoremap <leader>gw :Gwrite<CR>
+" Git commit.
+nnoremap <leader>gc :Gcommit<CR>
+" Git push.
+nnoremap <leader>gp :Gpush<CR>
 
 """""""""""""""""""""""""
 " Gitgutter
