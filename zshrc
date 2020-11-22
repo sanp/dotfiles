@@ -63,8 +63,8 @@ export EDITOR=nvim
 KEYTIMEOUT=1
 
 # Limit the size of the history log file
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 
 # Share history between all tmux panes/windows
 setopt SHARE_HISTORY
