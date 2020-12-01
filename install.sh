@@ -187,6 +187,10 @@ brew install tasksh
 brew install lastpass-cli
 # Count Lines of Code package
 npm install -g cloc
+# Vault for secrets
+brew install vault
+# saml2aws for authenticating with AWS
+brew install saml2aws
 
 echo "All packages now installed."
 
