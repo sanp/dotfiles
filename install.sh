@@ -191,6 +191,8 @@ npm install -g cloc
 brew install vault
 # saml2aws for authenticating with AWS
 brew install saml2aws
+# GitHub CLI
+brew install gh
 
 echo "All packages now installed."
 
