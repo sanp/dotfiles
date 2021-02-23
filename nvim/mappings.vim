@@ -1,5 +1,5 @@
-" Visual block mode: meta (or alt key) + q
-nnoremap <M-q> <C-v>
+" Visual block mode
+nnoremap <C-g> <C-v>
 
 " Use the below commands as an alternative to setting and jumping to marks if
 " you want vim to also remember the scroll cursor position.
@@ -21,14 +21,14 @@ nnoremap <silent> <C-w> <C-y>
 nnoremap <silent> <C-c> <C-u>
 
 " Tmux-like splits
-nnoremap <C-s><bar> :vsplit<CR>:enew<CR>
-nnoremap <silent> <C-s>- :split<CR>:enew<CR>
+nnoremap <C-v><bar> :vsplit<CR>:enew<CR>
+nnoremap <silent> <C-v>- :split<CR>:enew<CR>
 
 " Moving between vim panes like tmux
-nnoremap <silent> <C-s>h :wincmd h<CR>
-nnoremap <silent> <C-s>j :wincmd j<CR>
-nnoremap <silent> <C-s>k :wincmd k<CR>
-nnoremap <silent> <C-s>l :wincmd l<CR>
+nnoremap <silent> <C-v>h :wincmd h<CR>
+nnoremap <silent> <C-v>j :wincmd j<CR>
+nnoremap <silent> <C-v>k :wincmd k<CR>
+nnoremap <silent> <C-v>l :wincmd l<CR>
 
 " Change the current working directory to the directory that the current file
 " you are editing is in
@@ -180,6 +180,11 @@ highlight Folded  cterm=underline ctermfg=10 ctermbg=0
 " "Dedupe" -- remove duplicate lines from file, removing all versions of the
 " duplicates, so that only lines which originally were unique are left.
 nnoremap <silent> <leader>dd :%!sort \| uniq -u<CR>
+
+" Delete current word in insert mode
+" imap <C-BS> <C-W>
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
 
 ""
 " Git mappings

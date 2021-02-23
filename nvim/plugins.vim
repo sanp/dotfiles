@@ -261,11 +261,12 @@ let g:black_linelength = 79  " default is 88
 " Start deoplete at startup
 let g:deoplete#enable_at_startup = 1
 
-" <C-j> and <C-k> to scroll up and down the deoplete menu and <C-l> to close the
-" menu
+" <C-j> and <C-k> to scroll up and down the deoplete menu and <C-l> and <c
+" right> to close the menu
 inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 inoremap <expr><C-l> pumvisible() ? "\<C-y>" : "\<C-l>"
+inoremap <expr><Right> pumvisible() ? "\<C-y>" : "\<Right>"
 
 """""""""""""""""""""""""
 " Fugitive
@@ -298,6 +299,9 @@ nnoremap <leader>gp :Gpush<CR>
 
 " The default is <leader>hp to preview hunks. Change to localleader
 nmap <localleader>hp <Plug>(GitGutterPreviewHunk)
+
+nmap -c <Plug>(GitGutterNextHunk)
+nmap =c <Plug>(GitGutterPrevHunk)
 
 """""""""""""""""""""""""
 " Nerdcommenter

@@ -71,6 +71,9 @@ setopt SHARE_HISTORY
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
 
+# <Esc>v to open command in vim editor
+bindkey -M vicmd v edit-command-line
+
 # Use vim keys (with Ctrl prefix) in tab complete menu.
 bindkey -M menuselect '^h' vi-backward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
@@ -105,7 +108,7 @@ bindkey '^r' fzf-history-widget
 # Instead of Ctrl t:
 bindkey '^q' fzf-file-widget
 # Instead of Alt c:
-bindkey '^w' fzf-cd-widget
+bindkey '^e' fzf-cd-widget
 
 # Use fd instead of find for default fzf searching
 # FD default options
