@@ -30,17 +30,22 @@ fi
 # Install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+export PATH="$(brew --prefix)/bin:$PATH"
+
+# Necessary on new M1 chip macs
+sudo softwareupdate --install-rosetta
+
 ##
 # Bash
 ##
 # Install latest bash
 brew install bash
 # Add the new bash shell to the list of allowed shells
-sudo sh -c "echo /usr/local/bin/bash >> /private/etc/shells"
-sudo sh -c "echo /usr/local/bin/bash >> /etc/shells"
+sudo sh -c "echo $(brew --prefix)/bin/bash >> /private/etc/shells"
+sudo sh -c "echo $(brew --prefix)/bin/bash >> /etc/shells"
 # To use bash as the SHELL, uncomment the following:
 # Change the shell for the user
-# chsh -s /usr/local/bin/bash
+# chsh -s $(brew --prefix)/bin/bash
 
 ##
 # Zsh
@@ -48,10 +53,10 @@ sudo sh -c "echo /usr/local/bin/bash >> /etc/shells"
 # Install latest zsh
 brew install zsh
 # Add the new zsh shell to the list of allowed shells
-sudo sh -c "echo /usr/local/bin/zsh >> /private/etc/shells"
-sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
+sudo sh -c "echo $(brew --prefix)/bin/zsh >> /private/etc/shells"
+sudo sh -c "echo $(brew --prefix)/bin/zsh >> /etc/shells"
 # Change the shell for the user
-chsh -s /usr/local/bin/zsh
+chsh -s $(brew --prefix)/bin/zsh
 
 # Oh my zsh
 rm -rf ~/.oh-my-zsh
@@ -81,7 +86,7 @@ git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 # Docker
 ##
 brew install docker docker-machine
-brew cask install virtualbox # Need to change system preferences for this to work
+brew install --cask virtualbox # Need to change system preferences for this to work
 
 ##
 # Git
@@ -103,18 +108,12 @@ brew install pyenv
 # Virtualenv: environment manager
 brew install pyenv-virtualenv
 # Install python 3.x
-pyenv install 3.8.0
-pyenv global 3.8.0
+pyenv install 3.9.1
+pyenv global 3.9.1
 # Enable pip so pip installs can work
 eval "$(pyenv init -)"
 pip install --upgrade pip setuptools wheel
 pip install -r ${DOTFILES_DIR}/global_python_requirements
-
-##
-# Scala
-##
-brew install scala
-brew install sbt
 
 ##
 # Tmux
@@ -140,6 +139,11 @@ brew install neovim
 ##
 # Misc
 ##
+# Scale
+brew install scala
+brew install sbt
+# JS
+brew install node
 # Terraform
 brew install hashicorp/tap/terraform
 # AWS CLI
@@ -159,7 +163,7 @@ brew install the_silver_searcher
 # Fuzzy finder
 brew install fzf
 $(brew --prefix)/opt/fzf/install
-# Fd: better than `find`
+# Fd: better than find
 brew install fd
 # bat for syntax highlighting
 brew install bat
@@ -167,7 +171,7 @@ brew install bat
 brew install jq
 # fantasque-sans font: https://github.com/belluzj/fantasque-sans
 brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
-brew cask install --force font-fantasque-sans-mono
+brew install --cask --force font-fantasque-sans-mono
 # Linters
 brew install yamllint
 # NPM
@@ -188,9 +192,6 @@ brew install lastpass-cli
 # Count Lines of Code package
 npm install -g cloc
 # Vault for secrets
-brew install vault
-# saml2aws for authenticating with AWS
-brew install saml2aws
 # GitHub CLI
 brew install gh
 
@@ -202,7 +203,7 @@ ${DOTFILES_DIR}/makesymlinks.sh
 echo "Symlinks created."
 
 # Copy desktop background images to home folder
-cp -r ${DOTFILES_DIR}/desktop_backgrounds $HOME
+cp -r ${DOTFILES_DIR}/desktop_backgrounds ${HOME}
 
 echo "Done! Restart your terminal and vim."
 echo "Follow the instructions in the README for next steps."

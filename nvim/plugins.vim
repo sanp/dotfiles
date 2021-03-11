@@ -118,14 +118,17 @@ call plug#begin(g:PLUGIN_HOME)
   " Trigger key: <C-\>
   Plug 'vim-scripts/xptemplate'
 
-  " Deoplete: Autocomplete paths and words
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-  " Deoplete-jedi: Autocomplete for python
-  Plug 'zchee/deoplete-jedi'
+  " " Deoplete: Autocomplete paths and words
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  "
+  " " Deoplete-jedi: Autocomplete for python
+  " Plug 'zchee/deoplete-jedi'
 
   " Surround: Surround text with parens, quotes, etc
   Plug 'tpope/vim-surround'
+
+  " Better code completion
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   ""
   " Commenting plugins
@@ -195,6 +198,9 @@ call plug#begin(g:PLUGIN_HOME)
 
   " Plugin to make git a better mergetool
   Plug 'samoshkin/vim-mergetool'
+
+  " Nerdtree Git Plugin: Show git statuses next to files in NERDTree
+  Plug 'Xuyuanp/nerdtree-git-plugin'
 
   ""
   " Code sending plugins

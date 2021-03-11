@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Update path for homebrew
-export PATH="/usr/local/sbin:$PATH"
+export PATH="$(brew --prefix)/sbin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -50,7 +50,7 @@ HYPHEN_INSENSITIVE="true"
 export UPDATE_ZSH_DAYS=5
 
 # Enable true colors
-export TERM=xterm-256color-italic
+# export TERM=xterm-256color-italic
 
 # <Esc>-V will open a vim window for edit-and-execute-command command editing.
 # Set EDITOR to nvim order to source init.vim for this window.

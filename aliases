@@ -23,10 +23,6 @@ alias mvim='open -a "MacVim"'
 alias vim="nvim"
 alias oldvim="\vim"
 
-# Start psql
-alias start_psql='pg_ctl -D /usr/local/var/postgres -l logfile start'
-alias stop_psql='pg_ctl -D /usr/local/var/postgres -l logfile stop'
-
 # Always use color when ls-ing
 alias ls='ls -GFh'
 # List all files in long format
@@ -85,11 +81,6 @@ alias cllogs="sudo rm -f /private/var/log/asl/*.asl"
 
 # List open ports
 alias lsports='lsof -i -P | grep -i "listen"'
-
-# Start/stop the psql server
-alias psql_status='pg_ctl -D /usr/local/var/postgres -l logfile status'
-alias psql_start='pg_ctl -D /usr/local/var/postgres -l logfile start'
-alias psql_stop='pg_ctl -D /usr/local/var/postgres -l logfile stop'
 
 ##
 # Tmux

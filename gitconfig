@@ -1,6 +1,6 @@
 [user]
-	name = ssanpietro-gr
-  email = steven.sanpietro@rate.com
+	name = sanp
+  email = sanpietro.steve@gmail.com
 [core]
   editor = nvim
   excludesfile = ~/.gitignore_global

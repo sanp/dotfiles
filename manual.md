@@ -117,3 +117,7 @@ TODO: figure out why this isn't in the iterm profile.
     Rows of the new window.
 - Preferences -> Profiles -> Keys -> Delete all key mappings
 - Preferences -> Profiles -> Keys -> Left Option Key: Esc+
+
+## M1 Macs
+
+[Disable emoji key](https://www.howtogeek.com/708537/how-to-disable-the-mac-keyboards-emoji-shortcut/#:~:text=Select%20the%20drop%2Ddown%20next%20to%20the%20Globe%20icon.&text=From%20here%2C%20you%20can%20choose,to%20disable%20the%20Emoji%20keyboard.)
