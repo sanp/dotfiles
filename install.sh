@@ -32,8 +32,8 @@ fi
 
 export PATH="$(brew --prefix)/bin:$PATH"
 
-# Necessary on new M1 chip macs
-sudo softwareupdate --install-rosetta
+# Necessary on new M1 chip macs -- Uncomment if installing on an M1 mac
+# sudo softwareupdate --install-rosetta
 
 ##
 # Bash
