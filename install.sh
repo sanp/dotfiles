@@ -33,7 +33,7 @@ defaults write com.apple.Dock autohide-delay -float 5 && killall Dock
 # Homebrew
 ##
 # Uninstall
-if [ -d "/usr/local/Homebrew" ]; then
+if [ -d "${BREW_PREFIX}/Homebrew" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
 fi
 # Install
