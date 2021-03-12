@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>Default Bookmark Guid</key>
 	<string>8C0EB2E1-D206-4B44-AF1E-8C6373AF1B8D</string>
 	<key>HapticFeedbackForEsc</key>
