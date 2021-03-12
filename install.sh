@@ -39,7 +39,7 @@ fi
 # Install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-export PATH="$(brew --prefix)/bin:$PATH"
+export PATH="${BREW_PREFIX}/bin:$PATH"
 
 if [ "${CHIP_TYPE}" = "m1" ]; then
   # Necessary on new M1 chip macs
@@ -52,11 +52,11 @@ fi
 # Install latest bash
 brew install bash
 # Add the new bash shell to the list of allowed shells
-sudo sh -c "echo $(brew --prefix)/bin/bash >> /private/etc/shells"
-sudo sh -c "echo $(brew --prefix)/bin/bash >> /etc/shells"
+sudo sh -c "echo ${BREW_PREFIX}/bin/bash >> /private/etc/shells"
+sudo sh -c "echo ${BREW_PREFIX}/bin/bash >> /etc/shells"
 # To use bash as the SHELL, uncomment the following:
 # Change the shell for the user
-# chsh -s $(brew --prefix)/bin/bash
+# chsh -s ${BREW_PREFIX}/bin/bash
 
 ##
 # Zsh
@@ -64,10 +64,10 @@ sudo sh -c "echo $(brew --prefix)/bin/bash >> /etc/shells"
 # Install latest zsh
 brew install zsh
 # Add the new zsh shell to the list of allowed shells
-sudo sh -c "echo $(brew --prefix)/bin/zsh >> /private/etc/shells"
-sudo sh -c "echo $(brew --prefix)/bin/zsh >> /etc/shells"
+sudo sh -c "echo ${BREW_PREFIX}/bin/zsh >> /private/etc/shells"
+sudo sh -c "echo ${BREW_PREFIX}/bin/zsh >> /etc/shells"
 # Change the shell for the user
-chsh -s $(brew --prefix)/bin/zsh
+chsh -s ${BREW_PREFIX}/bin/zsh
 
 # Oh my zsh
 rm -rf ~/.oh-my-zsh
@@ -173,7 +173,7 @@ brew install youtube-dl
 brew install the_silver_searcher
 # Fuzzy finder
 brew install fzf
-$(brew --prefix)/opt/fzf/install
+${BREW_PREFIX}/opt/fzf/install
 # Fd: better than find
 brew install fd
 # bat for syntax highlighting

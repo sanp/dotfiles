@@ -9,7 +9,9 @@ mac
 ## Installation
 
 1.  Clone the repository into your `${HOME}` folder. Then, go into the dotfiles
-    folder, and run the install script:
+    folder, and run the install script. Before running the script, edit the top
+    of the install script to uncomment the correct chip type (m1 or intel).
+    Then run the script:
 
     ```sh
     git clone https://github.com/sanp/dotfiles.git ~/dotfiles
