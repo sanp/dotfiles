@@ -94,12 +94,6 @@ git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/
 git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 
 ##
-# Docker
-##
-brew install docker docker-machine
-brew install --cask virtualbox # Need to change system preferences for this to work
-
-##
 # Git
 ##
 # Git -- ensure that git is up to date, and includes gitk, etc
@@ -137,11 +131,6 @@ rm -rf ${HOME}/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ##
-# R
-##
-brew install r
-
-##
 # Vim and Neovim
 ##
 brew install vim
@@ -150,9 +139,11 @@ brew install neovim
 ##
 # Misc
 ##
-# Scale
+# Scala
 brew install scala
 brew install sbt
+# R
+brew install r
 # JS
 brew install node
 # Terraform
