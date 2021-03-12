@@ -11,9 +11,9 @@ set -e
 # CHIP_TYPE="intel"
 CHIP_TYPE="m1"
 if [ "${CHIP_TYPE}" = "m1" ]; then
-  BREW_PATH=/opt/homebrew
+  BREW_PREFIX=/opt/homebrew
 else
-  BREW_PATH=/usr/local
+  BREW_PREFIX=/usr/local
 fi
 
 DOTFILES_DIR=${HOME}/dotfiles
