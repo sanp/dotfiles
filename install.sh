@@ -7,6 +7,15 @@
 
 set -e
 
+# UNCOMMENT depending on which chip the computer has
+# CHIP_TYPE="intel"
+CHIP_TYPE="m1"
+if [ "${CHIP_TYPE}" = "m1" ]; then
+  BREW_PATH=/opt/homebrew
+else
+  BREW_PATH=/usr/local
+fi
+
 DOTFILES_DIR=${HOME}/dotfiles
 
 # Execute script as root user
@@ -32,8 +41,10 @@ fi
 
 export PATH="$(brew --prefix)/bin:$PATH"
 
-# Necessary on new M1 chip macs -- Uncomment if installing on an M1 mac
-# sudo softwareupdate --install-rosetta
+if [ "${CHIP_TYPE}" = "m1" ]; then
+  # Necessary on new M1 chip macs
+  sudo softwareupdate --install-rosetta
+fi
 
 ##
 # Bash
