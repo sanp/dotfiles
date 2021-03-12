@@ -295,7 +295,7 @@ nnoremap <leader>gr :Gread<CR>
 " Git add / stage the currently opened file.
 nnoremap <leader>gw :Gwrite<CR>
 " Git commit.
-nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gc :Git commit<CR>
 " Git push.
 nnoremap <leader>gp :Gpush<CR>
 
