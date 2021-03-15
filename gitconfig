@@ -70,3 +70,10 @@
   cmd = nvim -d $LOCAL $MERGED $REMOTE -c 'wincmd l'
 [mergetool "diffmerge"]
   cmd = "/Applications/DiffMerge.app/Contents/Resources/diffmerge.sh --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\""
+
+# In order to override username and email for work github accounts, store
+# work info in separate .local-giconfig file. Should have a [name] block.
+# Important that this include is at the bottom of this file in order to
+# ensure that it overrides the above settings.
+[include]
+  path = ~/.local-gitconfig
