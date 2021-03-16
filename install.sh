@@ -137,6 +137,12 @@ brew install vim
 brew install neovim
 
 ##
+# Docker
+##
+brew install docker docker-machine
+brew install --cask virtualbox # Need to change system preferences for this to work
+
+##
 # Misc
 ##
 # Scala
