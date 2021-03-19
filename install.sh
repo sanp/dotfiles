@@ -23,7 +23,10 @@ echo "Installation will now begin."
 
 # It's not possible to completely remove the Dock from macs, but you can hide it
 # and then lengthen the amount of time it takes to display the dock after hover:
-defaults write com.apple.Dock autohide-delay -float 5 && killall Dock
+defaults write com.apple.Dock autohide-delay -float 5
+# Show the tab app switcher on all displays
+defaults write com.apple.Dock appswitcher-all-displays -bool true
+killall Dock
 
 # Install packages needed for this dotfiles configuration -- if they're already
 # installed, they will just spit out a warning saying that the package is
