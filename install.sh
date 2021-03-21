@@ -169,6 +169,7 @@ brew install dos2unix
 brew install tree
 # Youtube downloader
 brew install youtube-dl
+brew install ffmpeg
 # ag: the silver searcher
 brew install the_silver_searcher
 # Fuzzy finder
