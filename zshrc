@@ -225,3 +225,7 @@ zle -N zle-keymap-select
 precmd_functions+=(_set_blinking_beam_cursor)
 # Ensure blinking beam cursor in insert mode and when exiting vim.
 zle-line-init() { zle -K viins; _set_blinking_beam_cursor }
+
+# Any secret settings which shouldn't be stored in github should go here. These
+# include company-specific aliases or installs.
+[[ ! -a ~/secret.zshrc ]] || source ~/secret.zshrc
