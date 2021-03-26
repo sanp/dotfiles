@@ -7,17 +7,24 @@
   - Download [Shady](https://download.cnet.com/Shady/3000-2094_4-75784600.html)
   - Download [Karibiner Elements](https://karabiner-elements.pqrs.org/)
   - Download [iTerm2](https://www.iterm2.com/)
+  - Download [Whatsapp](https://www.whatsapp.com/download)
+  - Download [Key codes](https://manytricks.com/keycodes/)
+  - Download [Keybase](https://keybase.io/docs/the_app/install_macos)
 
 ## Desktop background
-  - [Earth from ISS background](https://www.jetsoncreative.com/mac-dynamic-desktop-store/earth-mac)
-    Download, put in Pictures folder and then set as desktop background.
+  - Vader2 in desktop_backgrounds folder
 
 ## Moom
-  - Download [Moom](https://manytricks.com/moom/)
+  - Download moom in the app store
   - Import moom custom settings:
   ```sh
   defaults import com.manytricks.Moom ~/dotfiles/moom/moom.plist
   ```
+
+## Keymou
+  - Download Keymou in the app store
+  - Import custom keymou settings:
+      - Figure out how to do this
 
 ## General settings
 

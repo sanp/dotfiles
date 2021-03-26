@@ -146,6 +146,21 @@ brew install docker docker-machine
 brew install --cask virtualbox # Need to change system preferences for this to work
 
 ##
+# JS/node
+##
+brew install node
+brew install npm
+# N - version manager for node
+brew install n
+
+##
+# Terraform
+brew install hashicorp/tap/terraform
+brew install tfenv
+brew install tflint
+##
+
+##
 # Misc
 ##
 # Scala
@@ -153,10 +168,6 @@ brew install scala
 brew install sbt
 # R
 brew install r
-# JS
-brew install node
-# Terraform
-brew install hashicorp/tap/terraform
 # AWS CLI
 brew install awscli
 # Exuberant ctags
@@ -186,8 +197,6 @@ brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
 brew install --cask --force font-fantasque-sans-mono
 # Linters
 brew install yamllint
-# NPM
-brew install npm
 # Trash: https://github.com/sindresorhus/trash
 npm install --global trash-cli
 # Better version of top
