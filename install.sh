@@ -111,6 +111,8 @@ brew install tcl-tk
 ##
 # Macs come with python, but this will install the latest version
 brew install python
+# Pipenv: version and environment manager
+brew install pipenv
 # Pyenv: python version manager
 brew install pyenv
 # Virtualenv: environment manager

@@ -10,7 +10,6 @@ alias d="cd ~/Desktop"
 alias dl="cd ~/Downloads"
 # alias dot="cd ~/dotfiles"
 alias cl="clear"
-alias p="python"
 
 # Sourcing
 alias so="source"
@@ -154,9 +153,6 @@ alias ytdl-mp3="youtube-dl -x --audio-quality 0 --audio-format mp3"
 # Prevent SSH client from passing TERM variable to remote server
 alias ssh="TERM=xterm ssh"
 
-# Install global requirements
-alias pyri="pip install --upgrade pip wheel setuptools && pip install -r ~/.global_python_requirements"
-
 # Always show colors with tree
 alias tree="tree -C"
 # Tree a python project directory without seeing all the unnecessary stuff
@@ -256,3 +252,15 @@ alias tgdd="terragrunt destroy-all"
 # TODO: move this to bin
 alias ca-pip-login="aws --profile root --region us-east-1 codeartifact login --tool pip --domain-owner 609131769936 --domain dna-code-artifact --repository dna-code-artifact"
 alias ca-twine-login="aws --profile root --region us-east-1 codeartifact login --tool twine --domain-owner 609131769936 --domain dna-code-artifact --repository dna-code-artifact"
+
+# Python aliases
+alias p="python"
+alias pa="pyenv activate"
+alias pd="pyenv deactivate"
+alias pv="pyenv versions"
+alias pls="ls -l ~/.local/share/virtualenvs"
+alias pei="pipenv install"
+alias pesh="pipenv shell"
+alias perm="pipenv --rm"
+# Install global requirements
+alias pyri="pip install --upgrade pip wheel setuptools && pip install -r ~/.global_python_requirements"
