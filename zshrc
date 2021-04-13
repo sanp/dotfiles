@@ -231,3 +231,16 @@ zle-line-init() { zle -K viins; _set_blinking_beam_cursor }
 # Any secret settings which shouldn't be stored in github should go here. These
 # include company-specific aliases or installs.
 [[ ! -a ~/secret.zshrc ]] || source ~/secret.zshrc
+
+### Fix slowness of pastes with zsh-syntax-highlighting.zsh
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+### Fix slowness of pastes
