@@ -249,10 +249,6 @@ alias tgpp="terragrunt plan-all"
 alias tgaa="terragrunt apply-all"
 alias tgdd="terragrunt destroy-all"
 
-# TODO: move this to bin
-alias ca-pip-login="aws --profile root --region us-east-1 codeartifact login --tool pip --domain-owner 609131769936 --domain dna-code-artifact --repository dna-code-artifact"
-alias ca-twine-login="aws --profile root --region us-east-1 codeartifact login --tool twine --domain-owner 609131769936 --domain dna-code-artifact --repository dna-code-artifact"
-
 # Python aliases
 alias p="python"
 alias pa="pyenv activate"
