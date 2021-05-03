@@ -313,7 +313,29 @@
                         ]
                     },
                     {
-                        "description": "Change shift+delete to option+delete",
+                        "description": "Change left_shift+left_control+n to f7",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_shift",
+                                            "left_control"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f7"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change left_shift+delete to option+delete",
                         "manipulators": [
                             {
                                 "from": {
