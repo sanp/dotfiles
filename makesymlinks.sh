@@ -56,6 +56,12 @@ DOTFILES_KARABINER_DIR=${DOT_DIR}/karabiner
 rm -rf ${KARABINER_CONFIG_DIR}
 ln -s ${DOTFILES_KARABINER_DIR} ${KARABINER_CONFIG_DIR}
 
+# flake8
+FLAKE8_CONFIG_FILE=${CONFIG_DIR}/flake8
+DOTFILES_FLAKE8_FILE=${DOT_DIR}/flake8
+rm -rf ${FLAKE8_CONFIG_FILE}
+ln -s ${DOTFILES_FLAKE8_FILE} ${FLAKE8_CONFIG_FILE}
+
 # Make the backup, tmp, and undo directories
 VIM_BKP_DIR=${HOME}/vimbackup
 VIM_TMP_DIR=${HOME}/vimtmpdir

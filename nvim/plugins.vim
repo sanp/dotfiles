@@ -259,7 +259,11 @@ nnoremap <silent> <localleader>ae :ALEEnable<CR>
 " Black
 """""""""""""""""""""""""
 
-let g:black_linelength = 79  " default is 88
+" default is 88
+let g:black_linelength = 99
+" Don't automatically replace single quotes with double
+let g:black_skip_string_normalization = 1
+let g:black_skip_numeric_underscore_normalization = 1
 
 """""""""""""""""""""""""
 " Deoplete
