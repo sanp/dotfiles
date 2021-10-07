@@ -301,7 +301,7 @@ nnoremap <leader>gw :Gwrite<CR>
 " Git commit.
 nnoremap <leader>gc :Git commit<CR>
 " Git push.
-nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gp :Git push<CR>
 
 """""""""""""""""""""""""
 " Gitgutter
