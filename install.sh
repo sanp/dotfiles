@@ -217,6 +217,8 @@ npm install -g cloc
 # Vault for secrets
 # GitHub CLI
 brew install gh
+# FTP
+brew install inetutils
 
 echo "All packages now installed."
 
