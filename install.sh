@@ -126,6 +126,7 @@ pip install --upgrade pip setuptools wheel
 pip install -r ${DOTFILES_DIR}/global_python_requirements
 # Install and Run Python Applications in Isolated Environments
 brew install pipx
+pipx ensurepath
 
 ##
 # Tmux
