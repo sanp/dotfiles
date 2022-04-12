@@ -75,6 +75,7 @@
               - "Lock Screen": ^Shift=
               - "Force Quit...": Option Command Q
               - "Zoom": Option Control =
+              - "Minimize": Command+k
 
     - Touchbar:
       - Keyboard:

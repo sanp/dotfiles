@@ -4,6 +4,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Update path for homebrew
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$(pyenv root)/shims:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
