@@ -170,6 +170,8 @@ brew install tflint
 # Scala
 brew install scala
 brew install sbt
+# Golang
+brew install go
 # R
 brew install r
 # AWS CLI
