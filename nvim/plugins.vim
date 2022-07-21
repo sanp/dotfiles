@@ -153,6 +153,9 @@ call plug#begin(g:PLUGIN_HOME)
   " Vim-terraform: Terraform formatting/linting
   Plug 'hashivim/vim-terraform'
 
+  " Go language support
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
   ""
   " Text manipulation plugins
   ""
