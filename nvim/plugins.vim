@@ -116,7 +116,7 @@ call plug#begin(g:PLUGIN_HOME)
 
   " XPTemplate: Language specific templating/snippets
   " Trigger key: <C-\>
-  Plug 'vim-scripts/xptemplate'
+  Plug 'drmingdrmer/xptemplate'
 
   " " Deoplete: Autocomplete paths and words
   " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
