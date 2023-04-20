@@ -36,11 +36,11 @@ killall Dock
 # Homebrew
 ##
 # Uninstall if installed already
-if [ ! -f "`which brew`" ]; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
+if [ -f "`which brew`" ]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 fi
 # Install
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 export PATH="${BREW_PREFIX}/bin:$PATH"
 
@@ -147,7 +147,9 @@ brew install neovim
 # Docker
 ##
 brew install docker docker-machine
-brew install --cask virtualbox # Need to change system preferences for this to work
+if [ ! "${CHIP_TYPE}" = "m1" ]; then
+  brew install --cask virtualbox # Need to change system preferences for this to work
+fi
 
 ##
 # JS/node
@@ -160,6 +162,7 @@ brew install n
 ##
 # Terraform
 brew install hashicorp/tap/terraform
+brew unlink terraform
 brew install tfenv
 brew install tflint
 ##
@@ -179,7 +182,7 @@ brew install awscli
 # Exuberant ctags
 brew install ctags-exuberant
 # Pygments -- for nice colors in the terminal
-sudo easy_install Pygments
+brew install pygments
 # dos2unix
 brew install dos2unix
 # Tree - for viewing file directory structures
