@@ -131,6 +131,10 @@
   - Displays
       - Select the right monitor as the primary monitor and arrange correctly
 
+  - Notifications
+      - Slack
+          - Allow notifications
+
 ## ITerm2
 
 TODO: figure out why this isn't in the iterm profile.
