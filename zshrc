@@ -16,7 +16,7 @@ ZSH_THEME="spaceship"
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_DIR_TRUNC=2
-SPACESHIP_PYENV_SHOW=true
+SPACESHIP_PYTHON_SHOW=true
 SPACESHIP_VENV_SHOW=true
 SPACESHIP_VENV_SYMBOL="🐍 "
 SPACESHIP_VENV_COLOR=yellow
@@ -53,9 +53,6 @@ HYPHEN_INSENSITIVE="true"
 
 # Number of days between updates
 export UPDATE_ZSH_DAYS=5
-
-# Enable true colors
-# export TERM=xterm-256color-italic
 
 # <Esc>-V will open a vim window for edit-and-execute-command command editing.
 # Set EDITOR to nvim order to source init.vim for this window.
@@ -194,43 +191,6 @@ gpr() {
 # reason.
 tmux unbind a
 
-##
-# Cursor
-# See: https://superuser.com/questions/685005/tmux-in-zsh-with-vi-mode-toggle-cursor-shape-between-normal-and-insert-mode
-# Note: This doesn't play well with Spaceship theme's vi mode, so set
-# SPACESHIP_VI_MODE_SHOW=false when using the below settings.
-##
-
-# Change cursor with support for inside/outside tmux
-function _set_cursor() {
-  if [[ $TMUX = '' ]]; then
-    echo -ne $1
-  else
-    echo -ne "\ePtmux;\e\e$1\e\\"
-  fi
-}
-
-function _set_blinking_block_cursor() { _set_cursor '\e[1 q' }
-function _set_solid_block_cursor() { _set_cursor '\e[2 q' }
-function _set_blinking_underscore_cursor() { _set_cursor '\e[3 q' }
-function _set_solid_underscore_cursor() { _set_cursor '\e[4 q' }
-function _set_blinking_beam_cursor() { _set_cursor '\e[5 q' }
-function _set_solid_beam_cursor() { _set_cursor '\e[6 q' }
-
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-    _set_solid_block_cursor
-  else
-    _set_blinking_beam_cursor
-  fi
-}
-zle -N zle-keymap-select
-
-# Ensure blinking beam cursor when starting new terminal.
-precmd_functions+=(_set_blinking_beam_cursor)
-# Ensure blinking beam cursor in insert mode and when exiting vim.
-zle-line-init() { zle -K viins; _set_blinking_beam_cursor }
-
 # Any secret settings which shouldn't be stored in github should go here. These
 # include company-specific aliases or installs.
 [[ ! -a ~/secret.zshrc ]] || source ~/secret.zshrc
@@ -248,7 +208,7 @@ zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 ### Fix slowness of pastes
 
-# Testing... maybe delete...
+# Testing... maybe delete later...
 autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
