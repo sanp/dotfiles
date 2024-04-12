@@ -234,5 +234,10 @@ echo "Symlinks created."
 # Copy desktop background images to home folder
 cp -r ${DOTFILES_DIR}/desktop_backgrounds ${HOME}
 
+# Make Chrome remember which spaces windows are in on restart
+# https://apple.stackexchange.com/questions/430973/how-do-i-use-spaces-to-save-a-specific-browser-page-on-restart
+# Chrome must be installed first for this to work
+defaults write com.google.Chrome NSWindowRestoresWorkspaceAtLaunch -bool YES
+
 echo "Done! Restart your terminal and vim."
 echo "Follow the instructions in the README for next steps."

@@ -2,6 +2,7 @@
 
 ## Apps
   - Download Chrome
+      defaults write com.google.Chrome NSWindowRestoresWorkspaceAtLaunch -bool YES
   - Download [Alfred](https://www.alfredapp.com/)
       - Appearance > Options > Save position when dragging Alfred main window
   - Download [Shady](https://download.cnet.com/Shady/3000-2094_4-75784600.html)
@@ -57,7 +58,7 @@
       - General
           - Require password immediately after sleep
           - Show message when screen is locked:
-              - "Property of Steve SanPietro. If found, call (631) 877 - 3110, or email sanpietro.steve@gmail.com."
+              - Property of Steve SanPietro. If found, call (631) 877-3110, or email sanpietro.steve@gmail.com.
 
   - Mission Control Settings:
       - Uncheck:
@@ -71,6 +72,9 @@
           - Key repeat: fast
           - Delay until repeat: short
       - Shortcuts:
+          - Spotlight:
+          -   - Disable keyboard shortcuts for spotlight search and show finder
+                search window
           - App shortcuts:
               - "Lock Screen": ^Shift=
               - "Force Quit...": Option Command Q
@@ -79,7 +83,7 @@
 
     - Touchbar:
       - Keyboard:
-          - "Touch bar showos": Expanded Control Strip
+          - "Touch bar shows": Expanded Control Strip
           - Customize control strip:
               - Remove everything except brightness, volume, and keyboard
                   brightness
@@ -132,7 +136,7 @@ TODO: figure out why this isn't in the iterm profile.
 
 ## Local Gitconfig
 
-If you need to set a work user for github, create a `~/.local-github` file with
+If you need to set a work user for github, create a `~/.local-gitconfig` file with
 the following contents:
 
 ```

@@ -82,7 +82,7 @@ call plug#begin(g:PLUGIN_HOME)
   Plug 'junegunn/seoul256.vim'
 
   " Nova colorscheme
-  Plug 'trevordmiller/nova-vim'
+  Plug 'iammerrick/nova-vim'
 
   " Neovim solarized colorscheme
   Plug 'iCyMind/NeoSolarized'
