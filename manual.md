@@ -4,7 +4,10 @@
   - Download Chrome
       defaults write com.google.Chrome NSWindowRestoresWorkspaceAtLaunch -bool YES
   - Download [Alfred](https://www.alfredapp.com/)
+      - Follow instructions below to disable spotlight keyboard shortcut first,
+          before setting command+apple to be Alfred shortcut
       - Appearance > Options > Save position when dragging Alfred main window
+      - Set appearance to Alfred Modern Dark
   - Download [Shady](https://download.cnet.com/Shady/3000-2094_4-75784600.html)
   - Download [Karibiner Elements](https://karabiner-elements.pqrs.org/)
   - Download [iTerm2](https://www.iterm2.com/)
