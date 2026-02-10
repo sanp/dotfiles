@@ -202,9 +202,8 @@ brew install fd
 brew install bat
 # jq for pretty printing json in the terminal
 brew install jq
-# fantasque-sans font: https://github.com/belluzj/fantasque-sans
-brew tap homebrew/cask-fonts #You only need to do this once for cask-fonts
-brew install --cask --force font-fantasque-sans-mono
+# Fantasque Sans font
+brew install --cask font-fantasque-sans-mono
 # Linters
 brew install yamllint
 # Trash: https://github.com/sindresorhus/trash
@@ -213,16 +212,6 @@ npm install --global trash-cli
 brew install htop
 # Shorter man pages
 brew install tldr
-# File browser like du utility
-brew install ncdu
-# Terminal based task app
-brew install task
-brew install tasksh
-# Lastpass CLI
-brew install lastpass-cli
-# Count Lines of Code package
-npm install -g cloc
-# Vault for secrets
 # GitHub CLI
 brew install gh
 # FTP
