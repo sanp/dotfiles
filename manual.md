@@ -16,7 +16,7 @@
   - Download [Keybase](https://keybase.io/docs/the_app/install_macos)
   - Download [Logitech Options+](https://www.logitech.com/en-us/software/options.html) Software
       - Open Logi Options app > More > Backups > Restore settings from backup > choose most recent backup
-  - Download [Moom](https://www.synaptics.com/products/displaylink-graphics/downloads/macos)
+  - Download [Moom](https://manytricks.com/moom/)
   - Download [Keymou](https://manytricks.com/keymou/)
   - Download [DisplayLinkManager](https://www.synaptics.com/products/displaylink-graphics/downloads/macos-connectivity-1.8.1?filetype=exe)
 
