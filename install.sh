@@ -203,7 +203,7 @@ brew install bat
 # jq for pretty printing json in the terminal
 brew install jq
 # Fantasque Sans font
-brew install --cask font-fantasque-sans-mono
+brew install --cask --force font-fantasque-sans-mono
 # Linters
 brew install yamllint
 # Trash: https://github.com/sindresorhus/trash
