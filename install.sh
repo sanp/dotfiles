@@ -188,7 +188,8 @@ brew install dos2unix
 # Tree - for viewing file directory structures
 brew install tree
 # Youtube downloader
-brew install youtube-dl
+brew install yt-dlp
+# Audio processing for yt-dlp
 brew install ffmpeg
 # ag: the silver searcher
 brew install the_silver_searcher
