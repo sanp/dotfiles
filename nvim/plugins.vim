@@ -1,7 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Installation: Vim-Plug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Auto-install vim-plug on different systems if it does not exist.
 " For Windows, only Windows 10 with curl installed are supported (after
 " Windows 10 build 17063, source: http://tinyurl.com/y23972tt).
@@ -263,27 +262,41 @@ nnoremap <silent> <localleader>ae :ALEEnable<CR>
 """""""""""""""""""""""""
 
 " default is 88
-let g:black_linelength = 99
+let g:black_linelength = 79
 " Don't automatically replace single quotes with double
 let g:black_skip_string_normalization = 1
 let g:black_skip_numeric_underscore_normalization = 1
 
-"""""""""""""""""""""""""
-" Deoplete
-"""""""""""""""""""""""""
-" Start deoplete at startup
-let g:deoplete#enable_at_startup = 1
+" """""""""""""""""""""""""
+" " Deoplete
+" """""""""""""""""""""""""
+" " Start deoplete at startup
+" let g:deoplete#enable_at_startup = 1
+"
+" " <C-j> and <C-k> to scroll up and down the deoplete menu and <C-l> and <c
+" " right> to close the menu
+" inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<Down>"
+" inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<Up>"
+" inoremap <expr><C-l> pumvisible() ? "\<C-y>" : "\<C-l>"
+" inoremap <expr><Right> pumvisible() ? "\<C-y>" : "\<Right>"
 
-" <C-j> and <C-k> to scroll up and down the deoplete menu and <C-l> and <c
-" right> to close the menu
-inoremap <expr><C-j> pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr><C-l> pumvisible() ? "\<C-y>" : "\<C-l>"
-inoremap <expr><Right> pumvisible() ? "\<C-y>" : "\<Right>"
+""""""""""""""""""""""""
+" CoC - Conquer of Completion (Code Autocompletion)
+""""""""""""""""""""""""
 
-"""""""""""""""""""""""""
+" Use <tab> for completion navigation
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+" Remap <C-l> to Confirm Completion
+inoremap <expr> <C-l> coc#pum#visible() ? coc#pum#confirm() : "\<C-l>"
+
+" For best popup behavior, check completeopt
+set completeopt=menuone,noinsert,noselect
+
+""""""""""""""""""""""""
 " Fugitive
-"""""""""""""""""""""""""
+""""""""""""""""""""""""
 
 " Viewing git history of files
 " Open a menu with the previous commit versions of the file you're in.

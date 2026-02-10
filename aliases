@@ -149,6 +149,7 @@ alias top="top -o cpu"
 
 # Download mp3 audio files from youtube
 alias ytdl-mp3="youtube-dl -x --audio-quality 0 --audio-format mp3"
+alias yd="yt-dlp"
 
 # Prevent SSH client from passing TERM variable to remote server
 alias ssh="TERM=xterm ssh"
