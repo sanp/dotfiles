@@ -38,8 +38,9 @@ mac
     :CocInstall coc-tsserver
     ```
 
-6. Tell iterm2 to load profile: Preferences > Preferences > Load preferences
-   from a custom folder or URL > ~/dotfiles/iterm2. Then restart iTerm2. Make
+6. Tell iterm2 to load profile: Preferences > General > Settings
+   Check box that says: "Load settings from a custom folder or URL"
+   ~/dotfiles/iterm2. Then restart iTerm2. Make
    sure that iTerm2 didn't overwrite the `plist` file in the iterm2 folder. If
    it did:
 
