@@ -118,7 +118,10 @@
       - Scroll and zoom:
           - All
       - More gestures:
-          - All
+          - Settings here change often between Mac OS updates. Make sure you
+              enable swiping between pages with two fingers, swiping between
+              desktops/full screen apps with four fingers, Mission control
+              (swipe up with four fingers), App expose (off)
 
   - Accessibility
       - Pointer Control > Mouse and trackpad
