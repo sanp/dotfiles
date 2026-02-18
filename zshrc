@@ -212,3 +212,6 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+
+# Work specific configs
+source ~/work.zshrc
