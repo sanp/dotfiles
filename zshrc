@@ -43,6 +43,13 @@ plugins=(
   zsh-z
 )
 
+# Vi-mode: change cursor shape (block in normal, bar/pipe in insert)
+VI_MODE_SET_CURSOR=true
+# Optional: 2 = steady block, 6 = steady bar (defaults; uncomment to change)
+# VI_MODE_CURSOR_NORMAL=2
+# VI_MODE_CURSOR_INSERT=6
+VI_MODE_CURSOR_INSERT=5 # Blinking bar
+
 source $ZSH/oh-my-zsh.sh
 
 # My aliases
