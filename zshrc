@@ -24,10 +24,12 @@ SPACESHIP_VI_MODE_SHOW=false
 # SPACESHIP_VI_MODE_INSERT="\b"
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_NODE_SHOW=false
-# # Disable async so the prompt is drawn once (avoids "…" placeholder then full prompt on next line)
-# SPACESHIP_PROMPT_ASYNC=false
-# # Keep cursor on same line as prompt (skip RPROMPT cursor-up/down when right prompt is empty)
-# SPACESHIP_RPROMPT_ADD_NEWLINE=true
+# When the prompt generates async, it renders a ... in the prompt until it is
+# able to render everything. When the prompt is finished generating, this
+# setting ensures that it re-renders on the same line, not generate a new line
+# with the rendered prompt.
+SPACESHIP_PROMPT_ASYNC=true
+SPACESHIP_RPROMPT_ADD_NEWLINE=true
 
 plugins=(
   colored-man-pages
