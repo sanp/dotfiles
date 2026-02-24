@@ -24,6 +24,10 @@ SPACESHIP_VI_MODE_SHOW=false
 # SPACESHIP_VI_MODE_INSERT="\b"
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_NODE_SHOW=false
+# # Disable async so the prompt is drawn once (avoids "…" placeholder then full prompt on next line)
+# SPACESHIP_PROMPT_ASYNC=false
+# # Keep cursor on same line as prompt (skip RPROMPT cursor-up/down when right prompt is empty)
+# SPACESHIP_RPROMPT_ADD_NEWLINE=true
 
 plugins=(
   colored-man-pages
@@ -54,6 +58,9 @@ source $ZSH/oh-my-zsh.sh
 
 # My aliases
 source ~/.aliases
+
+# # Clear screen and move cursor to top so only one prompt line appears (avoids two lines after clear)
+# cl() { printf '\e[3J\e[H\e[2J'; }
 
 # Make searches insensitive to - or _
 HYPHEN_INSENSITIVE="true"
