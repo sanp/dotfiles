@@ -158,7 +158,7 @@ export FZF_DEFAULT_OPTS="
   --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file ||
       (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -300'
   --preview-window='right:hidden:wrap'
-  --bind='ctrl-w:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-y:execute-silent(echo {+} | pbcopy)'
+  --bind='ctrl-w:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-y:execute-silent(echo {+} | pbcopy),right:accept,ctrl-l:accept'
 "
 #  --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'
 
