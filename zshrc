@@ -207,10 +207,6 @@ gpr() {
 # reason.
 tmux unbind a
 
-# Any secret settings which shouldn't be stored in github should go here. These
-# include company-specific aliases or installs.
-[[ ! -a ~/secret.zshrc ]] || source ~/secret.zshrc
-
 ### Fix slowness of pastes with zsh-syntax-highlighting.zsh
 pasteinit() {
   OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
@@ -229,5 +225,6 @@ autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
-# Work specific configs
-source ~/work.zshrc
+# Any secret settings which shouldn't be stored in github should go here. These
+# include company-specific configs.
+[[ ! -a ~/secret.zshrc ]] || source ~/secret.zshrc
