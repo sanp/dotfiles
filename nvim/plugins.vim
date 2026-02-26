@@ -302,6 +302,7 @@ let g:black_skip_numeric_underscore_normalization = 1
 " " For best popup behavior, check completeopt
 " set completeopt=menuone,noinsert,noselect
 
+" From https://github.com/neoclide/coc.nvim
 " Use tab for trigger completion with characters ahead and navigate
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file
@@ -321,6 +322,11 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 " Karabiner maps left_control+l to right_arrow, so Neovim receives <Right> not <C-l>.
 " Map <Right> to confirm when pum is visible so Ctrl+L (→ Right) accepts completion.
 inoremap <silent><expr> <Right> coc#pum#visible() ? coc#pum#confirm() : "\<Right>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 """"""""""""""""""""""""
 " Fugitive
