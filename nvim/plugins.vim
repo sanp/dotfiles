@@ -284,15 +284,43 @@ let g:black_skip_numeric_underscore_normalization = 1
 " CoC - Conquer of Completion (Code Autocompletion)
 """"""""""""""""""""""""
 
-" Use <tab> for completion navigation
-inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" " Use <tab> for completion navigation (coc's popup uses coc#pum#visible(), not pumvisible())
+" inoremap <expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : "\<TAB>"
+" inoremap <expr> <S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<S-TAB>"
+"
+" " <C-l> confirm completion: use feedkeys so confirm runs correctly (avoids expr return issues)
+" function! s:CocConfirmOrCtrlL() abort
+"   if coc#pum#visible()
+"     " select_confirm() selects first item if none selected, returns key seq to close('confirm')
+"     call feedkeys(coc#pum#select_confirm(), 'n')
+"     return "\<Ignore>"
+"   endif
+"   return "\<C-l>"
+" endfunction
+" inoremap <expr> <C-l> s:CocConfirmOrCtrlL()
+"
+" " For best popup behavior, check completeopt
+" set completeopt=menuone,noinsert,noselect
 
-" Remap <C-l> to Confirm Completion
-inoremap <expr> <C-l> coc#pum#visible() ? coc#pum#confirm() : "\<C-l>"
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" For best popup behavior, check completeopt
-set completeopt=menuone,noinsert,noselect
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Karabiner maps left_control+l to right_arrow, so Neovim receives <Right> not <C-l>.
+" Map <Right> to confirm when pum is visible so Ctrl+L (→ Right) accepts completion.
+inoremap <silent><expr> <Right> coc#pum#visible() ? coc#pum#confirm() : "\<Right>"
 
 """"""""""""""""""""""""
 " Fugitive
